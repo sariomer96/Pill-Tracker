@@ -19,6 +19,7 @@
 		1715A2802BE6AAD60027261E /* medicDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 1715A27F2BE6AAD60027261E /* medicDB.json */; };
 		17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */; };
 		17AE32332BE7C582008CF1F5 /* JSONViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32322BE7C582008CF1F5 /* JSONViewModel.swift */; };
+		17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1715A27F2BE6AAD60027261E /* medicDB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medicDB.json; sourceTree = "<group>"; };
 		17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 		17AE32322BE7C582008CF1F5 /* JSONViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONViewModel.swift; sourceTree = "<group>"; };
+		17AE32382BE81594008CF1F5 /* Medicine_Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Medicine_Reminder.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				1715A2792BE67DFB0027261E /* DataLoader.swift */,
 				1715A27D2BE688A10027261E /* DataTableViewCell.swift */,
 				1715A27F2BE6AAD60027261E /* medicDB.json */,
+				17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				1715A2612BE679720027261E /* ViewController.swift in Sources */,
 				1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */,
+				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				1715A25D2BE679720027261E /* AppDelegate.swift in Sources */,
 				17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */,
@@ -411,6 +415,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				17AE32382BE81594008CF1F5 /* Medicine_Reminder.xcdatamodel */,
+			);
+			currentVersion = 17AE32382BE81594008CF1F5 /* Medicine_Reminder.xcdatamodel */;
+			path = Medicine_Reminder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1715A2512BE679720027261E /* Project object */;
 }

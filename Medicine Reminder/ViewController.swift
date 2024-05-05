@@ -10,23 +10,28 @@ import CoreData
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var context: NSManagedObjectContext?
-    let model = JSONViewModel()
+    var isSearching = false
+    
+    let medicineViewModel = JSONViewModel()
     let data = DataLoader().medicData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return data.count
+        return medicineViewModel.searchList.count
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = data[indexPath.row].medicineName
+        cell.textLabel?.text = medicineViewModel.searchList[indexPath.row].medicineName
         return cell
     }
     
-
-    @IBOutlet weak var tableView: UITableView!
+   
+ 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,12 +40,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
    
-        if model.medicine.isEmpty {
+        if medicineViewModel.medicine.isEmpty {
             let appdel = UIApplication.shared.delegate as! AppDelegate
             context = appdel.persistentContainer.viewContext
             
-            model.getData(context: context ?? NSManagedObjectContext())
-            model.fetchData(context: context ?? NSManagedObjectContext())
+            medicineViewModel.getData(context: context ?? NSManagedObjectContext()) {
+                isEmpty in
+                if isEmpty {
+                    self.medicineViewModel.fetchData(context: self.context ?? NSManagedObjectContext())
+                    print("tekrar calisti")
+                }
+            }
+           
         }
         
    
@@ -53,3 +64,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 }
 
+
+extension ViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+         
+        medicineViewModel.searchMedicineName(searchText: searchText, context: context ?? NSManagedObjectContext())
+        
+    
+               
+               // TableView'i yenile
+               tableView.reloadData()
+        
+    }
+    
+}

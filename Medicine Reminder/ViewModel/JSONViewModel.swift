@@ -8,10 +8,15 @@
 import Foundation
 import CoreData
 
+typealias VoidCallBack = (() -> Void)
+typealias CallBack<T> = ((T) -> Void)
 class JSONViewModel: ObservableObject {
+    var callBackSearch: CallBack<[MedicineTables]>?
+    var searchList = [MedicineTables]()
     @Published var medicine : [MedicineJSON] = []
     @Published var medicineCore: [MedicineTables] = []
  
+    let fetchRequest: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
     func saveData(context: NSManagedObjectContext) {
         for i in medicine {
             let entity = MedicineTables(context: context)
@@ -21,21 +26,36 @@ class JSONViewModel: ObservableObject {
         
         do {
             try context.save()
-            print("success")
+       
         } catch {
             
         }
     }
    
-    func getData(context: NSManagedObjectContext)  {
-        let fetchRequest: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
+    func searchMedicineName(searchText: String, context: NSManagedObjectContext) {
+        let predicate = NSPredicate(format: "medicineName CONTAINS[cd] %@", searchText)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            
+            guard let medTable = results as? [MedicineTables] else { return}
+            searchList = medTable
+            callBackSearch?(medTable)
+        } catch {
+            print("Arama hatası: \(error.localizedDescription)")
+        }
+    }
+    func getData(context: NSManagedObjectContext, completion: @escaping (Bool) -> Void)  {
+       // let fetchRequest: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
  // EntityType, oluşturduğunuz NSManagedObject alt sınıfının adı olmalıdır.
               do {
                   let results = try context.fetch(fetchRequest)
                   
                    
                   medicineCore = results
-                  print(medicineCore.count)
+                  completion(medicineCore.isEmpty)
+                   
               } catch {
                   print("Veri çekme hatası: \(error.localizedDescription)")
                   
@@ -51,7 +71,8 @@ class JSONViewModel: ObservableObject {
                 let dataFromJson = try decoder.decode([MedicineJSON].self, from: data)
                 self.medicine = dataFromJson
                 self.saveData(context: context)
-               
+                self.medicineCore = dataFromJson as! [MedicineTables]
+            
             } catch {
                 print("error \(error)")
             }
