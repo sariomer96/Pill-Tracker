@@ -38,9 +38,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        
    
-        if medicineViewModel.medicine.isEmpty {
+   
+   
             let appdel = UIApplication.shared.delegate as! AppDelegate
             context = appdel.persistentContainer.viewContext
             
@@ -48,11 +48,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 isEmpty in
                 if isEmpty {
                     self.medicineViewModel.fetchData(context: self.context ?? NSManagedObjectContext())
-                    print("tekrar calisti")
+               
                 }
             }
            
-        }
+        
         
    
 
@@ -70,10 +70,8 @@ extension ViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
          
         medicineViewModel.searchMedicineName(searchText: searchText, context: context ?? NSManagedObjectContext())
-        
-    
-               
-               // TableView'i yenile
+         
+        print("work")
                tableView.reloadData()
         
     }

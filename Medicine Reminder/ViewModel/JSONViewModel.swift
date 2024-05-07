@@ -22,6 +22,10 @@ class JSONViewModel: ObservableObject {
             let entity = MedicineTables(context: context)
             entity.id = i.id ?? 0
             entity.medicineName = i.medicineName
+            let uuid = UUID()
+           // entity.medicineDate?.dateID = uuid
+           // entity.medicineDate?.startDate =
+           
         }
         
         do {
@@ -39,7 +43,7 @@ class JSONViewModel: ObservableObject {
         do {
             let results = try context.fetch(fetchRequest)
             
-            guard let medTable = results as? [MedicineTables] else { return}
+            guard let medTable = results as? [MedicineTables] else { return }
             searchList = medTable
             callBackSearch?(medTable)
         } catch {
@@ -47,13 +51,16 @@ class JSONViewModel: ObservableObject {
         }
     }
     func getData(context: NSManagedObjectContext, completion: @escaping (Bool) -> Void)  {
-       // let fetchRequest: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
+        let fetchReques: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
  // EntityType, oluşturduğunuz NSManagedObject alt sınıfının adı olmalıdır.
               do {
-                  let results = try context.fetch(fetchRequest)
+                  let results = try context.fetch(fetchReques)
                   
-                   
+                  print(results.count)
+                  
+               
                   medicineCore = results
+                 print("aasf")
                   completion(medicineCore.isEmpty)
                    
               } catch {
@@ -71,8 +78,8 @@ class JSONViewModel: ObservableObject {
                 let dataFromJson = try decoder.decode([MedicineJSON].self, from: data)
                 self.medicine = dataFromJson
                 self.saveData(context: context)
-                self.medicineCore = dataFromJson as! [MedicineTables]
-            
+                //self.medicineCore = dataFromJson as! [MedicineTables]
+                 
             } catch {
                 print("error \(error)")
             }

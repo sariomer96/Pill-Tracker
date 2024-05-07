@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Date" representedClassName="Date" syncable="YES" codeGenerationType="class">
+        <attribute name="dateID" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="finishDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <entity name="MedicineTables" representedClassName="MedicineTables" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="medicineName" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
+        <attribute name="days" optional="YES" attributeType="Transformable"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hours" optional="YES" attributeType="Transformable"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="remainingCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="totalCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="usageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="SelectedDate" representedClassName="SelectedDate" syncable="YES" codeGenerationType="class">
+        <attribute name="hours" optional="YES" attributeType="Transformable"/>
+        <attribute name="selectedDateID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="selectedDays" optional="YES" attributeType="Transformable"/>
+    </entity>
+    <entity name="SelectedMedicine" representedClassName="SelectedMedicine" syncable="YES" codeGenerationType="class">
+        <attribute name="medicineID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="medicineName" optional="YES" attributeType="String"/>
+        <attribute name="medicineType" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Stock" representedClassName="Stock" syncable="YES" codeGenerationType="class">
+        <attribute name="remainingStock" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stockID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="totalStock" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="usageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
 </model>

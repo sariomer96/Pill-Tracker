@@ -20,6 +20,7 @@
 		17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */; };
 		17AE32332BE7C582008CF1F5 /* JSONViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32322BE7C582008CF1F5 /* JSONViewModel.swift */; };
 		17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */; };
+		17CD06632BE966540000796D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD06622BE966540000796D /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 		17AE32322BE7C582008CF1F5 /* JSONViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONViewModel.swift; sourceTree = "<group>"; };
 		17AE32382BE81594008CF1F5 /* Medicine_Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Medicine_Reminder.xcdatamodel; sourceTree = "<group>"; };
+		17CD06622BE966540000796D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				1715A27D2BE688A10027261E /* DataTableViewCell.swift */,
 				1715A27F2BE6AAD60027261E /* medicDB.json */,
 				17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */,
+				17CD06622BE966540000796D /* Enums.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			files = (
 				1715A2612BE679720027261E /* ViewController.swift in Sources */,
 				1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */,
+				17CD06632BE966540000796D /* Enums.swift in Sources */,
 				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				1715A25D2BE679720027261E /* AppDelegate.swift in Sources */,
