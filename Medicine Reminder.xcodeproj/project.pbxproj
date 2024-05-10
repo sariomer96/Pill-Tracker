@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1715A25D2BE679720027261E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A25C2BE679720027261E /* AppDelegate.swift */; };
 		1715A25F2BE679720027261E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A25E2BE679720027261E /* SceneDelegate.swift */; };
-		1715A2612BE679720027261E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A2602BE679720027261E /* ViewController.swift */; };
 		1715A2642BE679720027261E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1715A2622BE679720027261E /* Main.storyboard */; };
 		1715A2692BE6797B0027261E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1715A2682BE6797B0027261E /* Assets.xcassets */; };
 		1715A26C2BE6797B0027261E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1715A26A2BE6797B0027261E /* LaunchScreen.storyboard */; };
@@ -25,6 +24,10 @@
 		17B784E52BECFDDC00231FC4 /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */; };
 		17B784E72BECFE3100231FC4 /* MedicineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E62BECFE3100231FC4 /* MedicineViewModel.swift */; };
 		17B784E92BECFFBD00231FC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E82BECFFBD00231FC4 /* BaseViewController.swift */; };
+		17B784EC2BEE0A4E00231FC4 /* ReminderConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784EB2BEE0A4E00231FC4 /* ReminderConfigViewController.swift */; };
+		17B784EE2BEE0A5800231FC4 /* ReminderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784ED2BEE0A5800231FC4 /* ReminderConfig.swift */; };
+		17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784F02BEE537700231FC4 /* SelectedDaysViewController.swift */; };
+		17B784F42BEE5C4500231FC4 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784F32BEE5C4500231FC4 /* TimeTableViewCell.swift */; };
 		17CD06632BE966540000796D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD06622BE966540000796D /* Enums.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +35,6 @@
 		1715A2592BE679720027261E /* Medicine Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medicine Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1715A25C2BE679720027261E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1715A25E2BE679720027261E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1715A2602BE679720027261E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1715A2632BE679720027261E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1715A2682BE6797B0027261E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1715A26B2BE6797B0027261E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
 		17B784E62BECFE3100231FC4 /* MedicineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewModel.swift; sourceTree = "<group>"; };
 		17B784E82BECFFBD00231FC4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		17B784EB2BEE0A4E00231FC4 /* ReminderConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderConfigViewController.swift; sourceTree = "<group>"; };
+		17B784ED2BEE0A5800231FC4 /* ReminderConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderConfig.swift; sourceTree = "<group>"; };
+		17B784F02BEE537700231FC4 /* SelectedDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDaysViewController.swift; sourceTree = "<group>"; };
+		17B784F32BEE5C4500231FC4 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		17CD06622BE966540000796D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,12 +88,12 @@
 		1715A25B2BE679720027261E /* Medicine Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				17B784F22BEE5C2500231FC4 /* TableViewCell */,
 				17AE322F2BE7C455008CF1F5 /* View */,
 				17AE322E2BE7C44D008CF1F5 /* ViewModel */,
 				17AE322D2BE7C445008CF1F5 /* Model */,
 				1715A25C2BE679720027261E /* AppDelegate.swift */,
 				1715A25E2BE679720027261E /* SceneDelegate.swift */,
-				1715A2602BE679720027261E /* ViewController.swift */,
 				1715A2622BE679720027261E /* Main.storyboard */,
 				1715A2682BE6797B0027261E /* Assets.xcassets */,
 				1715A26A2BE6797B0027261E /* LaunchScreen.storyboard */,
@@ -121,6 +127,8 @@
 		17AE322F2BE7C455008CF1F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				17B784EF2BEE536300231FC4 /* SelectedDays */,
+				17B784EA2BEE0A3C00231FC4 /* ReminderConfig */,
 				17B784E82BECFFBD00231FC4 /* BaseViewController.swift */,
 				17B784E32BECFDCA00231FC4 /* Medicine */,
 				17B784E22BECFA6100231FC4 /* Home */,
@@ -144,6 +152,31 @@
 				17B784E62BECFE3100231FC4 /* MedicineViewModel.swift */,
 			);
 			path = Medicine;
+			sourceTree = "<group>";
+		};
+		17B784EA2BEE0A3C00231FC4 /* ReminderConfig */ = {
+			isa = PBXGroup;
+			children = (
+				17B784EB2BEE0A4E00231FC4 /* ReminderConfigViewController.swift */,
+				17B784ED2BEE0A5800231FC4 /* ReminderConfig.swift */,
+			);
+			path = ReminderConfig;
+			sourceTree = "<group>";
+		};
+		17B784EF2BEE536300231FC4 /* SelectedDays */ = {
+			isa = PBXGroup;
+			children = (
+				17B784F02BEE537700231FC4 /* SelectedDaysViewController.swift */,
+			);
+			path = SelectedDays;
+			sourceTree = "<group>";
+		};
+		17B784F22BEE5C2500231FC4 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				17B784F32BEE5C4500231FC4 /* TimeTableViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,18 +251,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1715A2612BE679720027261E /* ViewController.swift in Sources */,
 				1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */,
 				17CD06632BE966540000796D /* Enums.swift in Sources */,
 				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				17B784E72BECFE3100231FC4 /* MedicineViewModel.swift in Sources */,
 				17B784E92BECFFBD00231FC4 /* BaseViewController.swift in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
+				17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */,
+				17B784EC2BEE0A4E00231FC4 /* ReminderConfigViewController.swift in Sources */,
 				1715A25D2BE679720027261E /* AppDelegate.swift in Sources */,
 				17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */,
 				17B784E12BECFA2000231FC4 /* HomeViewModel.swift in Sources */,
 				17B784DF2BECFA0F00231FC4 /* HomeViewController.swift in Sources */,
+				17B784EE2BEE0A5800231FC4 /* ReminderConfig.swift in Sources */,
 				1715A27E2BE688A10027261E /* DataTableViewCell.swift in Sources */,
+				17B784F42BEE5C4500231FC4 /* TimeTableViewCell.swift in Sources */,
 				1715A25F2BE679720027261E /* SceneDelegate.swift in Sources */,
 				17B784E52BECFDDC00231FC4 /* MedicineViewController.swift in Sources */,
 				17AE32332BE7C582008CF1F5 /* JSONViewModel.swift in Sources */,

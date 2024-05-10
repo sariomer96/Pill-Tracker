@@ -51,13 +51,7 @@ class MedicineViewController: BaseViewController, UITableViewDelegate, UITableVi
                
                 }
             }
-           
-        
-        
-   
-
-        // Do any additional setup after loading the view.
-    
+            
          
     }
 
@@ -70,8 +64,7 @@ extension MedicineViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
          
         medicineViewModel.searchMedicineName(searchText: searchText, context: context ?? NSManagedObjectContext())
-         
-        print("work")
+          
                tableView.reloadData()
         
     }
