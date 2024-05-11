@@ -7,16 +7,37 @@
 
 import UIKit
 
-class ReminderConfigViewController: BaseViewController {
-    @IBOutlet weak var selectedDaysSwitch: UISwitch!
+
+class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     
+    var medicName = ""
+    func configure(with reminderText: String) {
+        medicName = reminderText
+        print("fgd")
+    }
+    
+    
+    
+    
+    @IBOutlet weak var selectedDaysSwitch: UISwitch!
+    @IBOutlet weak var medicTypesDropDownButton: UIButton!
+     
+ 
+    @IBOutlet weak var medicNameTF: UITextField!
+    
+    @IBOutlet weak var removeReminderDatePicker: UIDatePicker!
     @IBOutlet weak var everyXHoursSwitch: UISwitch!
+    let reminderConfigViewModel = ReminderConfig()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        showDropDown()
+        print("\(medicNameTF.text) aaaa")
         // Do any additional setup after loading the view.
     }
-     
+    override func viewWillAppear(_ animated: Bool) {
+        medicNameTF.text = medicName
+    }
+   
     @IBAction func selectedDaysSwitchClicked(_ sender: UISwitch) {
         if sender.isOn == true {
             everyXHoursSwitch.isOn = false
@@ -31,27 +52,42 @@ class ReminderConfigViewController: BaseViewController {
         }
     }
     
-    @IBAction func nextClicked(_ sender: Any) {
-        let btn = sender as! UIButton
-
-        btn.isSelected = !btn.isSelected
-        changeBgColorNextButton(button: btn)
-        print(btn.isSelected)
-     //   btn.isHighlighted = !btn.isHighlighted
-        if selectedDaysSwitch.isOn == false && everyXHoursSwitch.isOn == false {
-            alert(title: "Kullanim ", message: "iki kullanimdan  birini sec")
-           
-            btn.isHighlighted = !btn.isHighlighted
+    @IBAction func removeOnThisDaySwitchClicked(_ sender: UISwitch) {
+        if sender.isOn == true {
+            removeReminderDatePicker.isHidden = false
+        } else {
+            removeReminderDatePicker.isHidden = true
         }
     }
-    
-    func changeBgColorNextButton(button: UIButton) {
-        if button.isSelected == true {
+    @IBAction func nextClicked(_ sender: Any) {
       
-        
-        } else {
-            button.backgroundColor = UIColor(red: 0, green: 255, blue: 0, alpha: 0.4)
-            button.backgroundColor = nil
+    }
+    
+   
+    
+    
+    func showDropDown() {
+        let  action = getDropDownActions() { count in
+          
+
         }
+             medicTypesDropDownButton.menu = UIMenu(children: action)
+             medicTypesDropDownButton.showsMenuAsPrimaryAction = true
+
+    }
+    var action = [UIAction]()
+    func getDropDownActions(completion: @escaping (Int) -> Void) -> [UIAction] {
+        
+        let optionClosure = {(action: UIAction) in
+            
+             
+            
+        }
+        for i in reminderConfigViewModel.medicTypes {
+            action.append(UIAction(title: i, state: .on, handler: optionClosure))
+        }
+        
+        return action
+        
     }
 }

@@ -60,7 +60,7 @@ class JSONViewModel: ObservableObject {
                   
                
                   medicineCore = results
-                 print("aasf")
+                
                   completion(medicineCore.isEmpty)
                    
               } catch {

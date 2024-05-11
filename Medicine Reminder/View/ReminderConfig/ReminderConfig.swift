@@ -9,4 +9,8 @@ import Foundation
 
 class ReminderConfig {
     
+    static let shared = ReminderConfig()
+    
+    let medicTypes = ["Hap","Surup","Enjeksiyon","Ampul","Damla","Fitil","Sprey","Kapsul"]
+  
 }

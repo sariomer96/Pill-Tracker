@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-var medicTypes = ["Hap","Surup","Enjeksiyon","Ampul","Damla","Fitil","Sprey","Kapsul"]
 
 
 

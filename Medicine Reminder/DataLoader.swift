@@ -22,7 +22,7 @@ public class DataLoader {
                 let decoder = JSONDecoder()
                 let dataFromJson = try decoder.decode([MedicineData].self, from: data)
                 self.medicData = dataFromJson
-                print(medicData)
+            
             } catch {
                 print("error \(error)")
             }

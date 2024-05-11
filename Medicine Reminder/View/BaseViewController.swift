@@ -13,7 +13,7 @@ import UIKit
          guard let vc = storyboard.instantiateViewController(withIdentifier: vcIdentifier) as? T else {
              fatalError("View controller with identifier  is not of type \(T.self)")
          }
-          
+   
          
          self.navigationController?.pushViewController(vc, animated: true)
      }

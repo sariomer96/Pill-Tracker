@@ -7,7 +7,9 @@
 
 import UIKit
 import CoreData
-
+protocol ReminderConfigurable: AnyObject {
+    func configure(with reminderText: String)
+}
 
 class MedicineViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -17,30 +19,54 @@ class MedicineViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     let medicineViewModel = JSONViewModel()
     let data = DataLoader().medicData
+    
+    var delegate:ReminderConfigurable?
+ 
+     
+    func sendDataToReminderConfig(str: String) {
+         let medicineData = str // Bu veriyi gerçek veriyle değiştirin
+        delegate?.configure(with: medicineData)
+     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return medicineViewModel.searchList.count
     }
 
+    @IBAction func addMedicineClicked(_ sender: Any) {
+        print("dfdf")
+        pushViewController(param: ReminderConfigViewController.self, vcIdentifier: "ReminderConfigViewController")
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = medicineViewModel.searchList[indexPath.row].medicineName
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DataTableViewCell
+        cell.medicineLabel?.text = medicineViewModel.searchList[indexPath.row].medicineName
+         
         return cell
     }
     
-   
- 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+        let selectedMedicine = medicineViewModel.searchList[indexPath.row]
+      
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ReminderConfigViewController") as? ReminderConfigViewController else {
+          fatalError("aaa")
+        }
+        delegate = vc
+        
+      sendDataToReminderConfig(str: selectedMedicine.medicineName!)
+        self.navigationController?.pushViewController(vc, animated: true)
+        //pushViewController(param: reminder, vcIdentifier: "ReminderConfigViewController")
+    }
+    
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-   
-   
-   
+         
             let appdel = UIApplication.shared.delegate as! AppDelegate
             context = appdel.persistentContainer.viewContext
             
@@ -51,14 +77,12 @@ class MedicineViewController: BaseViewController, UITableViewDelegate, UITableVi
                
                 }
             }
-            
+        tableView.reloadData()
          
     }
 
 
 }
-
-
 extension MedicineViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
