@@ -17,6 +17,18 @@ import UIKit
          
          self.navigationController?.pushViewController(vc, animated: true)
      }
+     
+     func getViewController<T: UIViewController>(param: T.Type, vcIdentifier: String ) -> UIViewController {
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         guard let vc = storyboard.instantiateViewController(withIdentifier: vcIdentifier) as? T else {
+             fatalError("View controller with identifier  is not of type \(T.self)")
+         }
+         return vc
+     }
+     
+     func pushViewController(vc: UIViewController) {
+         self.navigationController?.pushViewController(vc, animated: true)
+     }
 
     func refresh() {}
 

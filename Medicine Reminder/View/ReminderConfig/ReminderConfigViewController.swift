@@ -31,7 +31,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     override func viewDidLoad() {
         super.viewDidLoad()
         showDropDown()
-        print("\(medicNameTF.text) aaaa")
+   
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +60,13 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
         }
     }
     @IBAction func nextClicked(_ sender: Any) {
-      
+        if selectedDaysSwitch.isOn == true {
+            pushViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController")
+        } else if everyXHoursSwitch.isOn == true {
+            pushViewController(param: EveryXHourViewController.self, vcIdentifier: "EveryXHourViewController")
+        } else {
+            alert(title: "EKSIK", message: "BIRINI SEC!")
+        }
     }
     
    
@@ -79,9 +85,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     func getDropDownActions(completion: @escaping (Int) -> Void) -> [UIAction] {
         
         let optionClosure = {(action: UIAction) in
-            
              
-            
         }
         for i in reminderConfigViewModel.medicTypes {
             action.append(UIAction(title: i, state: .on, handler: optionClosure))

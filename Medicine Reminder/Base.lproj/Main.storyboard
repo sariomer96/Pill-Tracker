@@ -312,7 +312,7 @@
         <!--Selected Days View Controller-->
         <scene sceneID="GGS-lv-y3j">
             <objects>
-                <viewController id="TBi-QF-Kuu" customClass="SelectedDaysViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectedDaysViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TBi-QF-Kuu" customClass="SelectedDaysViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sFC-hE-FMr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,10 +452,10 @@
             </objects>
             <point key="canvasLocation" x="2513" y="-313"/>
         </scene>
-        <!--View Controller-->
+        <!--EveryX Hour View Controller-->
         <scene sceneID="cLx-3H-OMD">
             <objects>
-                <viewController id="XvS-2N-8ai" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EveryXHourViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XvS-2N-8ai" customClass="EveryXHourViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e90-vy-rhG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
