@@ -302,6 +302,7 @@
                         <outlet property="medicNameTF" destination="Qr8-D9-NyS" id="8os-bE-Oxe"/>
                         <outlet property="medicTypesDropDownButton" destination="XuH-QM-x2c" id="RAI-9A-mKj"/>
                         <outlet property="removeReminderDatePicker" destination="GLg-lq-9fL" id="7Kd-ml-2mC"/>
+                        <outlet property="removeReminderSwitch" destination="hYX-a9-NQJ" id="eNf-c5-pZ1"/>
                         <outlet property="selectedDaysSwitch" destination="wSc-ms-xtv" id="rPC-3N-C4D"/>
                     </connections>
                 </viewController>
@@ -364,7 +365,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HEV-II-xyc">
-                                <rect key="frame" x="16" y="269.5" width="382" height="560.5"/>
+                                <rect key="frame" x="16" y="269.5" width="382" height="413.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="hak-Gm-hUm" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
@@ -376,6 +377,10 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-iW-3VC">
                                                     <rect key="frame" x="145" y="0.0" width="77" height="50"/>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="hak-Gm-hUm" eventType="valueChanged" id="Iuc-Sp-YH2"/>
+                                                        <action selector="datePickerClicked:" destination="hak-Gm-hUm" eventType="touchUpInside" id="N4K-Qf-18S"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -421,11 +426,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-wj-Gl2">
+                                <rect key="frame" x="170" y="733.5" width="75" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="TBi-QF-Kuu" eventType="touchUpInside" id="jY5-qJ-7nV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AEp-Sf-15r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CPx-VR-0dN" firstAttribute="centerX" secondItem="sFC-hE-FMr" secondAttribute="centerX" id="74s-ET-KkU"/>
+                            <constraint firstItem="vaz-wj-Gl2" firstAttribute="leading" secondItem="AEp-Sf-15r" secondAttribute="leading" constant="170" id="HgA-xe-hTg"/>
                             <constraint firstItem="e1k-9D-hAx" firstAttribute="centerX" secondItem="sFC-hE-FMr" secondAttribute="centerX" id="IdI-ap-TVY"/>
                             <constraint firstItem="pdp-Ec-acK" firstAttribute="top" secondItem="e1k-9D-hAx" secondAttribute="bottom" constant="73" id="RY5-uF-Waq"/>
                             <constraint firstItem="AEp-Sf-15r" firstAttribute="trailing" secondItem="HEV-II-xyc" secondAttribute="trailing" constant="16" id="Rj2-kd-hKC"/>
@@ -433,7 +447,9 @@
                             <constraint firstItem="CPx-VR-0dN" firstAttribute="top" secondItem="pdp-Ec-acK" secondAttribute="bottom" constant="23.5" id="aIi-qh-gfu"/>
                             <constraint firstItem="HEV-II-xyc" firstAttribute="top" secondItem="pdp-Ec-acK" secondAttribute="bottom" constant="64" id="bvI-Uh-BNE"/>
                             <constraint firstItem="pdp-Ec-acK" firstAttribute="centerX" secondItem="sFC-hE-FMr" secondAttribute="centerX" id="cNX-wX-45X"/>
-                            <constraint firstItem="AEp-Sf-15r" firstAttribute="bottom" secondItem="HEV-II-xyc" secondAttribute="bottom" constant="32" id="qSo-oU-K6N"/>
+                            <constraint firstItem="AEp-Sf-15r" firstAttribute="trailing" secondItem="vaz-wj-Gl2" secondAttribute="trailing" constant="169" id="eol-hb-qIO"/>
+                            <constraint firstItem="AEp-Sf-15r" firstAttribute="bottom" secondItem="vaz-wj-Gl2" secondAttribute="bottom" constant="94" id="hPu-Si-5q5"/>
+                            <constraint firstItem="AEp-Sf-15r" firstAttribute="bottom" secondItem="HEV-II-xyc" secondAttribute="bottom" constant="179" id="qSo-oU-K6N"/>
                             <constraint firstItem="e1k-9D-hAx" firstAttribute="top" secondItem="AEp-Sf-15r" secondAttribute="top" constant="26" id="rmw-dc-lJW"/>
                         </constraints>
                     </view>
@@ -450,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZq-RX-wj5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2513" y="-313"/>
+            <point key="canvasLocation" x="2511.594202898551" y="-313.39285714285711"/>
         </scene>
         <!--EveryX Hour View Controller-->
         <scene sceneID="cLx-3H-OMD">

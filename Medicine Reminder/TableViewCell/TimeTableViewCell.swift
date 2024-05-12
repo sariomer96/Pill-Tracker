@@ -13,6 +13,7 @@ class TimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +24,11 @@ class TimeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func datePickerChanged(_ sender: Any) {
+        print("degisti")
+    }
+    @IBAction func datePickerClicked(_ sender: Any) {
+        print("tiklandi")
+    }
+    
 }

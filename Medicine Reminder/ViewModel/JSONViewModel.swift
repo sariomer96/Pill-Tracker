@@ -11,7 +11,7 @@ import CoreData
 typealias VoidCallBack = (() -> Void)
 typealias CallBack<T> = ((T) -> Void)
 class JSONViewModel: ObservableObject {
-    var callBackSearch: CallBack<[MedicineTables]>?
+      var callBackSearch: CallBack<[MedicineTables]>?
     var searchList = [MedicineTables]()
     @Published var medicine : [MedicineJSON] = []
     @Published var medicineCore: [MedicineTables] = []

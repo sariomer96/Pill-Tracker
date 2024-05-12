@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectedDaysViewController: UIViewController {
+class SelectedDaysViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sundayButton: UIButton!
@@ -19,6 +19,9 @@ class SelectedDaysViewController: UIViewController {
     @IBOutlet weak var mondayButton: UIButton!
     var count = 2
     var tableCell = [TimeTableViewCell]()
+    var table = [TimeTableViewCell]()
+    var days = [Int]()
+    let selectedDaysViewModel = SelectedDaysViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         addTagToDayButtons()
@@ -27,7 +30,24 @@ class SelectedDaysViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.reloadData()
-   
+        for i in 1...11 {
+            table.append(TimeTableViewCell())
+        }
+        
+        selectedDaysViewModel.callBackMaxLimit = { [weak self] max in
+            guard let self = self else { return }
+            let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
+            if max == lastRowIndex-1{
+                alert(title: "Max LIMIT", message: "MAX SAYIYA ULASTIN")
+                
+            }
+        }
+        
+        selectedDaysViewModel.callBackAddTime = { [weak self] row in
+            guard let self = self else { return }
+            addNewTime(tableView: tableView, indexPathRow: row)
+        }
+        
         
     }
     func addTagToDayButtons() {
@@ -40,6 +60,11 @@ class SelectedDaysViewController: UIViewController {
         sundayButton.tag = 6
     }
 
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        days.sort()
+        selectedDaysViewModel.reminder?.days = days as NSObject
+      //  selectedDaysViewModel.reminder?.hours =
+    }
     func addTargetToDayButtons() {
         mondayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
         tuesdayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
@@ -51,17 +76,28 @@ class SelectedDaysViewController: UIViewController {
         sundayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
 
     }
+    
     func changeSelectedDayStatus(button: UIButton) {
-         
+    
         button.isSelected = !button.isSelected
         if button.isSelected == true {
             button.backgroundColor = .green
             print("secili")
+            addSelectedDays(tag: button.tag)
         
         } else {
             print("else")
             button.backgroundColor = nil
+            removeDay(tag: button.tag)
         }
+         
+        print(days)
+    }
+    func addSelectedDays(tag: Int) {
+        days.append(tag)
+    }
+    func removeDay(tag: Int) {
+        days.removeAll { $0 == tag }
     }
     
     @objc func dayButtonTapped(_ sender: UIButton) {
@@ -95,39 +131,44 @@ class SelectedDaysViewController: UIViewController {
     }
 
 }
-
 extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource {
     
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
   
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
        
         if indexPath.row == lastRowIndex-1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as! TimeTableViewCell
-        
+            //test.append(cell)
+           
             return cell
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
-              print(count)
-            return cell
+            table[indexPath.row] = cell
+            return  table[indexPath.row]
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         
+        let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
         
-         addNewTime(tableView: tableView, indexPath: indexPath)
+         
+        selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, row: indexPath.row)
+
+       
     }
-    
-    func addNewTime(tableView: UITableView, indexPath: IndexPath) {
+     
+    func addNewTime(tableView: UITableView, indexPathRow: Int) {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 
-        if (indexPath.row == lastRowIndex - 1) {
+        if (indexPathRow == lastRowIndex - 1) {
           
             count += 1
             tableView.reloadData()
