@@ -36,8 +36,10 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
         showDropDown()
         let appdel = UIApplication.shared.delegate as! AppDelegate
         var context = appdel.persistentContainer.viewContext
+      
         
         reminder = Reminder(context: context)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         medicNameTF.text = medicName
@@ -59,6 +61,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     
     @IBAction func removeOnThisDaySwitchClicked(_ sender: UISwitch) {
         if sender.isOn == true {
+            removeReminderDatePicker.timeZone = TimeZone(identifier: "UTC")
             removeReminderDatePicker.isHidden = false
         } else {
             removeReminderDatePicker.isHidden = true
@@ -69,10 +72,11 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     @IBAction func nextClicked(_ sender: Any) {
         if selectedDaysSwitch.isOn == true || everyXHoursSwitch.isOn == true {
             guard let reminder = reminder else { return }
+            reminder.id = UUID()
             reminder.name = medicNameTF.text
             reminder.type = medicTypesDropDownButton.currentTitle
             
-            
+           
            
             if removeReminderSwitch.isOn == true {
                 reminder.endDate = removeReminderDatePicker.date

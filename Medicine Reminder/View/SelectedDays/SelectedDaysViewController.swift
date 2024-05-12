@@ -19,9 +19,10 @@ class SelectedDaysViewController: BaseViewController {
     @IBOutlet weak var mondayButton: UIButton!
     var count = 2
     var tableCell = [TimeTableViewCell]()
-    var table = [TimeTableViewCell]()
+    var tableViewCell = [TimeTableViewCell]()
     var days = [Int]()
-    let selectedDaysViewModel = SelectedDaysViewModel()
+    var hours = [Date]()
+    let selectedDaysViewModel = SelectedDaysViewModel.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         addTagToDayButtons()
@@ -30,9 +31,8 @@ class SelectedDaysViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.reloadData()
-        for i in 1...11 {
-            table.append(TimeTableViewCell())
-        }
+         
+         createTableCell()
         
         selectedDaysViewModel.callBackMaxLimit = { [weak self] max in
             guard let self = self else { return }
@@ -50,6 +50,33 @@ class SelectedDaysViewController: BaseViewController {
         
         
     }
+    
+    func saveDB () {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+         let context = appDelegate.persistentContainer.viewContext
+        CoreDataManager.shared.saveData(context: context)
+    }
+    func createTableCell() {
+        for _ in 1...11 {
+            tableViewCell.append(TimeTableViewCell())
+        }
+    }
+    
+    func getHoursOfReminder() -> [Date]{
+        let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
+        hours.removeAll()
+        for i in 0...lastRowIndex-2 {
+            if tableViewCell[i].isHidden == false {
+               // print(tableViewCell[i].date)
+                hours.append(tableViewCell[i].date)
+                 
+             }
+             
+           
+        }
+        return hours
+   
+    }
     func addTagToDayButtons() {
         mondayButton.tag = 0
         tuesdayButton.tag = 1
@@ -62,8 +89,15 @@ class SelectedDaysViewController: BaseViewController {
 
     @IBAction func saveButtonClicked(_ sender: Any) {
         days.sort()
-        selectedDaysViewModel.reminder?.days = days as NSObject
-      //  selectedDaysViewModel.reminder?.hours =
+        setReminder()
+        saveDB()
+    }
+    func setReminder() {
+        let hours = getHoursOfReminder()
+        
+        selectedDaysViewModel.setReminder(days: days, hours: hours)
+        
+         
     }
     func addTargetToDayButtons() {
         mondayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
@@ -91,7 +125,7 @@ class SelectedDaysViewController: BaseViewController {
             removeDay(tag: button.tag)
         }
          
-        print(days)
+       // print(days)
     }
     func addSelectedDays(tag: Int) {
         days.append(tag)
@@ -150,8 +184,30 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
-            table[indexPath.row] = cell
-            return  table[indexPath.row]
+              
+   
+            cell.datePicker.timeZone = TimeZone.current
+          //  print(cell.datePicker.date)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+
+            let formattedDate = dateFormatter.string(from: Date())
+
+         //   print("Formatted date: \(formattedDate)")
+            let currentDate = Date()
+
+            let localTimeZone = TimeZone.current
+            let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
+            let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
+
+            print("Local Date: \(localDate)")
+            print(localDate)
+            cell.date = localDate
+          //  print("selectedTime \(cell.datePicker.date)    -----    \(Date())")
+            
+            tableViewCell[indexPath.row] = cell
+             return tableViewCell[indexPath.row]
         }
     }
     

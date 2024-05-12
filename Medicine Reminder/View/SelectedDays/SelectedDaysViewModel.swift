@@ -10,28 +10,28 @@ import Foundation
 class SelectedDaysViewModel: ReminderData {
     static let shared = SelectedDaysViewModel()
     var reminder: Reminder?
-    let maxTimeCountLimit = 3 //
+    let maxTimeCountLimit = 10 //
     var callBackMaxLimit:CallBack<Int>?
     var callBackAddTime:CallBack<Int>?
     func getReminder(reminder: Reminder) {
         self.reminder = reminder
-      
+       
+       // print("set rem \(self.reminder?.name) \(self.reminder?.type) \(self.reminder?.endDate)")
     }
     
     func CheckMaxTimeCount(rowCount: Int, row: Int) {
         if maxTimeCountLimit + 1 == rowCount {
             callBackMaxLimit?(row)
         } else {
-            //callBackMaxLimit?(false)
+     
             callBackAddTime?(row)
-        }
+        } 
+    }
+    
+    func setReminder(days: [Int], hours: [Date]) {
+        reminder?.days = days as NSObject
+        reminder?.hours = hours as NSObject
         
-//        
-//        if !maxLimit {
-//            addNewTime(tableView: tableView, indexPath: indexPath)
-//        } else if indexPath.row == lastRowIndex-1{
-//            alert(title: "Max LIMIT", message: "MAX SAYIYA ULASTIN")
-//        }
     }
 
     

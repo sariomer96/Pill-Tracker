@@ -11,8 +11,11 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     
     func saveData(context: NSManagedObjectContext) {
+         
+        
         do {
             try context.save()
+            print("success")
         } catch {
             fatalError("save failed")
         }
@@ -26,4 +29,5 @@ class CoreDataManager {
             fatalError("save failed")
         }
     }
+    
 }

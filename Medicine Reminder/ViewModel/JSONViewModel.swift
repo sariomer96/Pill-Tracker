@@ -56,7 +56,7 @@ class JSONViewModel: ObservableObject {
               do {
                   let results = try context.fetch(fetchReques)
                   
-                  print(results.count)
+                 
                   
                
                   medicineCore = results

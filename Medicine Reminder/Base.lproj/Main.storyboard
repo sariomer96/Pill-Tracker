@@ -377,9 +377,11 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-iW-3VC">
                                                     <rect key="frame" x="145" y="0.0" width="77" height="50"/>
+                                                    <locale key="locale" localeIdentifier="tr_TR"/>
                                                     <connections>
                                                         <action selector="datePickerChanged:" destination="hak-Gm-hUm" eventType="valueChanged" id="Iuc-Sp-YH2"/>
                                                         <action selector="datePickerClicked:" destination="hak-Gm-hUm" eventType="touchUpInside" id="N4K-Qf-18S"/>
+                                                        <action selector="testClick:" destination="hak-Gm-hUm" eventType="touchDown" id="vN3-Xd-tZd"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>

@@ -43,8 +43,8 @@ class MedicineViewController: BaseViewController{
     }
     
     func sendDataToReminderConfig(name: String) {
-         let medicineName = name
-        delegate?.configure(with: medicineName)
+          
+        delegate?.configure(with: name)
      }
     @IBAction func addMedicineClicked(_ sender: Any) {
        
