@@ -47,8 +47,6 @@ class SelectedDaysViewController: BaseViewController {
             guard let self = self else { return }
             addNewTime(tableView: tableView, indexPathRow: row)
         }
-        
-        
     }
     
     func saveDB () {
@@ -67,7 +65,6 @@ class SelectedDaysViewController: BaseViewController {
         hours.removeAll()
         for i in 0...lastRowIndex-2 {
             if tableViewCell[i].isHidden == false {
-               // print(tableViewCell[i].date)
                 hours.append(tableViewCell[i].date)
                  
              }
@@ -96,7 +93,6 @@ class SelectedDaysViewController: BaseViewController {
         let hours = getHoursOfReminder()
         
         selectedDaysViewModel.setReminder(days: days, hours: hours)
-        
          
     }
     func addTargetToDayButtons() {
@@ -124,12 +120,12 @@ class SelectedDaysViewController: BaseViewController {
             button.backgroundColor = nil
             removeDay(tag: button.tag)
         }
-         
-       // print(days)
     }
+    
     func addSelectedDays(tag: Int) {
         days.append(tag)
     }
+    
     func removeDay(tag: Int) {
         days.removeAll { $0 == tag }
     }
@@ -178,33 +174,15 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
        
         if indexPath.row == lastRowIndex-1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as! TimeTableViewCell
-            //test.append(cell)
            
             return cell
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
-              
-   
-            cell.datePicker.timeZone = TimeZone.current
-          //  print(cell.datePicker.date)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .short
-
-            let formattedDate = dateFormatter.string(from: Date())
-
-         //   print("Formatted date: \(formattedDate)")
-            let currentDate = Date()
-
-            let localTimeZone = TimeZone.current
-            let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
-            let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
-
-            print("Local Date: \(localDate)")
-            print(localDate)
+               
+            let localDate = getLocalTime()
             cell.date = localDate
-          //  print("selectedTime \(cell.datePicker.date)    -----    \(Date())")
+        
             
             tableViewCell[indexPath.row] = cell
              return tableViewCell[indexPath.row]
@@ -220,7 +198,15 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
 
        
     }
-     
+    func getLocalTime() -> Date {
+        let currentDate = Date()
+
+        let localTimeZone = TimeZone.current
+        let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
+        let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
+        
+        return localDate
+    }
     func addNewTime(tableView: UITableView, indexPathRow: Int) {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 

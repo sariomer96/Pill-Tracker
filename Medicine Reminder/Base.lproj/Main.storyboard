@@ -380,8 +380,6 @@
                                                     <locale key="locale" localeIdentifier="tr_TR"/>
                                                     <connections>
                                                         <action selector="datePickerChanged:" destination="hak-Gm-hUm" eventType="valueChanged" id="Iuc-Sp-YH2"/>
-                                                        <action selector="datePickerClicked:" destination="hak-Gm-hUm" eventType="touchUpInside" id="N4K-Qf-18S"/>
-                                                        <action selector="testClick:" destination="hak-Gm-hUm" eventType="touchDown" id="vN3-Xd-tZd"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>

@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 class HomeViewController: BaseViewController {
+    let homeViewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,26 +22,22 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchReminders()
+        getReminders()
     }
-    func fetchReminders() -> [Reminder] {
-        var reminders = [Reminder]()
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return reminders }
+    
+    func getViewContext() -> NSManagedObjectContext {
+        let  appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let appDelegate = appDelegate else {  fatalError("AppDelegate is nil!") }
         let context = appDelegate.persistentContainer.viewContext
+        return context
+       
+    }
+    func getReminders() -> [Reminder] {
+         let reminders = [Reminder]()
+         let context = getViewContext()
+         let reminderList = homeViewModel.fetchReminders(context: context, reminder: reminders)
         
-        let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
-        
-        do {
-            reminders = try context.fetch(fetchRequest)
-            for i in reminders {
-                print("\(i.name!)---- \(i.days!) -----   \(i.hours!)")
-            }
-        } catch {
-            print("Error fetching reminders: \(error.localizedDescription)")
-        }
-        
-        return reminders
+        return reminderList
     }
     
 }

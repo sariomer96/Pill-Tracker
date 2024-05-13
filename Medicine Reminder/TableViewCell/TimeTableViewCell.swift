@@ -17,39 +17,29 @@ class TimeTableViewCell: UITableViewCell {
     var date = Date()
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        
-        // DatePicker'ın değeri değiştiğinde datePickerChanged metodu çağrılacak
-       // datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
- 
     }
-  
-    
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
- 
-        let currentDate = sender.date
-             
-         
-        let localTimeZone = TimeZone.current
-        let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
-        let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
+  
+        let localDate = getLocalTime(date: sender.date)
         date = localDate
         print(date)
     }
-    @IBAction func testClick(_ sender: Any) {
-        print("click")
-    }
-    @IBAction func datePickerClicked(_ sender: Any) {
-        print("tiklandi")
-    }
     
+    func getLocalTime(date: Date) -> Date {
+       let currentDate = date
+       let localTimeZone = TimeZone.current
+       let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
+       let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
+        
+        return localDate
+    }
+   
      
     
 }
