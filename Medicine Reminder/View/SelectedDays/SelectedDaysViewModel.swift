@@ -18,6 +18,7 @@ class SelectedDaysViewModel: ReminderData {
        
        // print("set rem \(self.reminder?.name) \(self.reminder?.type) \(self.reminder?.endDate)")
     }
+   
     
     func CheckMaxTimeCount(rowCount: Int, row: Int) {
         if maxTimeCountLimit + 1 == rowCount {

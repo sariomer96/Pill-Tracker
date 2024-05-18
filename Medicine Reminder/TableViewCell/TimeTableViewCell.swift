@@ -26,18 +26,13 @@ class TimeTableViewCell: UITableViewCell {
     }
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
   
-        let localDate = getLocalTime(date: sender.date)
+        let localDate = LocalTimeController.shared.getLocalTime(date: sender.date)
         date = localDate
-        print(date)
+        print("SET ETTIM")
     }
     
-    func getLocalTime(date: Date) -> Date {
-       let currentDate = date
-       let localTimeZone = TimeZone.current
-       let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
-       let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
-        
-        return localDate
+    deinit {
+         print("SILINDIK")
     }
    
      

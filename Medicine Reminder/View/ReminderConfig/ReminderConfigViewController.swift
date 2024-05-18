@@ -75,7 +75,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
             reminder.id = UUID()
             reminder.name = medicNameTF.text
             reminder.type = medicTypesDropDownButton.currentTitle
-            
+            reminder.isDaySelected = selectedDaysSwitch.isOn
            
            
             if removeReminderSwitch.isOn == true {

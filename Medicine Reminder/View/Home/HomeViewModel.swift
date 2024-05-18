@@ -5,23 +5,20 @@ import CoreData
 
 class HomeViewModel {
     
-    func fetchReminders(context: NSManagedObjectContext, reminder: [Reminder]) -> [Reminder] {
-       // var reminders = [Reminder]()
-        
-        var r = reminder
-
-        
+    var reminders = [Reminder]()
+    func fetchReminders(context: NSManagedObjectContext) {
+       
         let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         
         do {
-            r = try context.fetch(fetchRequest)
-            for i in r {
-                print("\(i.name!)---- \(i.days!) -----   \(i.hours!)")
+            reminders = try context.fetch(fetchRequest)
+            for i in reminders {
+                print("\(i.name)---- \(i.days) -----   START HOUR \(i.startHour)  ------    FREQ \(i.reminderFrequency)")
             }
         } catch {
             print("Error fetching reminders: \(error.localizedDescription)")
         }
         
-        return r
+      
     }
 }

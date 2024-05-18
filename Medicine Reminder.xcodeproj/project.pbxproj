@@ -23,6 +23,9 @@
 		17B672512BEFBC8D000AE494 /* EveryXHourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B672502BEFBC8D000AE494 /* EveryXHourViewModel.swift */; };
 		17B672532BEFBCD0000AE494 /* SelectedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B672522BEFBCD0000AE494 /* SelectedDaysViewModel.swift */; };
 		17B672552BF0108D000AE494 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B672542BF0108D000AE494 /* CoreDataManager.swift */; };
+		17B6725C2BF274A7000AE494 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6725A2BF274A7000AE494 /* RemindersTableViewCell.swift */; };
+		17B6725D2BF274A7000AE494 /* RemindersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B6725B2BF274A7000AE494 /* RemindersTableViewCell.xib */; };
+		17B6725F2BF27AEA000AE494 /* LocalTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */; };
 		17B784DF2BECFA0F00231FC4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784DE2BECFA0F00231FC4 /* HomeViewController.swift */; };
 		17B784E12BECFA2000231FC4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E02BECFA2000231FC4 /* HomeViewModel.swift */; };
 		17B784E52BECFDDC00231FC4 /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */; };
@@ -54,6 +57,9 @@
 		17B672502BEFBC8D000AE494 /* EveryXHourViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveryXHourViewModel.swift; sourceTree = "<group>"; };
 		17B672522BEFBCD0000AE494 /* SelectedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDaysViewModel.swift; sourceTree = "<group>"; };
 		17B672542BF0108D000AE494 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		17B6725A2BF274A7000AE494 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
+		17B6725B2BF274A7000AE494 /* RemindersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemindersTableViewCell.xib; sourceTree = "<group>"; };
+		17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeController.swift; sourceTree = "<group>"; };
 		17B784DE2BECFA0F00231FC4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		17B784E02BECFA2000231FC4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 				17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */,
 				17CD06622BE966540000796D /* Enums.swift */,
 				17B672542BF0108D000AE494 /* CoreDataManager.swift */,
+				17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -195,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				17B784F32BEE5C4500231FC4 /* TimeTableViewCell.swift */,
+				17B6725A2BF274A7000AE494 /* RemindersTableViewCell.swift */,
+				17B6725B2BF274A7000AE494 /* RemindersTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -261,6 +270,7 @@
 				1715A26C2BE6797B0027261E /* LaunchScreen.storyboard in Resources */,
 				1715A2692BE6797B0027261E /* Assets.xcassets in Resources */,
 				1715A2642BE679720027261E /* Main.storyboard in Resources */,
+				17B6725D2BF274A7000AE494 /* RemindersTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +299,8 @@
 				17B672532BEFBCD0000AE494 /* SelectedDaysViewModel.swift in Sources */,
 				17B6724F2BEFB67B000AE494 /* EveryXHourViewController.swift in Sources */,
 				17B784F42BEE5C4500231FC4 /* TimeTableViewCell.swift in Sources */,
+				17B6725F2BF27AEA000AE494 /* LocalTimeController.swift in Sources */,
+				17B6725C2BF274A7000AE494 /* RemindersTableViewCell.swift in Sources */,
 				1715A25F2BE679720027261E /* SceneDelegate.swift in Sources */,
 				17B672512BEFBC8D000AE494 /* EveryXHourViewModel.swift in Sources */,
 				17B784E52BECFDDC00231FC4 /* MedicineViewController.swift in Sources */,

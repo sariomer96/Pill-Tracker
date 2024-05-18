@@ -17,7 +17,7 @@ class SelectedDaysViewController: BaseViewController {
     @IBOutlet weak var wednesdayButton: UIButton!
     @IBOutlet weak var tuesdayButton: UIButton!
     @IBOutlet weak var mondayButton: UIButton!
-    var count = 2
+    var count = 1
     var tableCell = [TimeTableViewCell]()
     var tableViewCell = [TimeTableViewCell]()
     var days = [Int]()
@@ -55,8 +55,10 @@ class SelectedDaysViewController: BaseViewController {
         CoreDataManager.shared.saveData(context: context)
     }
     func createTableCell() {
-        for _ in 1...11 {
+        for i in 1...11 {
             tableViewCell.append(TimeTableViewCell())
+             
+            
         }
     }
     
@@ -65,6 +67,7 @@ class SelectedDaysViewController: BaseViewController {
         hours.removeAll()
         for i in 0...lastRowIndex-2 {
             if tableViewCell[i].isHidden == false {
+                print("say bakim \(i) ---   tableviewceldate  \(tableViewCell[i].date)")
                 hours.append(tableViewCell[i].date)
                  
              }
@@ -88,10 +91,12 @@ class SelectedDaysViewController: BaseViewController {
         days.sort()
         setReminder()
         saveDB()
+        pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
     }
     func setReminder() {
         let hours = getHoursOfReminder()
         
+        print("OURSSSS \(hours)")
         selectedDaysViewModel.setReminder(days: days, hours: hours)
          
     }
@@ -178,12 +183,14 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         } else {
             
+            if lastRowIndex == 1 {
+                return UITableViewCell()
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
                
-            let localDate = getLocalTime()
-            cell.date = localDate
-        
-            
+//            let localDate = LocalTimeController.shared.getLocalTime(date: Date())
+//            cell.date = localDate
+            print("SET VC")
             tableViewCell[indexPath.row] = cell
              return tableViewCell[indexPath.row]
         }
@@ -198,15 +205,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
 
        
     }
-    func getLocalTime() -> Date {
-        let currentDate = Date()
-
-        let localTimeZone = TimeZone.current
-        let secondsFromGMT = localTimeZone.secondsFromGMT(for: currentDate)
-        let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: currentDate)
-        
-        return localDate
-    }
+     
     func addNewTime(tableView: UITableView, indexPathRow: Int) {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 

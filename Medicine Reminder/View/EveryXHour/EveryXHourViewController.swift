@@ -7,23 +7,30 @@
 
 import UIKit
 
-class EveryXHourViewController: UIViewController {
+class EveryXHourViewController: BaseViewController {
 
+    @IBOutlet weak var startTimePicker: UIDatePicker!
+    @IBOutlet weak var timeFrequencyTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func saveClicked(_ sender: Any) {
+        
+        let localDate = LocalTimeController.shared.getLocalTime(date: startTimePicker.date)
+        let freq = Int(timeFrequencyTextField.text ?? "1")
+    
+        guard let freq = freq else { return }
+        EveryXHourViewModel.shared.setReminder(timeFreq: freq, startTime: localDate)
+        saveDB()
+        pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
     }
-    */
-
+    
+    func saveDB () {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+         let context = appDelegate.persistentContainer.viewContext
+         CoreDataManager.shared.saveData(context: context)
+    }
 }

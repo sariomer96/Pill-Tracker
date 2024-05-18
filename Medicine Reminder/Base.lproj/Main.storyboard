@@ -13,12 +13,12 @@
         <!--Home View Controller-->
         <scene sceneID="p1x-YN-0LP">
             <objects>
-                <viewController id="Y9H-el-31d" customClass="HomeViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y9H-el-31d" customClass="HomeViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAe-Sy-DTr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZiC-Gn-wi1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZiC-Gn-wi1">
                                 <rect key="frame" x="16" y="212" width="382" height="450"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -50,6 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="afi-s7-bdu"/>
                     <connections>
+                        <outlet property="tableView" destination="ZiC-Gn-wi1" id="1M7-3b-AGU"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="hr1-UZ-xRo"/>
                     </connections>
                 </viewController>
@@ -502,6 +503,14 @@
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="G4m-EJ-Bj8">
                                 <rect key="frame" x="244" y="253" width="100" height="36"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evm-K4-cnd">
+                                <rect key="frame" x="174" y="748" width="66" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveClicked:" destination="XvS-2N-8ai" eventType="touchUpInside" id="9yn-2X-CcK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="v5n-5z-IxI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -512,13 +521,19 @@
                             <constraint firstItem="Txd-OU-QEg" firstAttribute="top" secondItem="v5n-5z-IxI" secondAttribute="top" constant="16" id="Lvj-dU-Mln"/>
                             <constraint firstItem="6ib-gK-G1b" firstAttribute="top" secondItem="i1i-jp-1en" secondAttribute="bottom" constant="32" id="RbR-UB-LwM"/>
                             <constraint firstItem="G4m-EJ-Bj8" firstAttribute="leading" secondItem="6ib-gK-G1b" secondAttribute="trailing" constant="25" id="SBt-P9-ZRx"/>
+                            <constraint firstItem="v5n-5z-IxI" firstAttribute="bottom" secondItem="evm-K4-cnd" secondAttribute="bottom" constant="79" id="ZBy-fk-AuD"/>
                             <constraint firstItem="ScP-ff-ESu" firstAttribute="leading" secondItem="i1i-jp-1en" secondAttribute="trailing" constant="25" id="ZEV-v7-wKc"/>
                             <constraint firstItem="i1i-jp-1en" firstAttribute="leading" secondItem="v5n-5z-IxI" secondAttribute="leading" constant="71" id="eb7-I4-b8L"/>
                             <constraint firstItem="Txd-OU-QEg" firstAttribute="centerX" secondItem="e90-vy-rhG" secondAttribute="centerX" id="gPM-my-Vjo"/>
                             <constraint firstItem="6ib-gK-G1b" firstAttribute="leading" secondItem="v5n-5z-IxI" secondAttribute="leading" constant="71" id="kaj-qO-1bG"/>
                             <constraint firstItem="G4m-EJ-Bj8" firstAttribute="top" secondItem="ScP-ff-ESu" secondAttribute="bottom" constant="21" id="rtu-bb-0Nj"/>
+                            <constraint firstItem="evm-K4-cnd" firstAttribute="centerX" secondItem="e90-vy-rhG" secondAttribute="centerX" id="tPa-uo-rSL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startTimePicker" destination="G4m-EJ-Bj8" id="Y1v-9e-M44"/>
+                        <outlet property="timeFrequencyTextField" destination="ScP-ff-ESu" id="ndo-2a-czL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ha0-m2-9MF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
