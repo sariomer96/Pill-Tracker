@@ -25,9 +25,9 @@ class HomeViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        checkForPermission()
+        
        // trigger()
-         
+       
         // Do any additional setup after loading the view.
     }
 
@@ -39,6 +39,7 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         getReminders()
         tableView.reloadData()
+        checkForPermission()
     }
     
     func getViewContext() -> NSManagedObjectContext {
@@ -51,8 +52,9 @@ class HomeViewController: BaseViewController {
     func getReminders() {
     
          let context = getViewContext()
-         let reminderList = homeViewModel.fetchReminders(context: context)
+          homeViewModel.fetchReminders(context: context)
         
+      
      
     }
     // Şu anki tarih
@@ -101,18 +103,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         //MARK: FIND CLOSEST HOUR
         if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
             
-            print("closestDate  \(closestDate)")
+          //  print("closestDate  \(closestDate)")
             let str = convertHour(date: closestDate)
             cell.reminderDateLabel.text = "HATIRLATMA \(str)"
             //MARK: FIND DIFFERENCE
             
             let strCurr = convertHour(date: localDate)
             let strClosest = convertHour(date: closestDate)
-            print("strclosest  \(strClosest)    \(closestDate)")
+           // print("strclosest  \(strClosest)    \(closestDate)")
             // Tarihi sadece saat ve dakika olarak string'e dönüştür
             
             
-            print("timeString  \(strCurr)      closeststr : \(strClosest)")
+          //  print("timeString  \(strCurr)      closeststr : \(strClosest)")
             
             
             
@@ -192,75 +194,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         return (hours, minutes)
     }
-    
-    
-    
-    
-    func trigger() {
-        print("triggg")
-        
-        var dateComponents = DateComponents()
-         
-        dateComponents.hour = 15
-        dateComponents.minute = 40
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Hatırlatma"
-        content.body =  "BILDIRIM"
-        content.sound = UNNotificationSound.default
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Bildirim eklenirken hata oluştu: \(error.localizedDescription)")
-            }
-            
-            
-            
-            for reminder in self.homeViewModel.reminders {
-                print("trigggICERDE")
-                for day in reminder.days as! [Int]{
-                    for hour in reminder.hours as! [Date] {
-                        var dateComponents = DateComponents()
-                        
-                        let calendar = Calendar.current
-                        
-                        // Saat ve dakikayı al
-                        let resultHour = calendar.component(.hour, from: hour)
-                        let minute = calendar.component(.minute, from: hour)
-                        
-                        // Saat ve dakikayı ayrı ayrı int'e dönüştür
-                        let hourInt = Int(resultHour)
-                        let minuteInt = Int(minute)
-                        
-                        dateComponents.weekday = day
-                        dateComponents.hour = hourInt
-                        dateComponents.minute = minute
-                        
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                        
-                        let content = UNMutableNotificationContent()
-                        content.title = "Hatırlatma"
-                        content.body =  "BILDIRIM"
-                        content.sound = UNNotificationSound.default
-                        
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                        
-                        UNUserNotificationCenter.current().add(request) { error in
-                            if let error = error {
-                                print("Bildirim eklenirken hata oluştu: \(error.localizedDescription)")
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    
+     
     func checkForPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings { settings in
@@ -268,8 +202,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             case .notDetermined:
                 notificationCenter.requestAuthorization(options: [.alert, .sound]) { didAllow, error in
                     if didAllow {
-                        self.dispatchNotification()
-               
+                         self.dispatchNotification()
+                     
                     }
                     
                 }
@@ -285,28 +219,57 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func dispatchNotification() {
-        let title = "time to woro"
-        let body = "dont be laz"
-        let hour = 15
-        let minute = 41
-        let isDaily = true
-        let identifier = "my noti"
-        let notificationCenter = UNUserNotificationCenter.current()
         
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-        content.sound = .default
-        
-        let calendar = Calendar.current
-        var dateComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current)
-        dateComponents.hour = hour
-        dateComponents.minute = minute
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: isDaily)
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
-        notificationCenter.add(request)
+        for reminder in homeViewModel.reminders {
+            let days = reminder.days as? [Int]
+            guard let days = days else {continue}
+                //print("REM \(i)")
+            for day in days{
+                for hour in reminder.hours as! [Date] {
+                    
+                    
+                    let calendar = Calendar.current
+                     
+                    let timeZone = TimeZone.current
+
+                    // Yerel zaman dilimine göre saat ve dakika bileşenlerini al
+                    let hours = calendar.component(.hour, from: hour)
+                    let minute = calendar.component(.minute, from: hour)
+
+                    // Saat ve dakikayı ayrı ayrı int'e dönüştür
+                    let hourInt = Int(hours)
+                    let minuteInt = Int(minute)
+                         
+                    
+                    let title = "tTEST TITLE"
+                    let body = reminder.name
+                  
+                    let isDaily = true
+                    let identifier = UUID().uuidString
+                    let notificationCenter = UNUserNotificationCenter.current()
+                    
+                    let content = UNMutableNotificationContent()
+                    content.title = title
+                    content.body = body ?? "AAAA"
+                    content.sound = .default
+                    
+                   
+                    var dateComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current)
+                   // print("hourint  \(hourInt)  minute \(minuteInt)")
+                      dateComponents.hour = hourInt-3
+                      dateComponents.minute = minuteInt
+                       dateComponents.weekday = day
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: isDaily)
+                    let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                    
+                    notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+                    notificationCenter.add(request)
+                }
+            }
+           
+            
+            
+             
+        }
     }
 }

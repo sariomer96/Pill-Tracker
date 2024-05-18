@@ -117,7 +117,7 @@ class RemindersTableViewCell: UITableViewCell {
                 
                 // Kalan süreyi yazdır
                // print(String(format: "%02d:%02d:%02d", hoursLeft, minutesLeft, secondsLeft))
-                self.remainingTimeLabel.text = String(format: "%02d:%02d:%02d", hoursLeft, minutesLeft, secondsLeft)
+                self.remainingTimeLabel.text = String(format: "%02d:%02d", hoursLeft, minutesLeft+1)
             } else {
                 // Geri sayım bittiğinde zamanlayıcıyı durdur
                 timer.invalidate()

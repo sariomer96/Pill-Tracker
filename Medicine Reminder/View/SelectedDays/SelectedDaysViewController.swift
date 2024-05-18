@@ -78,13 +78,14 @@ class SelectedDaysViewController: BaseViewController {
    
     }
     func addTagToDayButtons() {
-        mondayButton.tag = 0
-        tuesdayButton.tag = 1
-        wednesdayButton.tag = 2
-        thursdayButton.tag = 3
-        fridayButton.tag = 4
-        saturdayButton.tag = 5
-        sundayButton.tag = 6
+        sundayButton.tag = 1
+        mondayButton.tag = 2
+        tuesdayButton.tag = 3
+        wednesdayButton.tag = 4
+        thursdayButton.tag = 5
+        fridayButton.tag = 6
+        saturdayButton.tag = 7
+        
     }
 
     @IBAction func saveButtonClicked(_ sender: Any) {
@@ -137,27 +138,28 @@ class SelectedDaysViewController: BaseViewController {
     
     @objc func dayButtonTapped(_ sender: UIButton) {
         switch sender.tag {
-        case 0:
-            print("Pazartesi butonuna tıklandı")
+        case 1:
+            print("pz butonuna tıklandı")
+         
             changeSelectedDayStatus(button: sender)
             // Pazartesi butonuna özel işlemler burada yapılabilir
-        case 1:
-            print("Salı butonuna tıklandı")
-            changeSelectedDayStatus(button: sender)
         case 2:
-            print("car butonuna tıklandı")
+            print("Pazartesi butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 3:
-            print("per butonuna tıklandı")
+            print("sali butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 4:
-            print("cum butonuna tıklandı")
+            print("car butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 5:
-            print("ct butonuna tıklandı")
+            print("per butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 6:
-            print("pz butonuna tıklandı")
+            print("cum butonuna tıklandı")
+            changeSelectedDayStatus(button: sender)
+        case 7:
+            print("CT butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
             // Salı butonuna özel işlemler burada yapılabilir
         default:
