@@ -28,11 +28,11 @@ class TimeTableViewCell: UITableViewCell {
   
         let localDate = LocalTimeController.shared.getLocalTime(date: sender.date)
         date = localDate
-        print("SET ETTIM")
+        print("SET ")
     }
     
     deinit {
-         print("SILINDIK")
+         print("REMOVED")
     }
    
      

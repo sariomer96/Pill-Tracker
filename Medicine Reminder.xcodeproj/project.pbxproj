@@ -26,6 +26,7 @@
 		17B6725C2BF274A7000AE494 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6725A2BF274A7000AE494 /* RemindersTableViewCell.swift */; };
 		17B6725D2BF274A7000AE494 /* RemindersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B6725B2BF274A7000AE494 /* RemindersTableViewCell.xib */; };
 		17B6725F2BF27AEA000AE494 /* LocalTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */; };
+		17B672612BF9E81B000AE494 /* CountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B672602BF9E81B000AE494 /* CountDown.swift */; };
 		17B784DF2BECFA0F00231FC4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784DE2BECFA0F00231FC4 /* HomeViewController.swift */; };
 		17B784E12BECFA2000231FC4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E02BECFA2000231FC4 /* HomeViewModel.swift */; };
 		17B784E52BECFDDC00231FC4 /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */; };
@@ -60,6 +61,7 @@
 		17B6725A2BF274A7000AE494 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
 		17B6725B2BF274A7000AE494 /* RemindersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemindersTableViewCell.xib; sourceTree = "<group>"; };
 		17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeController.swift; sourceTree = "<group>"; };
+		17B672602BF9E81B000AE494 /* CountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDown.swift; sourceTree = "<group>"; };
 		17B784DE2BECFA0F00231FC4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		17B784E02BECFA2000231FC4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				17CD06622BE966540000796D /* Enums.swift */,
 				17B672542BF0108D000AE494 /* CoreDataManager.swift */,
 				17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */,
+				17B672602BF9E81B000AE494 /* CountDown.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				17B784E92BECFFBD00231FC4 /* BaseViewController.swift in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */,
+				17B672612BF9E81B000AE494 /* CountDown.swift in Sources */,
 				17B784EC2BEE0A4E00231FC4 /* ReminderConfigViewController.swift in Sources */,
 				1715A25D2BE679720027261E /* AppDelegate.swift in Sources */,
 				17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */,
