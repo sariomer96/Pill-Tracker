@@ -11,7 +11,7 @@ import CoreData
 
 class HomeViewController: BaseViewController {
     let homeViewModel = HomeViewModel()
-    var countDownList = [CountDown]()
+     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,19 +19,49 @@ class HomeViewController: BaseViewController {
         self.tableView.register(UINib(nibName: "RemindersTableViewCell", bundle: nil), forCellReuseIdentifier: "RemindersTableViewCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
- 
+        getReminders()
+        homeViewModel.checkForPermission()
+  
     }
 
+    
     @IBAction func addMedicineClicked(_ sender: Any) {
         let storyBoardID = "MedicineViewController"
         pushViewController(param: MedicineViewController.self, vcIdentifier: storyBoardID)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        getReminders()
-        tableView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+//        getReminders()
+ 
         homeViewModel.checkForPermission()
-        setCountDown()
+        homeViewModel.configureCountDown { str in
+            self.tableView.reloadData()
+        }
+        
+        
+        
+        
+    
+        for (index, i) in homeViewModel.countDownList.enumerated() {
+            i.callBack = { [weak self] str in
+                guard let self = self else { return }
+                print(str)
+                let reminder = self.homeViewModel.reminders[index]
+             
+                let indexPathToRefresh = IndexPath(row: index, section: 0)
+
+                self.homeViewModel.configureCountDownCell(reminder: reminder, countDownIndex: index) { str in
+                    let indexPathToRefresh = IndexPath(row: index, section: 0)
+                    self.refreshSpecificCell(at: indexPathToRefresh)
+                }
+
+
+            }
+        }
+       
+    }
+    func refreshSpecificCell(at indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func getViewContext() -> NSManagedObjectContext {
@@ -41,14 +71,19 @@ class HomeViewController: BaseViewController {
         return context
        
     }
+
     func getReminders() {
-    
+        
          let context = getViewContext()
           homeViewModel.fetchReminders(context: context)
          
     }
- 
+        
 }
+     
+ 
+ 
+
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -58,66 +93,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return homeViewModel.reminders.count
     }
     
-    func setCountDown() {
-        for reminder in homeViewModel.reminders {
-           let hours = reminder.hours as? [Date]
-            guard let hours = hours else { return }
-            
-            let localDate = homeViewModel.getLocalDate(date: Date())
-          //MARK: FIND CLOSEST HOUR
-         if let closestDate = homeViewModel.findClosestFutureHour(dates: hours, from: localDate) {
-             
-  
-             let str = homeViewModel.convertHour(date: closestDate)
-          //   cell.reminderDateLabel.text = "HATIRLATMA \(str)"
-             //MARK: FIND DIFFERENCE
-             
-             let strCurr = homeViewModel.convertHour(date: localDate)
-             let strClosest = homeViewModel.convertHour(date: closestDate)
-         
-             if let difference = homeViewModel.timeDifference(from: strCurr, to: strClosest) {
-                 print("Fark: \(difference.hours) saat \(difference.minutes) dakika")
-                 var countDown = CountDown(hours: difference.hours, minutes: difference.minutes)
-                 countDownList.append(countDown)
-                // cell.startCountdown(hours: difference.hours, minutes: difference.minutes)
-             } else {
-                 print("Geçersiz saat formatı")
-             }
-         } else {
-             print("Gelecek saat bulunamadı.")
-         }
-        }
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as! RemindersTableViewCell
         cell.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
-        let countDown = countDownList[indexPath.row]
-        cell.configure(with: countDown)
+//       
+//        print(homeViewModel.countDownList.count)
+           //  print("indexpathrow \(indexPath.row)  -----    \(homeViewModel.countDownList.count)")
+            let countDown = homeViewModel.countDownList[indexPath.row]
+        
+        
+        cell.configure(with: countDown, reminder: homeViewModel.reminders[indexPath.row])
         
         let hours = homeViewModel.reminders[indexPath.row].hours as? [Date]
-        guard let hours = hours else { return UITableViewCell() }
-     
-//           let localDate = homeViewModel.getLocalDate(date: Date())
-//         //MARK: FIND CLOSEST HOUR
-//        if let closestDate = homeViewModel.findClosestFutureHour(dates: hours, from: localDate) {
-//            
-// 
-//            let str = homeViewModel.convertHour(date: closestDate)
-//            cell.reminderDateLabel.text = "HATIRLATMA \(str)"
-//            //MARK: FIND DIFFERENCE
-//            
-//            let strCurr = homeViewModel.convertHour(date: localDate)
-//            let strClosest = homeViewModel.convertHour(date: closestDate)
-//        
-//            if let difference = homeViewModel.timeDifference(from: strCurr, to: strClosest) {
-//                print("Fark: \(difference.hours) saat \(difference.minutes) dakika")
-//               // cell.startCountdown(hours: difference.hours, minutes: difference.minutes)
-//            } else {
-//                print("Geçersiz saat formatı")
-//            }
-//        } else {
-//            print("Gelecek saat bulunamadı.")
-//        }
+        guard hours != nil else { return UITableViewCell() }
+    
+
         
         return cell
     }

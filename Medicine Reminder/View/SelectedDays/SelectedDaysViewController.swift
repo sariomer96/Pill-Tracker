@@ -67,7 +67,7 @@ class SelectedDaysViewController: BaseViewController {
         hours.removeAll()
         for i in 0...lastRowIndex-2 {
             if tableViewCell[i].isHidden == false {
-                print("say bakim \(i) ---   tableviewceldate  \(tableViewCell[i].date)")
+               // print("say bakim \(i) ---   tableviewceldate  \(tableViewCell[i].date)")
                 hours.append(tableViewCell[i].date)
                  
              }

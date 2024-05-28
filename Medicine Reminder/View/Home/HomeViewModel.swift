@@ -6,7 +6,9 @@ import UserNotifications
 
 class HomeViewModel {
     
+    var callbackCountDown: CallBack<String>?
     var reminders = [Reminder]()
+    var countDownList = [CountDown]()
     func fetchReminders(context: NSManagedObjectContext) {
        
         let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
@@ -14,22 +16,77 @@ class HomeViewModel {
         do {
             reminders = try context.fetch(fetchRequest)
             for i in reminders {
-                print("\(i.name)---- \(i.days) -----   START HOUR \(i.startHour)  ------    FREQ \(i.reminderFrequency)")
+              //  print("\(i.name)---- \(i.days) -----   START HOUR \(i.startHour)  ------    FREQ \(i.reminderFrequency)")
             }
         } catch {
             print("Error fetching reminders: \(error.localizedDescription)")
+        } 
+    }
+    func configureCountDownCell(reminder: Reminder, countDownIndex: Int, completion: @escaping (String) -> Void) {
+        let hours = reminder.hours as? [Date]
+        guard let hours = hours else { return print("else") }
+        let localDate = getLocalDate(date: Date())
+        //MARK: FIND CLOSEST HOUR
+       // print("hours: \(hours)         localdate: \(localDate)")
+        if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
+            
+            //MARK: FIND DIFFERENCE
+            let strCurr = convertHour(date: localDate)
+            let strClosest = convertHour(date: closestDate)
+            
+            if let difference = timeDifference(from: strCurr, to: strClosest) {
+                
+              //  let countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds)
+                countDownList[countDownIndex].setInit(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds)
+              
+            } else {
+                print("Geçersiz saat formatı")
+            }
+        } else {
+            print("Gelecek saat bulunamadı.")
         }
-        
-      
+      //  print(countDownList)
+        completion("COMPLETION")
+    }
+    func configureCountDown(completion: @escaping (String) -> Void) {
+       
+        // print("tekerar")
+        countDownList.removeAll()
+        for reminder in reminders {
+            
+            let hours = reminder.hours as? [Date]
+            guard let hours = hours else { return print("else") }
+            let localDate = getLocalDate(date: Date())
+            //MARK: FIND CLOSEST HOUR
+            print("hours: \(hours)         localdate: \(localDate)")
+            if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
+                
+                //MARK: FIND DIFFERENCE
+                let strCurr = convertHour(date: localDate)
+                let strClosest = convertHour(date: closestDate)
+                
+                if let difference = timeDifference(from: strCurr, to: strClosest) {
+                    
+                    var countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds)
+                    countDownList.append(countDown)
+                } else {
+                    print("Geçersiz saat formatı")
+                }
+            } else {
+                print("Gelecek saat bulunamadı.")
+            } 
+          //  print(countDownList)
+            completion("COMPLETION")
+        }
+ 
     }
     
-    
-    func convertHour (date: Date) -> String {
+    func convertHour (date: Date) -> String { //saniyenin de onemi var degis
         
         
         // DateFormatter oluştur ve formatını ayarla
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "HH:mm:ss"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         let timeString = dateFormatter.string(from: date)
         return timeString
@@ -37,9 +94,41 @@ class HomeViewModel {
     }
     
     
-    func timeDifference(from startTime: String, to endTime: String) -> (hours: Int, minutes: Int)? {
+//    func timeDifference(from startTime: String, to endTime: String) -> (hours: Int, minutes: Int)? {  //saniyenin de onemi var degis
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm:ss"
+//        
+//        guard let start = dateFormatter.date(from: startTime),
+//              let end = dateFormatter.date(from: endTime) else {
+//            return nil
+//        }
+//        
+//        let calendar = Calendar.current
+//        let startComponents = calendar.dateComponents([.hour, .minute,.second], from: start)
+//        let endComponents = calendar.dateComponents([.hour, .minute,.second], from: end)
+//        
+//        guard let startHour = startComponents.hour, let startMinute = startComponents.minute,
+//              let endHour = endComponents.hour, let endMinute = endComponents.minute else {
+//            return nil
+//        }
+//        
+//        let startTotalMinutes = startHour * 60 + startMinute
+//        let endTotalMinutes = endHour * 60 + endMinute
+//        var differenceMinutes = endTotalMinutes - startTotalMinutes
+//        
+//        // Eğer fark negatifse, 24 saat ekleyin
+//        if differenceMinutes < 0 {
+//            differenceMinutes += 24 * 60
+//        }
+//        
+//        let hours = differenceMinutes / 60
+//        let minutes = differenceMinutes % 60
+//        
+//        return (hours, minutes)
+//    }
+    func timeDifference(from startTime: String, to endTime: String) -> (hours: Int, minutes: Int, seconds: Int)? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "HH:mm:ss"
         
         guard let start = dateFormatter.date(from: startTime),
               let end = dateFormatter.date(from: endTime) else {
@@ -47,28 +136,30 @@ class HomeViewModel {
         }
         
         let calendar = Calendar.current
-        let startComponents = calendar.dateComponents([.hour, .minute], from: start)
-        let endComponents = calendar.dateComponents([.hour, .minute], from: end)
+        let startComponents = calendar.dateComponents([.hour, .minute, .second], from: start)
+        let endComponents = calendar.dateComponents([.hour, .minute, .second], from: end)
         
-        guard let startHour = startComponents.hour, let startMinute = startComponents.minute,
-              let endHour = endComponents.hour, let endMinute = endComponents.minute else {
+        guard let startHour = startComponents.hour, let startMinute = startComponents.minute, let startSecond = startComponents.second,
+              let endHour = endComponents.hour, let endMinute = endComponents.minute, let endSecond = endComponents.second else {
             return nil
         }
         
-        let startTotalMinutes = startHour * 60 + startMinute
-        let endTotalMinutes = endHour * 60 + endMinute
-        var differenceMinutes = endTotalMinutes - startTotalMinutes
+        let startTotalSeconds = startHour * 3600 + startMinute * 60 + startSecond
+        let endTotalSeconds = endHour * 3600 + endMinute * 60 + endSecond
+        var differenceSeconds = endTotalSeconds - startTotalSeconds
         
-        // Eğer fark negatifse, 24 saat ekleyin
-        if differenceMinutes < 0 {
-            differenceMinutes += 24 * 60
+        // Eğer fark negatifse, 24 saat (86400 saniye) ekleyin
+        if differenceSeconds < 0 {
+            differenceSeconds += 24 * 3600
         }
         
-        let hours = differenceMinutes / 60
-        let minutes = differenceMinutes % 60
+        let hours = differenceSeconds / 3600
+        let minutes = (differenceSeconds % 3600) / 60
+        let seconds = differenceSeconds % 60
         
-        return (hours, minutes)
+        return (hours, minutes, seconds)
     }
+
     func getLocalDate(date: Date) -> Date {
         let localTimeZone = TimeZone.current
         let secondsFromGMT = localTimeZone.secondsFromGMT(for: date)
