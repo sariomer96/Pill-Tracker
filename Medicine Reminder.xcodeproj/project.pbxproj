@@ -16,6 +16,8 @@
 		1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A2792BE67DFB0027261E /* DataLoader.swift */; };
 		1715A27E2BE688A10027261E /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A27D2BE688A10027261E /* DataTableViewCell.swift */; };
 		1715A2802BE6AAD60027261E /* medicDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 1715A27F2BE6AAD60027261E /* medicDB.json */; };
+		179203382C07CE7F0020A5F0 /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */; };
+		1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203392C07CF170020A5F0 /* EditReminderViewModel.swift */; };
 		17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */; };
 		17AE32332BE7C582008CF1F5 /* JSONViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32322BE7C582008CF1F5 /* JSONViewModel.swift */; };
 		17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */; };
@@ -51,6 +53,8 @@
 		1715A2792BE67DFB0027261E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		1715A27D2BE688A10027261E /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		1715A27F2BE6AAD60027261E /* medicDB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medicDB.json; sourceTree = "<group>"; };
+		179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
+		179203392C07CF170020A5F0 /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
 		17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 		17AE32322BE7C582008CF1F5 /* JSONViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONViewModel.swift; sourceTree = "<group>"; };
 		17AE32382BE81594008CF1F5 /* Medicine_Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Medicine_Reminder.xcdatamodel; sourceTree = "<group>"; };
@@ -127,6 +131,15 @@
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
 		};
+		1792033B2C07CF250020A5F0 /* EditReminder */ = {
+			isa = PBXGroup;
+			children = (
+				179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */,
+				179203392C07CF170020A5F0 /* EditReminderViewModel.swift */,
+			);
+			path = EditReminder;
+			sourceTree = "<group>";
+		};
 		17AE322D2BE7C445008CF1F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 		17AE322F2BE7C455008CF1F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1792033B2C07CF250020A5F0 /* EditReminder */,
 				17B6724D2BEFB64F000AE494 /* EveryXHour */,
 				17B784EF2BEE536300231FC4 /* SelectedDays */,
 				17B784EA2BEE0A3C00231FC4 /* ReminderConfig */,
@@ -289,6 +303,7 @@
 				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				17B784E72BECFE3100231FC4 /* MedicineViewModel.swift in Sources */,
 				17B784E92BECFFBD00231FC4 /* BaseViewController.swift in Sources */,
+				1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */,
 				17B672612BF9E81B000AE494 /* CountDown.swift in Sources */,
@@ -302,6 +317,7 @@
 				1715A27E2BE688A10027261E /* DataTableViewCell.swift in Sources */,
 				17B672532BEFBCD0000AE494 /* SelectedDaysViewModel.swift in Sources */,
 				17B6724F2BEFB67B000AE494 /* EveryXHourViewController.swift in Sources */,
+				179203382C07CE7F0020A5F0 /* EditReminderViewController.swift in Sources */,
 				17B784F42BEE5C4500231FC4 /* TimeTableViewCell.swift in Sources */,
 				17B6725F2BF27AEA000AE494 /* LocalTimeController.swift in Sources */,
 				17B6725C2BF274A7000AE494 /* RemindersTableViewCell.swift in Sources */,

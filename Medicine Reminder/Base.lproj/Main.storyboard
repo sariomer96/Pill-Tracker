@@ -71,14 +71,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yC4-Ed-DEA" customClass="DataTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yC4-Ed-DEA" id="A5Y-Ql-J87">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYt-eI-Tf2">
-                                                    <rect key="frame" x="20" y="11" width="334" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -467,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZq-RX-wj5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511.594202898551" y="-313.39285714285711"/>
+            <point key="canvasLocation" x="2554" y="-297"/>
         </scene>
         <!--EveryX Hour View Controller-->
         <scene sceneID="cLx-3H-OMD">
@@ -537,7 +537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ha0-m2-9MF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3220" y="-313"/>
+            <point key="canvasLocation" x="4065" y="-313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fHZ-ll-MEP">
@@ -556,6 +556,166 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfL-Jf-YIN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-997.10144927536237" y="-5.3571428571428568"/>
+        </scene>
+        <!--Edit Reminder View Controller-->
+        <scene sceneID="Xf0-Em-Bot">
+            <objects>
+                <viewController storyboardIdentifier="EditReminderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mI2-rf-8VB" customClass="EditReminderViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0gS-gF-BcD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HAFTANIN BELIRLI GUNLERI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XS-hy-4q2">
+                                <rect key="frame" x="74" y="74" width="266.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PlK-YO-J3M">
+                                <rect key="frame" x="34" y="171" width="346" height="34.5"/>
+                                <subviews>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-x9-0aL">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="P"/>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yi-qZ-jQJ">
+                                        <rect key="frame" x="50" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="S"/>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBE-VT-XBa">
+                                        <rect key="frame" x="100" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="C"/>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gox-Su-TeM">
+                                        <rect key="frame" x="150" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="P"/>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pic-ni-mpu">
+                                        <rect key="frame" x="200" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="C"/>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzD-RV-fDt">
+                                        <rect key="frame" x="250" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="CT"/>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYR-Yq-08O">
+                                        <rect key="frame" x="300" y="0.0" width="46" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="PZ"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-jm-m2Z">
+                                <rect key="frame" x="16" y="269.5" width="382" height="413.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="Uu9-gX-lpG" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="382" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uu9-gX-lpG" id="USj-0i-baw">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qr1-3G-tM0">
+                                                    <rect key="frame" x="145" y="0.0" width="77" height="50"/>
+                                                    <locale key="locale" localeIdentifier="tr_TR"/>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="Uu9-gX-lpG" eventType="valueChanged" id="OmX-Hq-2mh"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="centerX" secondItem="USj-0i-baw" secondAttribute="centerX" constant="-7.5" id="0gt-um-Zuq"/>
+                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="leading" secondItem="USj-0i-baw" secondAttribute="leading" constant="145" id="9tc-th-uvr"/>
+                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="top" secondItem="USj-0i-baw" secondAttribute="top" id="IIF-ZZ-8oP"/>
+                                                <constraint firstAttribute="bottom" secondItem="Qr1-3G-tM0" secondAttribute="bottom" id="qSP-W4-AsK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="datePicker" destination="Qr1-3G-tM0" id="5OH-3T-cgy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="bLG-a9-mHq" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="382" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bLG-a9-mHq" id="Cib-MI-Bg6">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="571-MS-M99">
+                                                    <rect key="frame" x="173.5" y="0.0" width="35" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="571-MS-M99" firstAttribute="centerX" secondItem="Cib-MI-Bg6" secondAttribute="centerX" id="7oU-G1-GD8"/>
+                                                <constraint firstItem="571-MS-M99" firstAttribute="top" secondItem="Cib-MI-Bg6" secondAttribute="top" id="O0g-V3-wrc"/>
+                                                <constraint firstAttribute="bottom" secondItem="571-MS-M99" secondAttribute="bottom" id="S3e-oK-B9R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="571-MS-M99" id="HN3-Y4-iTi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KULLANIM SAATLERI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIh-jV-XRK">
+                                <rect key="frame" x="125.5" y="229" width="163" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34A-XT-brY">
+                                <rect key="frame" x="155" y="717" width="105" height="53"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="KAYDET">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="mI2-rf-8VB" eventType="touchUpInside" id="WZN-Iv-pEj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hWk-45-zTZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="34A-XT-brY" firstAttribute="leading" secondItem="hWk-45-zTZ" secondAttribute="leading" constant="155" id="3rZ-xj-9Tl"/>
+                            <constraint firstItem="8XS-hy-4q2" firstAttribute="centerX" secondItem="0gS-gF-BcD" secondAttribute="centerX" id="7nl-Wi-1Ys"/>
+                            <constraint firstItem="KYz-jm-m2Z" firstAttribute="top" secondItem="PlK-YO-J3M" secondAttribute="bottom" constant="64" id="Fds-kw-UwF"/>
+                            <constraint firstItem="hWk-45-zTZ" firstAttribute="bottom" secondItem="34A-XT-brY" secondAttribute="bottom" constant="92" id="Vsn-GI-jls"/>
+                            <constraint firstItem="KYz-jm-m2Z" firstAttribute="leading" secondItem="hWk-45-zTZ" secondAttribute="leading" constant="16" id="eqk-uT-se4"/>
+                            <constraint firstItem="hWk-45-zTZ" firstAttribute="trailing" secondItem="34A-XT-brY" secondAttribute="trailing" constant="154" id="fG8-4q-HXH"/>
+                            <constraint firstItem="PlK-YO-J3M" firstAttribute="centerX" secondItem="0gS-gF-BcD" secondAttribute="centerX" id="kkL-kp-gef"/>
+                            <constraint firstItem="BIh-jV-XRK" firstAttribute="top" secondItem="PlK-YO-J3M" secondAttribute="bottom" constant="23.5" id="qSk-9v-q0e"/>
+                            <constraint firstItem="PlK-YO-J3M" firstAttribute="top" secondItem="8XS-hy-4q2" secondAttribute="bottom" constant="73" id="rmY-B4-A7u"/>
+                            <constraint firstItem="BIh-jV-XRK" firstAttribute="centerX" secondItem="0gS-gF-BcD" secondAttribute="centerX" id="sQ6-og-sPi"/>
+                            <constraint firstItem="hWk-45-zTZ" firstAttribute="trailing" secondItem="KYz-jm-m2Z" secondAttribute="trailing" constant="16" id="u0m-IR-cvl"/>
+                            <constraint firstItem="hWk-45-zTZ" firstAttribute="bottom" secondItem="KYz-jm-m2Z" secondAttribute="bottom" constant="179" id="wQC-NG-vJw"/>
+                            <constraint firstItem="8XS-hy-4q2" firstAttribute="top" secondItem="hWk-45-zTZ" secondAttribute="top" constant="26" id="z6c-bk-NHw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fridayButton" destination="Pic-ni-mpu" id="FMH-NS-tfh"/>
+                        <outlet property="mondayButton" destination="o5c-x9-0aL" id="VP8-is-DMm"/>
+                        <outlet property="saturdayButton" destination="YzD-RV-fDt" id="m5d-35-X5C"/>
+                        <outlet property="sundayButton" destination="UYR-Yq-08O" id="1tY-CL-L2B"/>
+                        <outlet property="tableView" destination="KYz-jm-m2Z" id="mjg-5O-O5C"/>
+                        <outlet property="thursdayButton" destination="gox-Su-TeM" id="Jzt-uO-hK6"/>
+                        <outlet property="tuesdayButton" destination="2yi-qZ-jQJ" id="tF5-O6-kpb"/>
+                        <outlet property="wednesdayButton" destination="cBE-VT-XBa" id="83P-78-HgW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TYQ-wx-kjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3321.739130434783" y="-313.39285714285711"/>
         </scene>
     </scenes>
     <resources>

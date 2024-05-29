@@ -20,7 +20,8 @@ class HomeViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         getReminders()
-        homeViewModel.checkForPermission()
+     
+     //   homeViewModel.checkForPermission()
   
     }
 
@@ -37,11 +38,6 @@ class HomeViewController: BaseViewController {
         homeViewModel.configureCountDown { str in
             self.tableView.reloadData()
         }
-        
-        
-        
-        
-    
         for (index, i) in homeViewModel.countDownList.enumerated() {
             i.callBack = { [weak self] str in
                 guard let self = self else { return }
@@ -96,20 +92,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as! RemindersTableViewCell
         cell.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
-//       
-//        print(homeViewModel.countDownList.count)
-           //  print("indexpathrow \(indexPath.row)  -----    \(homeViewModel.countDownList.count)")
-            let countDown = homeViewModel.countDownList[indexPath.row]
+         let countDown = homeViewModel.countDownList[indexPath.row]
         
         
         cell.configure(with: countDown, reminder: homeViewModel.reminders[indexPath.row])
-        
-        let hours = homeViewModel.reminders[indexPath.row].hours as? [Date]
-        guard hours != nil else { return UITableViewCell() }
-    
-
-        
+         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let vc = getViewController(param: EditReminderViewController.self, vcIdentifier: "EditReminderViewController")
+        let edit = vc as! EditReminderViewController
+        
+        let reminder = homeViewModel.reminders[indexPath.row]
+        edit.editReminderViewModel.setDate(days: reminder.days as! [Int], hours: reminder.hours as! [Date])
     }
     
      
