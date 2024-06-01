@@ -15,7 +15,7 @@ class SelectedDaysViewModel: ReminderData {
     var callBackAddTime:CallBack<Int>?
     func getReminder(reminder: Reminder) {
         self.reminder = reminder
-        print("reminder geldi  \(reminder.id) \(reminder.hours as! [Date]) \(reminder.days))")
+      //  print("reminder geldi  \(reminder.id) \(reminder.hours as! [Date]) \(reminder.days))")
        // print("set rem \(self.reminder?.name) \(self.reminder?.type) \(self.reminder?.endDate)")
     }
    

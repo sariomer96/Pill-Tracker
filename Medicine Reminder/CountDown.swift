@@ -59,7 +59,12 @@ class CountDown {
     func startCountdown( update: @escaping () -> Void ) {
            
            // start()
-             self.callBackDate?("\(days[day-1])  \(date)")
+        if day < 1 {
+            self.callBackDate?("\(days[0])  \(date)")
+        } else {
+            self.callBackDate?("\(days[day-1])  \(date)")
+        }
+           
            stopTimer()  // Önceki timer'ı durdur
                  
                 timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in

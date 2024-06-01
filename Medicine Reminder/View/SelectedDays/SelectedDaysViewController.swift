@@ -218,7 +218,25 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         
        
     }
-     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               // Veriyi diziden kaldır
+             
+               // TableView'dan hücreyi kaldır
+               tableView.deleteRows(at: [indexPath], with: .automatic)
+           }
+       }
+       
+       // Bu metodla silme simgesini özelleştirebilirsiniz
+       func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+           let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
+               // Veriyi diziden kaldır
+               self.count -= 1
+               // TableView'dan hücreyi kaldır
+               tableView.deleteRows(at: [indexPath], with: .automatic)
+           }
+           return [deleteAction]
+       }
     func addNewTime(tableView: UITableView, indexPathRow: Int) {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 

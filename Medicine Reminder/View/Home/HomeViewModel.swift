@@ -56,7 +56,8 @@ class HomeViewModel {
         // print("tekerar")
         countDownList.removeAll()
         for reminder in reminders {
-            var closestDay =   findClosestDay(days: reminder.days as! [Int], currentDay: currentDay)
+            print("reminder.id  \(reminder.id)")
+            var closestDay =   findClosestDay(days: reminder.days as? [Int] ?? [0,1,2,3,4,5,6], currentDay: currentDay)
              
             let hours = reminder.hours as? [Date]
             guard let hours = hours else { return print("else") }
