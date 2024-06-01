@@ -77,7 +77,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
             reminder.type = medicTypesDropDownButton.currentTitle
             reminder.isDaySelected = selectedDaysSwitch.isOn
            
-           
+            
             if removeReminderSwitch.isOn == true {
                 reminder.endDate = removeReminderDatePicker.date
             }else {
@@ -86,10 +86,12 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
             
             
             if selectedDaysSwitch.isOn == true {
-                sendReminderDelegate = SelectedDaysViewModel.shared.self
+              let vc =  getViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController") as! SelectedDaysViewController
+                sendReminderDelegate = vc.selectedDaysViewModel.self
+                
                 sendReminderDelegate?.getReminder(reminder: reminder)
-               
-                pushViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController")
+               pushViewController(vc: vc)
+               // pushViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController")
             } else if everyXHoursSwitch.isOn == true {
                 sendReminderDelegate = EveryXHourViewModel.shared.self
                 sendReminderDelegate?.getReminder(reminder: reminder)

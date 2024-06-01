@@ -11,7 +11,7 @@ import CoreData
 
 class HomeViewController: BaseViewController {
     let homeViewModel = HomeViewModel()
-     
+    var delegateReminder: ReminderData?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,9 +102,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let vc = getViewController(param: EditReminderViewController.self, vcIdentifier: "EditReminderViewController")
         let edit = vc as! EditReminderViewController
+        delegateReminder = edit.editReminderViewModel.self
         
         let reminder = homeViewModel.reminders[indexPath.row]
-        edit.editReminderViewModel.setDate(days: reminder.days as! [Int], hours: reminder.hours as! [Date])
+        delegateReminder?.getReminder(reminder: reminder)
+     //   edit.editReminderViewModel.setDate(days: reminder.days as! [Int], hours: reminder.hours as! [Date])
+        pushViewController(vc: edit)
     }
     
      

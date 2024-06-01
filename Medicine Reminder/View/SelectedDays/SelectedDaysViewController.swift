@@ -17,17 +17,18 @@ class SelectedDaysViewController: BaseViewController {
     @IBOutlet weak var wednesdayButton: UIButton!
     @IBOutlet weak var tuesdayButton: UIButton!
     @IBOutlet weak var mondayButton: UIButton!
+    var dayButtonList = [UIButton]()
     var count = 1
     var tableCell = [TimeTableViewCell]()
     var tableViewCell = [TimeTableViewCell]()
     var days = [Int]()
     var hours = [Date]()
-    let selectedDaysViewModel = SelectedDaysViewModel.shared
+    let selectedDaysViewModel = SelectedDaysViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         addTagToDayButtons()
         addTargetToDayButtons()
-        
+        addButtonList()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.reloadData()
@@ -49,6 +50,7 @@ class SelectedDaysViewController: BaseViewController {
         }
     }
     
+    
     func saveDB () {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
          let context = appDelegate.persistentContainer.viewContext
@@ -57,7 +59,7 @@ class SelectedDaysViewController: BaseViewController {
     func createTableCell() {
         for i in 1...11 {
             tableViewCell.append(TimeTableViewCell())
-             
+            
             
         }
     }
@@ -87,6 +89,16 @@ class SelectedDaysViewController: BaseViewController {
         saturdayButton.tag = 7
         
     }
+    
+    func addButtonList() {
+        dayButtonList.append(sundayButton)
+        dayButtonList.append(mondayButton)
+        dayButtonList.append(tuesdayButton)
+        dayButtonList.append(wednesdayButton)
+        dayButtonList.append(thursdayButton)
+        dayButtonList.append(fridayButton)
+        dayButtonList.append(saturdayButton)
+    }
 
     @IBAction func saveButtonClicked(_ sender: Any) {
         days.sort()
@@ -96,8 +108,7 @@ class SelectedDaysViewController: BaseViewController {
     }
     func setReminder() {
         let hours = getHoursOfReminder()
-        
-        print("OURSSSS \(hours)")
+         
         selectedDaysViewModel.setReminder(days: days, hours: hours)
          
     }
@@ -189,7 +200,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
-               
+            
 //            let localDate = LocalTimeController.shared.getLocalTime(date: Date())
 //            cell.date = localDate
             print("SET VC")
@@ -204,7 +215,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         
          
         selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, row: indexPath.row)
-
+        
        
     }
      

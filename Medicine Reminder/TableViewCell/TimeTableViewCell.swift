@@ -35,6 +35,12 @@ class TimeTableViewCell: UITableViewCell {
          print("REMOVED")
     }
    
-     
+    func setDatePicker(date: Date) {
+       // datePicker.datePickerMode = .time
+        if let correctedDate = Calendar.current.date(byAdding: .hour, value: -3, to: date) {
+            datePicker.date = correctedDate
+        }
+    
+    }
     
 }
