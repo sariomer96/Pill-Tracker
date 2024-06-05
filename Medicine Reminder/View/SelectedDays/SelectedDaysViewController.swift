@@ -31,46 +31,53 @@ class SelectedDaysViewController: BaseViewController {
         addButtonList()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        tableView.reloadData()
+        
          
          createTableCell()
         
-        selectedDaysViewModel.callBackMaxLimit = { [weak self] max in
+        selectedDaysViewModel.callBackMaxLimit = { [weak self] indexpath in
             guard let self = self else { return }
             let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-            if max == lastRowIndex-1{
+            if indexpath.row == lastRowIndex-1{
                 alert(title: "Max LIMIT", message: "MAX SAYIYA ULASTIN")
                 
             }
         }
         
-        selectedDaysViewModel.callBackAddTime = { [weak self] row in
+        selectedDaysViewModel.callBackAddTime = { [weak self] indexpath in
             guard let self = self else { return }
-            addNewTime(tableView: tableView, indexPathRow: row)
+            addNewTime(tableView: tableView, indexPath: indexpath)
         }
+        
+      
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     func saveDB () {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
          let context = appDelegate.persistentContainer.viewContext
         CoreDataManager.shared.saveData(context: context)
     }
     func createTableCell() {
-        for i in 1...11 {
-            tableViewCell.append(TimeTableViewCell())
-            
-            
-        }
+      
+        //    tableViewCell.append(TimeTableViewCell())
+         
     }
     
     func getHoursOfReminder() -> [Date]{
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-        hours.removeAll()
+      hours.removeAll()
         for i in 0...lastRowIndex-2 {
-            if tableViewCell[i].isHidden == false {
-               // print("say bakim \(i) ---   tableviewceldate  \(tableViewCell[i].date)")
-                hours.append(tableViewCell[i].date)
+            if tableViewCell.count > i && tableViewCell[i].isHidden == false {
+                
+               
+                if  let editDate =    Calendar.current.date(byAdding: .hour, value: 3, to: tableViewCell[i].date) {
+                    print("celll \(editDate)")
+                    hours.append(editDate)
+                }
+            
                  
              }
              
@@ -102,13 +109,20 @@ class SelectedDaysViewController: BaseViewController {
 
     @IBAction func saveButtonClicked(_ sender: Any) {
         days.sort()
-        setReminder()
-        saveDB()
-        pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
+        let lastRow = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
+      
+        
+        if lastRow > 1 {
+            let hours = getHoursOfReminder()
+            setReminder(hours: hours)
+            saveDB()
+            pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
+        } else {
+            alert(title: "Eksik saat", message: "Lutfen saat ekleyin")
+        }
     }
-    func setReminder() {
-        let hours = getHoursOfReminder()
-         
+    func setReminder(hours: [Date]) {
+       
         selectedDaysViewModel.setReminder(days: days, hours: hours)
          
     }
@@ -129,7 +143,7 @@ class SelectedDaysViewController: BaseViewController {
         button.isSelected = !button.isSelected
         if button.isSelected == true {
             button.backgroundColor = .green
-            print("secili")
+           
             addSelectedDays(tag: button.tag)
         
         } else {
@@ -192,19 +206,14 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
        
         if indexPath.row == lastRowIndex-1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as! TimeTableViewCell
-           
+                    
             return cell
         } else {
             
             if lastRowIndex == 1 {
                 return UITableViewCell()
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
-            
-//            let localDate = LocalTimeController.shared.getLocalTime(date: Date())
-//            cell.date = localDate
-            print("SET VC")
-            tableViewCell[indexPath.row] = cell
+             
              return tableViewCell[indexPath.row]
         }
     }
@@ -212,36 +221,35 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-        
+          
          
-        selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, row: indexPath.row)
+        selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, indexPath: indexPath)
         
        
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               // Veriyi diziden kaldır
-             
-               // TableView'dan hücreyi kaldır
-               tableView.deleteRows(at: [indexPath], with: .automatic)
-           }
-       }
-       
+ 
        // Bu metodla silme simgesini özelleştirebilirsiniz
        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
            let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
                // Veriyi diziden kaldır
                self.count -= 1
                // TableView'dan hücreyi kaldır
+               print("COUNTTTTT \(self.count)")
+               self.tableViewCell.remove(at: indexPath.row)
                tableView.deleteRows(at: [indexPath], with: .automatic)
+              
+               print("DATE  \(self.tableViewCell.count)")
+               
            }
            return [deleteAction]
        }
-    func addNewTime(tableView: UITableView, indexPathRow: Int) {
+    func addNewTime(tableView: UITableView, indexPath: IndexPath) {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 
-        if (indexPathRow == lastRowIndex - 1) {
-          
+        if (indexPath.row == lastRowIndex - 1) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
+             
+            tableViewCell.append(cell)
             count += 1
             tableView.reloadData()
         }

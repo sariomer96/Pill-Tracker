@@ -90,8 +90,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if homeViewModel.countDownList.count == 0 || homeViewModel.reminders.count == 0 {
+            return RemindersTableViewCell()
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as! RemindersTableViewCell
         cell.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
+     
          let countDown = homeViewModel.countDownList[indexPath.row]
         
         

@@ -27,7 +27,7 @@ class RemindersTableViewCell: UITableViewCell {
         self.countdown?.callBackDate = { date in
             self.updateDate(date: date)
         }
-        print("update")
+       
         countdown.startCountdown() {
              [weak self] in
             DispatchQueue.main.async {

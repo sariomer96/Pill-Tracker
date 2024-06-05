@@ -13,29 +13,29 @@ class EditReminderViewController: SelectedDaysViewController {
     let editReminderViewModel = EditReminderViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+          
+    
         addTagToDayButtons()
         addTargetToDayButtons()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.reloadData()
-         
-         createTableCell()
-        
-        editReminderViewModel.callBackMaxLimit = { [weak self] max in
+          
+        editReminderViewModel.callBackMaxLimit = { [weak self] indexpath in
             guard let self = self else { return }
             let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-            if max == lastRowIndex-1{
+            if indexpath.row == lastRowIndex-1{
                 alert(title: "Max LIMIT", message: "MAX SAYIYA ULASTIN")
                 
             }
         }
         
-        editReminderViewModel.callBackAddTime = { [weak self] row in
+        editReminderViewModel.callBackAddTime = { [weak self] indexpath in
             guard let self = self else { return }
-            addNewTime(tableView: tableView, indexPathRow: row)
+            addNewTime(tableView: tableView, indexPath: indexpath)
         }
+         
         // Do any additional setup after loading the view.
     }
     
@@ -44,6 +44,7 @@ class EditReminderViewController: SelectedDaysViewController {
             setEnableDays(days: editReminderViewModel.reminder?.days as! [Int])
             setHourCount(hours: editReminderViewModel.reminder?.hours as! [Date])
         }
+     
       
     }
     func setEnableDays(days: [Int]) {
@@ -57,22 +58,21 @@ class EditReminderViewController: SelectedDaysViewController {
     }
     func setHourCount(hours: [Date]) {
         count += hours.count
-       // tableView.reloadData()
+     
+        print("count \(count)")
+        for i in hours {
+            tableViewCell.append(TimeTableViewCell())
+        }
+        
     }
     
     func setHourDatePicker() {
         
     }
-    override func saveButtonClicked(_ sender: Any) {
-        days.sort()
-        setReminder()
-        saveDB()
-        pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
-    }
+ 
     
-    override func setReminder() {
-        let hours = getHoursOfReminder()
-         
+    override func setReminder(hours: [Date]) {
+ 
         editReminderViewModel.setReminder(days: days, hours: hours)
     }
     override func saveDB() {
@@ -104,9 +104,21 @@ extension EditReminderViewController {
                
                 cell.setDatePicker(date: hoursArray[indexPath.row])
             }
-          
+    
             tableViewCell[indexPath.row] = cell
+ 
              return tableViewCell[indexPath.row]
         }
     }
+    
+    override   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
+        
+         
+        editReminderViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, indexPath: indexPath)
+        
+       
+    }
+   
 }

@@ -11,8 +11,8 @@ class SelectedDaysViewModel: ReminderData {
    // static let shared = SelectedDaysViewModel()
     var reminder: Reminder?
     let maxTimeCountLimit = 10 //
-    var callBackMaxLimit:CallBack<Int>?
-    var callBackAddTime:CallBack<Int>?
+    var callBackMaxLimit:CallBack<IndexPath>?
+    var callBackAddTime:CallBack<IndexPath>?
     func getReminder(reminder: Reminder) {
         self.reminder = reminder
       //  print("reminder geldi  \(reminder.id) \(reminder.hours as! [Date]) \(reminder.days))")
@@ -20,13 +20,13 @@ class SelectedDaysViewModel: ReminderData {
     }
    
     
-    func CheckMaxTimeCount(rowCount: Int, row: Int) {
+    func CheckMaxTimeCount(rowCount: Int, indexPath: IndexPath) {
         if maxTimeCountLimit + 1 == rowCount {
-            callBackMaxLimit?(row)
+            callBackMaxLimit?(indexPath)
         } else {
      
-            callBackAddTime?(row)
-        } 
+            callBackAddTime?(indexPath)
+        }
     }
     
     func setReminder(days: [Int], hours: [Date]) {

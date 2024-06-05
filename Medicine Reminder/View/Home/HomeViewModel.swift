@@ -56,14 +56,14 @@ class HomeViewModel {
         // print("tekerar")
         countDownList.removeAll()
         for reminder in reminders {
-            print("reminder.id  \(reminder.id)")
+          
             var closestDay =   findClosestDay(days: reminder.days as? [Int] ?? [0,1,2,3,4,5,6], currentDay: currentDay)
              
             let hours = reminder.hours as? [Date]
             guard let hours = hours else { return print("else") }
             let localDate = getLocalDate(date: Date())
             //MARK: FIND CLOSEST HOUR
-            print("hours: \(hours)         localdate: \(localDate)")
+          
             if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
                 
                 //MARK: FIND DIFFERENCE
@@ -71,8 +71,9 @@ class HomeViewModel {
                 let strClosest = convertHour(date: closestDate)
                 
                 if let difference = timeDifference(from: strCurr, to: strClosest) {
-                    print("dayOfWeek \(closestDate)")
+                 
                     var countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds, date: closestDate, day: closestDay ?? 0)
+                    
                     countDownList.append(countDown)
                 } else {
                     print("Geçersiz saat formatı")
@@ -238,6 +239,7 @@ class HomeViewModel {
             return closestFutureTime
         }
         
+        print("dates \(dates.count)")
         // Eğer geçmemiş gelecekteki bir saat bulunamazsa, listedeki en eski saat döndürülür
         return dates.min()
     }

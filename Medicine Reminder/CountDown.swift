@@ -85,7 +85,7 @@ class CountDown {
                 RunLoop.current.add(timer!, forMode: .default)
     }
     func stopTimer() {
-      print("stop")
+      
             timer?.invalidate()
             timer = nil
         }
