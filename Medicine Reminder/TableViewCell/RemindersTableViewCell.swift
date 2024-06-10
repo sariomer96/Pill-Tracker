@@ -40,9 +40,9 @@ class RemindersTableViewCell: UITableViewCell {
 
      func updateLabel() {
          if let countdown = countdown {
-             let daysString = countdown.dayss > 0 ? String(format: "%d G ", countdown.dayss) : ""
-             let hoursString = countdown.hoursLeft > 0 ? String(format: "%02d S ", countdown.hoursLeft) : ""
-             remainingTimeLabel.text = String(format: "%@%@%02d D %02d S", daysString, hoursString, countdown.minutesLeft, countdown.secondsLeft)
+             let daysString = countdown.dayss > 0 ? String(format: "%d Gun ", countdown.dayss) : ""
+             let hoursString = countdown.hoursLeft > 0 ? String(format: "%02d Saat ", countdown.hoursLeft) : ""
+             remainingTimeLabel.text = String(format: "%@%@%02d Dk. %02d Saniye Kaldi", daysString, hoursString, countdown.minutesLeft, countdown.secondsLeft)
          }
      }
     

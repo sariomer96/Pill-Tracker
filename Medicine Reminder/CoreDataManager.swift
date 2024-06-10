@@ -23,12 +23,13 @@ class CoreDataManager {
         }
     }
     
-    func removeData(context: NSManagedObjectContext, reminder: Reminder) throws {
+    func removeData(context: NSManagedObjectContext, reminder:NSManagedObject) throws {
         do {
-        
-            try context.delete(reminder)
+             context.delete(reminder)
+             try context.save()
+            print("Sildi")
         } catch {
-            fatalError("save failed")
+            fatalError("delete failed")
         }
     }
     

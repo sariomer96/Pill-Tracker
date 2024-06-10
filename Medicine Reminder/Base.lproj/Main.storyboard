@@ -38,14 +38,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoR-bh-i1t">
-                                <rect key="frame" x="34" y="759" width="43" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Sil"/>
-                                <connections>
-                                    <action selector="removeClicked:" destination="Y9H-el-31d" eventType="touchUpInside" id="4M5-4B-iZe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aav-T0-am2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -53,9 +45,7 @@
                             <constraint firstItem="aav-T0-am2" firstAttribute="trailing" secondItem="ZiC-Gn-wi1" secondAttribute="trailing" constant="16" id="1sK-Gi-dWm"/>
                             <constraint firstItem="aav-T0-am2" firstAttribute="bottom" secondItem="ZiC-Gn-wi1" secondAttribute="bottom" constant="200" id="5ak-af-Th4"/>
                             <constraint firstItem="ZiC-Gn-wi1" firstAttribute="top" secondItem="aav-T0-am2" secondAttribute="top" constant="120" id="UMz-Xn-u31"/>
-                            <constraint firstItem="DoR-bh-i1t" firstAttribute="leading" secondItem="aav-T0-am2" secondAttribute="leading" constant="34" id="dJ4-vE-AH5"/>
                             <constraint firstItem="ZiC-Gn-wi1" firstAttribute="leading" secondItem="aav-T0-am2" secondAttribute="leading" constant="16" id="dKV-HX-imK"/>
-                            <constraint firstItem="aav-T0-am2" firstAttribute="bottom" secondItem="DoR-bh-i1t" secondAttribute="bottom" constant="68" id="ybx-uv-g6M"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="afi-s7-bdu"/>
@@ -730,7 +720,7 @@
     </scenes>
     <resources>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -21,11 +21,7 @@ class HomeViewController: BaseViewController {
         self.tableView.dataSource = self
         getReminders()
     }
-    @IBAction func removeClicked(_ sender: Any) {
-        let context = getViewContext()
-        CoreDataManager.shared.removeAllData(context: context, reminder: homeViewModel.reminders)
-        tableView.reloadData()
-    }
+   
     
     @IBAction func addMedicineClicked(_ sender: Any) {
         let storyBoardID = "MedicineViewController"
@@ -39,6 +35,7 @@ class HomeViewController: BaseViewController {
       
             self.tableView.reloadData()
         }
+        print("homeViewModel \(homeViewModel.reminders.count)")
         for (index, i) in homeViewModel.countDownList.enumerated() {
             i.callBack = { [weak self] str in
                 guard let self = self else { return }
@@ -113,5 +110,33 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         pushViewController(vc: edit)
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "KALDIR") { (action, indexPath) in
+                // Show confirmation alert
+                let alertController = UIAlertController(title: "UYARI", message: "Hatirlaticiyi kaldirmak istediginizden emin misiniz?", preferredStyle: .alert)
+                
+                let confirmAction = UIAlertAction(title: "Sil", style: .destructive) { _ in
+                    // Veriyi diziden kaldır
+                    do {
+                        try CoreDataManager.shared.removeData(context: self.getViewContext(), reminder: self.homeViewModel.reminders[indexPath.row])
+                        self.homeViewModel.reminders.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                        
+                    } catch {
+                        fatalError("Error")
+                    }
+                }
+                
+                let cancelAction = UIAlertAction(title: "Iptal", style: .cancel, handler: nil)
+                
+                alertController.addAction(confirmAction)
+                alertController.addAction(cancelAction)
+                
+                // Present the alert controller
+                self.present(alertController, animated: true, completion: nil)
+            }
+        return [deleteAction]
+    }
      
 }

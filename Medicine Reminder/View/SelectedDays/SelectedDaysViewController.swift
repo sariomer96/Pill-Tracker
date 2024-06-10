@@ -112,13 +112,13 @@ class SelectedDaysViewController: BaseViewController {
         let lastRow = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
       
         
-        if lastRow > 1 {
+        if lastRow > 1 && days.count > 0 {
             let hours = getHoursOfReminder()
             setReminder(hours: hours)
             saveDB()
             pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
         } else {
-            alert(title: "Eksik saat", message: "Lutfen saat ekleyin")
+            alert(title: "Uyari", message: "Lutfen saat ve gun bilgisi ekleyin")
         }
     }
     func setReminder(hours: [Date]) {
@@ -226,9 +226,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, indexPath: indexPath)
         
        
-    }
- 
-       // Bu metodla silme simgesini özelleştirebilirsiniz
+    } 
        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
            let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
            if lastRowIndex - 1 == indexPath.row {
