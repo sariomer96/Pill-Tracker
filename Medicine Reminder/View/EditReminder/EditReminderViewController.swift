@@ -11,10 +11,20 @@ class EditReminderViewController: SelectedDaysViewController {
  
     
     let editReminderViewModel = EditReminderViewModel()
+    var isSaved = false
     override func viewDidLoad() {
         super.viewDidLoad()
           
-    
+        self.navigationController?.delegate = self
+
+        let backButton = UIButton(type: .system)
+               backButton.setTitle("< Back", for: .normal)
+               backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+               backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+                
+               let backBarButtonItem = UIBarButtonItem(customView: backButton)
+               self.navigationItem.leftBarButtonItem = backBarButtonItem
+
         addTagToDayButtons()
         addTargetToDayButtons()
         
@@ -39,7 +49,32 @@ class EditReminderViewController: SelectedDaysViewController {
         // Do any additional setup after loading the view.
     }
     
+    @objc func backButtonTapped() {
+        
+        if isSaved == false {
+            // Uyarı oluştur
+            let alertController = UIAlertController(title: "Uyarı", message: "Kaydedilmeyen veriler kaybolacak. Çıkmak istediğinizden emin misiniz ?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Hayır", style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: "Evet", style: .default) { _ in
+                // Evet butonuna basıldığında normal şekilde geri git
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            
+            // Uyarıyı göster
+            present(alertController, animated: true, completion: nil)
+        }
+       
+     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        isSaved = false
+
         if let reminder = editReminderViewModel.reminder {
             setEnableDays(days: editReminderViewModel.reminder?.days as! [Int])
             setHourCount(hours: editReminderViewModel.reminder?.hours as! [Date])
@@ -79,6 +114,7 @@ class EditReminderViewController: SelectedDaysViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
          let context = appDelegate.persistentContainer.viewContext
         CoreDataManager.shared.saveData(context: context)
+        isSaved = true
     }
     
 
@@ -97,6 +133,8 @@ extension EditReminderViewController {
             if lastRowIndex == 1 {
                 return UITableViewCell()
             }
+            
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
     
             let hoursArray = editReminderViewModel.reminder?.hours as! [Date]
@@ -121,4 +159,31 @@ extension EditReminderViewController {
        
     }
    
+}
+
+extension EditReminderViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if navigationController.viewControllers.count < (self.navigationController?.viewControllers.count ?? 0) {
+            // Bu kontrol back butonuna basıldığını anlamamızı sağlar
+            let alertController = UIAlertController(title: "Uyarı", message: "Bu ekrandan çıkmak istediğinizden emin misiniz?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Hayır", style: .cancel) { _ in
+                // İptal butonuna basıldığında herhangi bir işlem yapılmaz.
+            }
+            let confirmAction = UIAlertAction(title: "Evet", style: .default) { _ in
+                // Evet butonuna basıldığında normal şekilde geri gidilir.
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            
+            // Uyarıyı göster
+            present(alertController, animated: true, completion: nil)
+            
+            // Back butonunun default davranışını engellemek için boş viewController döndür
+            navigationController.viewControllers.insert(self, at: navigationController.viewControllers.count)
+        }
+    }
+
+
 }

@@ -10,7 +10,7 @@ class HomeViewModel {
     var reminders = [Reminder]()
     var countDownList = [CountDown]()
    
-    let currentDay = Calendar.current.component(.weekday, from: Date()) - 1
+    let currentDay = Calendar.current.component(.weekday, from: Date())
     
     func fetchReminders(context: NSManagedObjectContext) {
         
@@ -32,15 +32,21 @@ class HomeViewModel {
         //MARK: FIND CLOSEST HOUR
         // print("hours: \(hours)         localdate: \(localDate)")
         if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
-            
+            let index =  weekDay(from: closestDate)
+           
             //MARK: FIND DIFFERENCE
             let strCurr = convertHour(date: localDate)
             let strClosest = convertHour(date: closestDate)
             
+            let countDown = CountDown(date: closestDate, dayIndex: index)
+            //  let countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds)
+            
+            countDownList[countDownIndex].setInit(date: closestDate, dayIndex: index)
+            
             if let difference = timeDifference(from: strCurr, to: strClosest),  let closestDay =  findClosestDay(days: reminder.days as! [Int], currentDay: currentDay) {
-              
-                //  let countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds)
-                countDownList[countDownIndex].setInit(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds, date: closestDate, day: closestDay)
+                
+                let remainingDay = abs(currentDay-closestDay)
+           
                 
             } else {
                 print("Geçersiz saat formatı")
@@ -51,30 +57,52 @@ class HomeViewModel {
         //  print(countDownList)
         completion("COMPLETION")
     }
+    
+    func isFutureTime(currentDay: Date, closestDay: Date) -> Bool {
+        return  currentDay > closestDay
+    }
     func configureCountDown(completion: @escaping (String) -> Void) {
-        
-        // print("tekerar")
+         
         countDownList.removeAll()
         for reminder in reminders {
           
-            var closestDay =   findClosestDay(days: reminder.days as? [Int] ?? [0,1,2,3,4,5,6], currentDay: currentDay)
-             
+//            var closestDay =   findClosestDay(days: reminder.days as? [Int] ?? [1,2,3,4,5,6,7], currentDay: currentDay)
+            
+            
+            var closestDay = findClosestDay(days: reminder.days as! [Int], currentDay: currentDay, hours: reminder.hours as! [Date] )
+            print("closestDay \(closestDay)")
             let hours = reminder.hours as? [Date]
             guard let hours = hours else { return print("else") }
             let localDate = getLocalDate(date: Date())
+            
             //MARK: FIND CLOSEST HOUR
-          
+           
             if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
-                
+       
+                let index =  weekDay(from: closestDate)
+                print("closestDate \(reminder.days)")
                 //MARK: FIND DIFFERENCE
                 let strCurr = convertHour(date: localDate)
                 let strClosest = convertHour(date: closestDate)
+              //   print("closestDAy \(closestDay)")
                 
+                var countDown = CountDown(date: closestDate, dayIndex: closestDay ?? 1)
+                countDownList.append(countDown)
                 if let difference = timeDifference(from: strCurr, to: strClosest) {
-                 
-                    var countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds, date: closestDate, day: closestDay ?? 0)
                     
-                    countDownList.append(countDown)
+                    var remainingDay = abs(currentDay-(closestDay ?? 0))-1
+                    
+                    if remainingDay == 0 {
+                        let result =  isFutureTime(currentDay: localDate, closestDay: closestDate)
+                         print("RESULt \(result)")
+                        if result == true {
+                            remainingDay = 6
+                        }
+                    }
+//                    var countDown = CountDown(hours: difference.hours, minutes: difference.minutes, seconds: difference.seconds, date: closestDate, day: closestDay ?? 0, remainingDay: remainingDay)
+                    
+//                    var countDown = CountDown(date: closestDate )
+//                    countDownList.append(countDown)
                 } else {
                     print("Geçersiz saat formatı")
                 }
@@ -98,7 +126,7 @@ class HomeViewModel {
         return timeString
         
     }
-    
+   
     func timeDifference(from startTime: String, to endTime: String) -> (hours: Int, minutes: Int, seconds: Int)? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
@@ -120,8 +148,7 @@ class HomeViewModel {
         let startTotalSeconds = startHour * 3600 + startMinute * 60 + startSecond
         let endTotalSeconds = endHour * 3600 + endMinute * 60 + endSecond
         var differenceSeconds = endTotalSeconds - startTotalSeconds
-        
-        // Eğer fark negatifse, 24 saat (86400 saniye) ekleyin
+         
         if differenceSeconds < 0 {
             differenceSeconds += 24 * 3600
         }
@@ -174,7 +201,7 @@ class HomeViewModel {
                     
                     let calendar = Calendar.current
                     
-                    let timeZone = TimeZone.current
+                    _ = TimeZone.current
                     
                     // Yerel zaman dilimine göre saat ve dakika bileşenlerini al
                     let hours = calendar.component(.hour, from: hour)
@@ -216,37 +243,91 @@ class HomeViewModel {
             
         }
     }
-    
-    // current'tan sonra gelen en yakın saati bulmak için bir fonksiyon
-    //    func findClosestFutureHour(dates: [Date], from current: Date) -> Date? {
-    //        let futureDates = dates.filter { $0 > current }
-    //
-    //           if futureDates.isEmpty {
-    //
-    //               let closestDate = dates.min(by: { abs($0.timeIntervalSince(current)) < abs($1.timeIntervalSince(current)) })
-    //               return closestDate
-    //           } else {
-    //               return futureDates.min(by: { $0.timeIntervalSince(current) < $1.timeIntervalSince(current) })
-    //           }
-    //    }
-    //
     func findClosestFutureHour(dates: [Date], from current: Date) -> Date? {
         // Geçmemiş gelecekteki saatleri bul
-        let futureTimes = dates.filter { $0 > current }
+         let futureTimes = dates.filter { $0 > current }
         
         // Eğer geçmemiş gelecekteki saatler varsa, en yakın olanı döndür
         if let closestFutureTime = futureTimes.min(by: { $0.timeIntervalSince(current) < $1.timeIntervalSince(current) }) {
             return closestFutureTime
         }
-        
-        print("dates \(dates.count)")
+         
         // Eğer geçmemiş gelecekteki bir saat bulunamazsa, listedeki en eski saat döndürülür
         return dates.min()
     }
-    
+    func findClosestDay(days: [Int], currentDay: Int, hours: [Date]) -> Int? {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+
+        let currentTime = formatter.string(from: now)
+ 
+        var isPassed = true
+        for i in hours {
+            guard let time1 = formatter.date(from: currentTime) else {
+                fatalError("Geçersiz zaman formatı: \(currentTime)")
+            }
+            
+            let aa = Calendar.current.date(byAdding: .hour, value: -3, to: i)
+            let ct = formatter.string(from: aa!)
+            print("CT \(ct)")
+            // İkinci zamanı oluştur
+            let timeString2 = ct
+            guard let time2 = formatter.date(from: timeString2) else {
+                fatalError("Geçersiz zaman formatı: \(timeString2)")
+            }
+            
+            
+            // Zamanları karşılaştır
+            if time1 > time2 {
+                print(" Simdiki zaman \(currentTime) ileride")
+            } else if time1 < time2 {
+                  isPassed = false
+                break
+                print("listedeki saat : \(timeString2) ileride")
+            } else {
+                print("İki zaman eşit")
+            }
+        }
+        
+        print(isPassed)
+     
+
+         
+ 
+        // Bugünden büyük olan günleri filtrele
+        if isPassed == true && days.count > 1 {
+            print("CUURDDAY \(currentDay)")
+            let largerDays = days.filter { $0 > currentDay }
+            if let nextDay = largerDays.min() {
+               return nextDay
+           } else {
+               // Eğer bugünden büyük gün yoksa, listedeki en küçük günü döndür
+               return days.min()
+           }
+        } else {
+            let largerDays = days.filter { $0 >= currentDay }
+            if let nextDay = largerDays.min() {
+               return nextDay
+            } else {
+                return days[0]
+            }
+            
+        }
+       
+        
+    }
+
+
+
+
+
     func findClosestDay(days: [Int], currentDay: Int) -> Int? {
         var closestDay: Int? = nil
-        
+       
         // Bugünden büyük olan günleri filtrele
         let largerDays = days.filter { $0 > self.currentDay }
         
@@ -262,4 +343,20 @@ class HomeViewModel {
         
         return closestDay
     }
+    
+   
+    func weekDay(from date: Date) -> Int {
+        let calendar = Calendar.current
+        var weekday = calendar.component(.weekday, from: date)
+        
+        // Haftanın ilk günü pazar ve 1 olarak kabul edilir
+        // Pazar = 1, Pazartesi = 2, ..., Cumartesi = 7
+        // Ancak iOS'in Calendar sınıfında Pazar = 1, Pazartesi = 2, ..., Cumartesi = 7 şeklindedir.
+        // Bu nedenle ek bir işlem gerekmez.
+        
+        // Ancak, haftanın ilk günü pazar olarak kabul edildiğinden ve Swift'te haftanın ilk günü pazar olduğunda bir
+        // değişiklik yapmaya gerek yoktur. Ama eğer ihtiyacımız olursa bu dönüşüm eklenebilir.
+        return weekday
+    }
+ 
 }

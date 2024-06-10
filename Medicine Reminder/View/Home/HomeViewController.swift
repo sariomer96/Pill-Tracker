@@ -20,11 +20,12 @@ class HomeViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         getReminders()
-     
-     //   homeViewModel.checkForPermission()
-  
     }
-
+    @IBAction func removeClicked(_ sender: Any) {
+        let context = getViewContext()
+        CoreDataManager.shared.removeAllData(context: context, reminder: homeViewModel.reminders)
+        tableView.reloadData()
+    }
     
     @IBAction func addMedicineClicked(_ sender: Any) {
         let storyBoardID = "MedicineViewController"
@@ -32,10 +33,10 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        getReminders()
  
         homeViewModel.checkForPermission()
         homeViewModel.configureCountDown { str in
+      
             self.tableView.reloadData()
         }
         for (index, i) in homeViewModel.countDownList.enumerated() {
@@ -50,8 +51,6 @@ class HomeViewController: BaseViewController {
                     let indexPathToRefresh = IndexPath(row: index, section: 0)
                     self.refreshSpecificCell(at: indexPathToRefresh)
                 }
-
-
             }
         }
        
@@ -95,7 +94,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as! RemindersTableViewCell
         cell.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
-     
+      
          let countDown = homeViewModel.countDownList[indexPath.row]
         
         
@@ -110,7 +109,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let reminder = homeViewModel.reminders[indexPath.row]
         delegateReminder?.getReminder(reminder: reminder)
-     //   edit.editReminderViewModel.setDate(days: reminder.days as! [Int], hours: reminder.hours as! [Date])
+     
         pushViewController(vc: edit)
     }
     

@@ -24,16 +24,14 @@ class TimeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-  
-       // let localDate = LocalTimeController.shared.getLocalTime(date: sender.date)
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) { 
         date = sender.date
         
     }
     
    
     func setDatePicker(date: Date) {
-       // datePicker.datePickerMode = .time
+ 
         if let correctedDate = Calendar.current.date(byAdding: .hour, value: -3, to: date) {
             datePicker.date = correctedDate
             self.date = correctedDate

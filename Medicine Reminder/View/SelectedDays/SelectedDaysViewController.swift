@@ -206,7 +206,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
        
         if indexPath.row == lastRowIndex-1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as! TimeTableViewCell
-                    
+            cell.tag = 1
             return cell
         } else {
             
@@ -230,8 +230,15 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
  
        // Bu metodla silme simgesini özelleştirebilirsiniz
        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+           let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
+           if lastRowIndex - 1 == indexPath.row {
+               return nil
+           }
            let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
                // Veriyi diziden kaldır
+               
+               
+              
                self.count -= 1
                // TableView'dan hücreyi kaldır
                print("COUNTTTTT \(self.count)")

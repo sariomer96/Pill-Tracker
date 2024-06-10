@@ -32,4 +32,16 @@ class CoreDataManager {
         }
     }
     
+    func removeAllData(context: NSManagedObjectContext, reminder: [Reminder])  {
+        do {
+            for i in reminder {
+                let delete: Void = try context.delete(i)
+               
+            }
+  
+        } catch {
+            fatalError("save failed")
+        }
+    }
+    
 }

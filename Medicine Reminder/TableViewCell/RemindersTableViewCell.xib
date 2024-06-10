@@ -25,13 +25,10 @@
                                 <rect key="frame" x="15.999999999999998" y="-1.7763568394002505e-15" width="20.333333333333329" height="19.666666666666664"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ILAC ADI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3Z-AS-Gsv">
-                                <rect key="frame" x="119" y="0.0" width="67" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TARIH  SAAT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-Xa-rOo">
-                                <rect key="frame" x="347" y="7" width="74" height="50"/>
+                                <rect key="frame" x="80" y="0.0" width="110" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="nPb-TH-PEL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,14 +39,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TARIH  SAAT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-Xa-rOo">
+                                <rect key="frame" x="8" y="29" width="424" height="84"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="r5R-dm-GP3" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" constant="16" id="9cZ-15-Bby"/>
-                            <constraint firstAttribute="trailing" secondItem="fYe-Xa-rOo" secondAttribute="trailing" constant="19" id="Feo-fb-QaY"/>
-                            <constraint firstItem="fYe-Xa-rOo" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" constant="7" id="JeC-hV-vfI"/>
-                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" id="MUB-Xd-Wz8"/>
-                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="leading" secondItem="r5R-dm-GP3" secondAttribute="trailing" constant="82.666666666666671" id="W0H-dF-d2I"/>
+                            <constraint firstAttribute="trailing" secondItem="fYe-Xa-rOo" secondAttribute="trailing" constant="8" id="Feo-fb-QaY"/>
+                            <constraint firstItem="fYe-Xa-rOo" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" constant="29" id="JeC-hV-vfI"/>
+                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" id="UEk-ZR-Xf5"/>
+                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="leading" secondItem="r5R-dm-GP3" secondAttribute="leading" constant="64" id="d5Y-W0-1VT"/>
                             <constraint firstItem="r5R-dm-GP3" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" constant="-0.3333333333333357" id="ekM-2I-c1E"/>
                             <constraint firstItem="iyx-vh-oXQ" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" constant="53" id="f2Q-x1-C9O"/>
                             <constraint firstAttribute="trailing" secondItem="iyx-vh-oXQ" secondAttribute="trailing" constant="87" id="jnd-Eq-GNQ"/>

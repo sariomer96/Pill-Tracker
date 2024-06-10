@@ -12,9 +12,10 @@ class RemindersTableViewCell: UITableViewCell {
     @IBOutlet weak var reminderDateLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     
+   
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+         
            
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,15 +41,23 @@ class RemindersTableViewCell: UITableViewCell {
      func updateLabel() {
          if let countdown = countdown {
           
-             remainingTimeLabel.text = String(format: "%02d Saat  %02d Dakika %02d Saniye" , countdown.hoursLeft, countdown.minutesLeft, countdown.secondsLeft)
+             remainingTimeLabel.text = String(format: "%0d Gun  %02d Saat  %02d Dakika %02d Saniye" , countdown.daysLeft, countdown.hoursLeft, countdown.minutesLeft, countdown.secondsLeft)
          }
      }
     
-    func updateDate(date: String) {
-        if let countdown = countdown {
+    func updateDate(date: String?) {
+        guard let countdown = countdown else {
+             return
+         }
          
-            reminderDateLabel.text = String(date)
-        }
+         guard let unwrappedDate = date else {
+             print("Date is nil")
+             return
+         }
+         
+         // Opsiyonel ibaresi olmadan doğrudan `unwrappedDate` kullanılır
+         reminderDateLabel.text = unwrappedDate
+         print("Updated date: \(unwrappedDate)")
     }
 
      override func prepareForReuse() {
