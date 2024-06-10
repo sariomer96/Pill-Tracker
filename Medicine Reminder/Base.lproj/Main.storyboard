@@ -169,70 +169,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ILAC TURU:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVl-fG-wDh">
-                                <rect key="frame" x="56" y="207" width="95" height="21"/>
+                                <rect key="frame" x="51" y="314" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KULLANIM SIKLIGI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJd-SK-oLu">
-                                <rect key="frame" x="131" y="278" width="152" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BU TARIHTE KALDIR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnp-ry-FcV">
-                                <rect key="frame" x="64" y="553" width="156.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-a9-NQJ">
-                                <rect key="frame" x="232.5" y="548" width="51" height="31"/>
-                                <connections>
-                                    <action selector="removeOnThisDaySwitchClicked:" destination="WjR-6Y-cTS" eventType="valueChanged" id="dyl-OG-DuK"/>
-                                </connections>
-                            </switch>
-                            <datePicker hidden="YES" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="GLg-lq-9fL">
-                                <rect key="frame" x="24" y="611" width="382" height="34.5"/>
-                                <locale key="locale" localeIdentifier="tr_TR"/>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HAFTANIN BELIRLI GUNLERI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPe-h7-h2n">
-                                <rect key="frame" x="64" y="344" width="218" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HER X SAATTE 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo0-Rd-G95">
-                                <rect key="frame" x="64" y="394" width="126" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wSc-ms-xtv">
-                                <rect key="frame" x="310" y="334" width="51" height="31"/>
-                                <connections>
-                                    <action selector="selectedDaysSwitchClicked:" destination="WjR-6Y-cTS" eventType="valueChanged" id="iiA-XV-Yvn"/>
-                                </connections>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JIJ-Nm-YMc">
-                                <rect key="frame" x="306" y="394" width="51" height="31"/>
-                                <connections>
-                                    <action selector="everyXHoursSwitchClicked:" destination="WjR-6Y-cTS" eventType="valueChanged" id="FKE-CR-Ihy"/>
-                                </connections>
-                            </switch>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPP-ij-ebM">
-                                <rect key="frame" x="177" y="748" width="62" height="26"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.86542111830000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="ILERI">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="nextClicked:" destination="WjR-6Y-cTS" eventType="touchUpInside" id="FPo-s2-pwK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XuH-QM-x2c">
-                                <rect key="frame" x="188" y="202" width="100" height="30"/>
+                                <rect key="frame" x="183" y="309" width="100" height="30"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="T78-oQ-LZg"/>
@@ -248,63 +191,53 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ILAC ADI: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCQ-OO-u2R">
-                                <rect key="frame" x="56" y="145" width="81" height="21"/>
+                                <rect key="frame" x="51" y="252" width="81" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qr8-D9-NyS">
-                                <rect key="frame" x="151" y="138" width="220" height="34"/>
+                                <rect key="frame" x="146" y="245" width="220" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="rF6-Lv-eL7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPP-ij-ebM">
+                                <rect key="frame" x="176" y="510" width="62" height="26"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.86542111830000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="ILERI">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextClicked:" destination="WjR-6Y-cTS" eventType="touchUpInside" id="FPo-s2-pwK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Dg-cK-FYz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XuH-QM-x2c" firstAttribute="leading" secondItem="VVl-fG-wDh" secondAttribute="trailing" constant="37" id="0oN-1n-Kaj"/>
                             <constraint firstItem="Qr8-D9-NyS" firstAttribute="leading" secondItem="JCQ-OO-u2R" secondAttribute="trailing" constant="14" id="2zF-35-Eef"/>
-                            <constraint firstItem="DPe-h7-h2n" firstAttribute="top" secondItem="XJd-SK-oLu" secondAttribute="bottom" constant="45" id="4fL-j1-OVp"/>
-                            <constraint firstItem="Qr8-D9-NyS" firstAttribute="top" secondItem="eiw-RY-8U5" secondAttribute="bottom" constant="46.5" id="6GI-Mq-rpq"/>
+                            <constraint firstItem="Qr8-D9-NyS" firstAttribute="top" secondItem="eiw-RY-8U5" secondAttribute="bottom" constant="153.5" id="6GI-Mq-rpq"/>
                             <constraint firstItem="VVl-fG-wDh" firstAttribute="leading" secondItem="JCQ-OO-u2R" secondAttribute="leading" id="7Qa-dT-HzL"/>
-                            <constraint firstItem="DPe-h7-h2n" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" constant="64" id="A2G-e1-d4R"/>
-                            <constraint firstItem="0Dg-cK-FYz" firstAttribute="trailing" secondItem="HPP-ij-ebM" secondAttribute="trailing" constant="175" id="BeO-Pw-tKS"/>
-                            <constraint firstItem="Xnp-ry-FcV" firstAttribute="top" secondItem="wij-vJ-USs" secondAttribute="top" constant="553" id="GHz-1M-csg"/>
-                            <constraint firstItem="wSc-ms-xtv" firstAttribute="leading" secondItem="DPe-h7-h2n" secondAttribute="trailing" constant="28" id="HwD-ZI-FV8"/>
+                            <constraint firstItem="0Dg-cK-FYz" firstAttribute="trailing" secondItem="HPP-ij-ebM" secondAttribute="trailing" constant="176" id="BeO-Pw-tKS"/>
                             <constraint firstItem="eiw-RY-8U5" firstAttribute="top" secondItem="0Dg-cK-FYz" secondAttribute="top" constant="16" id="IBP-os-vlY"/>
-                            <constraint firstItem="wSc-ms-xtv" firstAttribute="top" secondItem="XJd-SK-oLu" secondAttribute="bottom" constant="35" id="Jgp-Nr-R3m"/>
-                            <constraint firstItem="JCQ-OO-u2R" firstAttribute="top" secondItem="eiw-RY-8U5" secondAttribute="bottom" constant="53.5" id="NJY-jK-3sR"/>
+                            <constraint firstItem="JCQ-OO-u2R" firstAttribute="top" secondItem="eiw-RY-8U5" secondAttribute="bottom" constant="160.5" id="NJY-jK-3sR"/>
                             <constraint firstItem="eiw-RY-8U5" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" id="OZH-l5-iSg"/>
-                            <constraint firstItem="HPP-ij-ebM" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" constant="177" id="Qt7-7l-fQT"/>
-                            <constraint firstItem="JIJ-Nm-YMc" firstAttribute="top" secondItem="wSc-ms-xtv" secondAttribute="bottom" constant="29" id="UXg-eT-B4U"/>
+                            <constraint firstItem="HPP-ij-ebM" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" constant="176" id="Qt7-7l-fQT"/>
                             <constraint firstItem="0Dg-cK-FYz" firstAttribute="trailing" secondItem="eiw-RY-8U5" secondAttribute="trailing" id="WJL-33-Fb5"/>
-                            <constraint firstItem="XJd-SK-oLu" firstAttribute="top" secondItem="VVl-fG-wDh" secondAttribute="bottom" constant="50" id="WXc-hf-b4U"/>
-                            <constraint firstItem="JIJ-Nm-YMc" firstAttribute="leading" secondItem="Wo0-Rd-G95" secondAttribute="trailing" constant="116" id="Wbv-dr-kCj"/>
-                            <constraint firstItem="GLg-lq-9fL" firstAttribute="leading" secondItem="wij-vJ-USs" secondAttribute="leading" constant="24" id="WiN-ST-an2"/>
-                            <constraint firstItem="XJd-SK-oLu" firstAttribute="centerX" secondItem="wij-vJ-USs" secondAttribute="centerX" id="X9i-Wf-x6t"/>
-                            <constraint firstAttribute="trailing" secondItem="GLg-lq-9fL" secondAttribute="trailing" constant="8" id="XIa-7u-bHT"/>
                             <constraint firstItem="VVl-fG-wDh" firstAttribute="top" secondItem="JCQ-OO-u2R" secondAttribute="bottom" constant="41" id="YCN-dO-qeW"/>
-                            <constraint firstItem="JCQ-OO-u2R" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" constant="56" id="aca-UY-sXh"/>
-                            <constraint firstItem="hYX-a9-NQJ" firstAttribute="leading" secondItem="Xnp-ry-FcV" secondAttribute="trailing" constant="12" id="cLY-w7-iLd"/>
-                            <constraint firstItem="GLg-lq-9fL" firstAttribute="top" secondItem="Xnp-ry-FcV" secondAttribute="bottom" constant="37" id="cge-2R-joS"/>
+                            <constraint firstItem="JCQ-OO-u2R" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" constant="51" id="aca-UY-sXh"/>
                             <constraint firstItem="XuH-QM-x2c" firstAttribute="top" secondItem="Qr8-D9-NyS" secondAttribute="bottom" constant="30" id="erT-t3-zhM"/>
-                            <constraint firstItem="Wo0-Rd-G95" firstAttribute="leading" secondItem="0Dg-cK-FYz" secondAttribute="leading" constant="64" id="gC1-8Q-93e"/>
-                            <constraint firstItem="hYX-a9-NQJ" firstAttribute="top" secondItem="JIJ-Nm-YMc" secondAttribute="bottom" constant="123" id="hkZ-LH-xdG"/>
-                            <constraint firstItem="HPP-ij-ebM" firstAttribute="top" secondItem="GLg-lq-9fL" secondAttribute="bottom" constant="102.5" id="k8d-D6-sRj"/>
-                            <constraint firstItem="Xnp-ry-FcV" firstAttribute="leading" secondItem="VVl-fG-wDh" secondAttribute="leading" constant="8" id="oH1-FB-eQp"/>
-                            <constraint firstItem="Wo0-Rd-G95" firstAttribute="top" secondItem="DPe-h7-h2n" secondAttribute="bottom" constant="29" id="qsd-Uc-12d"/>
+                            <constraint firstItem="HPP-ij-ebM" firstAttribute="top" secondItem="VVl-fG-wDh" secondAttribute="bottom" constant="175" id="g2g-an-CcA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="everyXHoursSwitch" destination="JIJ-Nm-YMc" id="wuv-kJ-u0f"/>
                         <outlet property="medicNameTF" destination="Qr8-D9-NyS" id="8os-bE-Oxe"/>
                         <outlet property="medicTypesDropDownButton" destination="XuH-QM-x2c" id="RAI-9A-mKj"/>
-                        <outlet property="removeReminderDatePicker" destination="GLg-lq-9fL" id="7Kd-ml-2mC"/>
-                        <outlet property="removeReminderSwitch" destination="hYX-a9-NQJ" id="eNf-c5-pZ1"/>
-                        <outlet property="selectedDaysSwitch" destination="wSc-ms-xtv" id="rPC-3N-C4D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fJ-75-j8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

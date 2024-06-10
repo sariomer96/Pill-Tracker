@@ -20,15 +20,13 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
         medicName = reminderText
      
     }
-    @IBOutlet weak var selectedDaysSwitch: UISwitch!
     @IBOutlet weak var medicTypesDropDownButton: UIButton!
      
  
     @IBOutlet weak var medicNameTF: UITextField!
-    @IBOutlet weak var removeReminderSwitch: UISwitch!
+ 
     
-    @IBOutlet weak var removeReminderDatePicker: UIDatePicker!
-    @IBOutlet weak var everyXHoursSwitch: UISwitch!
+ 
     let reminderConfigViewModel = ReminderConfig()
     var sendReminderDelegate:ReminderData?
     override func viewDidLoad() {
@@ -43,63 +41,19 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     }
     override func viewWillAppear(_ animated: Bool) {
         medicNameTF.text = medicName
-    }
-   
-    @IBAction func selectedDaysSwitchClicked(_ sender: UISwitch) {
-        if sender.isOn == true {
-            everyXHoursSwitch.isOn = false
-        }
-        
-    }
-    
-    @IBAction func everyXHoursSwitchClicked(_ sender: UISwitch) {
-        if sender.isOn == true {
-            selectedDaysSwitch.isOn = false
-            
-        }
-    }
-    
-    @IBAction func removeOnThisDaySwitchClicked(_ sender: UISwitch) {
-        if sender.isOn == true {
-            removeReminderDatePicker.timeZone = TimeZone(identifier: "UTC")
-            removeReminderDatePicker.isHidden = false
-        } else {
-            removeReminderDatePicker.isHidden = true
-        }
-    }
-    
-   
+    } 
     @IBAction func nextClicked(_ sender: Any) {
-        if selectedDaysSwitch.isOn == true || everyXHoursSwitch.isOn == true {
-            guard let reminder = reminder else { return }
-            reminder.id = UUID()
-            reminder.name = medicNameTF.text
-            reminder.type = medicTypesDropDownButton.currentTitle
-            reminder.isDaySelected = selectedDaysSwitch.isOn
-           
-            
-            if removeReminderSwitch.isOn == true {
-                reminder.endDate = removeReminderDatePicker.date
-            }else {
-                reminder.endDate = nil
-            }
-            
-            
-            if selectedDaysSwitch.isOn == true {
-              let vc =  getViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController") as! SelectedDaysViewController
-                sendReminderDelegate = vc.selectedDaysViewModel.self
-                
-                sendReminderDelegate?.getReminder(reminder: reminder)
-               pushViewController(vc: vc)
-               // pushViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController")
-            } else if everyXHoursSwitch.isOn == true {
-                sendReminderDelegate = EveryXHourViewModel.shared.self
-                sendReminderDelegate?.getReminder(reminder: reminder)
-                pushViewController(param: EveryXHourViewController.self, vcIdentifier: "EveryXHourViewController")
-            }
-        } else {
-            alert(title: "EKSIK", message: "BIRINI SEC!")
-        }
+        guard let reminder = reminder else { return }
+        reminder.id = UUID()
+        reminder.name = medicNameTF.text
+        reminder.type = medicTypesDropDownButton.currentTitle
+        
+        let vc =  getViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController") as! SelectedDaysViewController
+          sendReminderDelegate = vc.selectedDaysViewModel.self
+          
+          sendReminderDelegate?.getReminder(reminder: reminder)
+         pushViewController(vc: vc)
+         
     }
      
     func showDropDown() {
