@@ -41,7 +41,7 @@ class RemindersTableViewCell: UITableViewCell {
      func updateLabel() {
          if let countdown = countdown {
           
-             remainingTimeLabel.text = String(format: "%0d Gun  %02d Saat  %02d Dakika %02d Saniye" , countdown.daysLeft, countdown.hoursLeft, countdown.minutesLeft, countdown.secondsLeft)
+             remainingTimeLabel.text = String(format: "%0d G %02d S %02d D %02d S" , countdown.dayss, countdown.hoursLeft, countdown.minutesLeft, countdown.secondsLeft)
          }
      }
     
@@ -57,7 +57,7 @@ class RemindersTableViewCell: UITableViewCell {
          
          // Opsiyonel ibaresi olmadan doğrudan `unwrappedDate` kullanılır
          reminderDateLabel.text = unwrappedDate
-         print("Updated date: \(unwrappedDate)")
+ 
     }
 
      override func prepareForReuse() {

@@ -22,6 +22,7 @@ class CountDown {
     var remainingSeconds: Int
     var date:Date?
     var day: Int
+    let currentDay = Calendar.current.component(.weekday, from: Date())
    // var remainingDay: Int
     var hoursLeft: Int {
          // return remainingSeconds / 3600
@@ -37,16 +38,7 @@ class CountDown {
           return remainingSeconds % 60
       }
 
-//    init(hours: Int, minutes: Int, seconds: Int, date:Date, day: Int, remainingDay: Int) {
-//          self.remainingSeconds = (hours * 3600) + (minutes * 60) + seconds
-//          self.hours = hours
-//          self.minutes = minutes
-//          self.seconds = seconds
-//          self.date = date
-//          self.day = day
-//          self.remainingDay = remainingDay
-//         
-//      }
+ 
     var daysLeft: Int {
          return remainingSeconds / 86400
      }
@@ -59,7 +51,7 @@ class CountDown {
 
         // Calculate the next occurrence of the given date's day and time
         var components = calendar.dateComponents([.weekday, .hour, .minute, .second], from: date)
-        components.second = 0
+    
 
         var nextDate = calendar.nextDate(after: n, matching: components, matchingPolicy: .nextTime)!
 
@@ -68,10 +60,14 @@ class CountDown {
             nextDate = calendar.date(byAdding: .weekOfYear, value: 1, to: nextDate)!
             
         }
-
+     
         let interval = nextDate.timeIntervalSince(n)
+        
+         
+        print("current \(currentDay)  \(dayIndex)")
         self.remainingSeconds = Int(interval)
-         self.dayss = remainingSeconds / 86400
+         self.dayss = abs(currentDay-dayIndex)
+        print(self.dayss)
          self.hours = (remainingSeconds % 86400) / 3600
          self.minutes = (remainingSeconds % 3600) / 60
          self.seconds = remainingSeconds % 60
@@ -99,7 +95,7 @@ class CountDown {
 
         let interval = nextDate.timeIntervalSince(n)
         self.remainingSeconds = Int(interval)
-         self.dayss = remainingSeconds / 86400
+        self.dayss = abs(currentDay-dayIndex)
          self.hours = (remainingSeconds % 86400) / 3600
          self.minutes = (remainingSeconds % 3600) / 60
          self.seconds = remainingSeconds % 60
@@ -110,8 +106,12 @@ class CountDown {
     
     func startCountdown( update: @escaping () -> Void ) {
            
-    
-            self.callBackDate?("\(days[day-1])  \(date!)")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        
+        guard let date = date else { return }
+        let dateStr = dateFormatter.string(from: date)
+            self.callBackDate?("\(days[day-1])  \(dateStr)")
         
            
            stopTimer()  // Önceki timer'ı durdur
