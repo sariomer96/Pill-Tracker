@@ -108,10 +108,13 @@ class CountDown {
            
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
-        
+       
         guard let date = date else { return }
-        let dateStr = dateFormatter.string(from: date)
-            self.callBackDate?("\(days[day-1])  \(dateStr)")
+        if let correctedDate = Calendar.current.date(byAdding: .hour, value: -3, to: date) {
+            let dateStr = dateFormatter.string(from: correctedDate)
+                self.callBackDate?("\(days[day-1])  \(dateStr)")
+        }
+      
         
            
            stopTimer()  // Önceki timer'ı durdur
