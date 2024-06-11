@@ -1,10 +1,4 @@
-//
-//  ReminderConfigViewController.swift
-//  Medicine Reminder
-//
-//  Created by Omer on 10.05.2024.
-//
-
+ 
 import UIKit
 import CoreData
 
@@ -21,8 +15,6 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
      
     }
     @IBOutlet weak var medicTypesDropDownButton: UIButton!
-     
- 
     @IBOutlet weak var medicNameTF: UITextField!
  
     
@@ -41,7 +33,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     }
     override func viewWillAppear(_ animated: Bool) {
         medicNameTF.text = medicName
-    } 
+    }
     @IBAction func nextClicked(_ sender: Any) {
         guard let reminder = reminder else { return }
         reminder.id = UUID()

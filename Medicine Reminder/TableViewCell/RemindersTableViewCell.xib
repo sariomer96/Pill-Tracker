@@ -23,8 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="188"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-dm-GP3">
-                                <rect key="frame" x="16" y="12.5" width="25.5" height="26.5"/>
-                                <imageReference key="image" image="pill" catalog="system" symbolScale="large"/>
+                                <rect key="frame" x="16" y="18" width="16" height="16"/>
+                                <imageReference key="image" image="pill" catalog="system" symbolScale="small"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyx-vh-oXQ">
                                 <rect key="frame" x="53" y="180" width="310" height="0.0"/>
@@ -70,6 +70,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="medicineNameLabel" destination="W3Z-AS-Gsv" id="2pw-ZM-u4a"/>
+                <outlet property="pillImageView" destination="r5R-dm-GP3" id="ilN-Ns-0hY"/>
                 <outlet property="remainingTimeLabel" destination="iyx-vh-oXQ" id="Rrb-Xb-97X"/>
                 <outlet property="reminderDateLabel" destination="fYe-Xa-rOo" id="p06-H7-8qL"/>
             </connections>

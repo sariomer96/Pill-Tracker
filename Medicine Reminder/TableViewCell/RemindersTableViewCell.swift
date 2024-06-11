@@ -12,12 +12,22 @@ class RemindersTableViewCell: UITableViewCell {
     @IBOutlet weak var reminderDateLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     
-   
+    @IBOutlet weak var pillImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
          
-           
+        pillImageView.image = UIImage(named: "pill")
+      
+        pillImageView.layer.borderColor = UIColor.black.cgColor
+        pillImageView.layer.borderWidth = 0.55
+                
+                // Kenarlıkları yuvarlama (isteğe bağlı)
+        pillImageView.layer.cornerRadius = 10.0
+        pillImageView.layer.masksToBounds = true
+ 
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
