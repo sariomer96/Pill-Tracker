@@ -19,33 +19,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZiC-Gn-wi1">
-                                <rect key="frame" x="16" y="212" width="382" height="450"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="4" y="166" width="406" height="581"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.97254901960784312" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Jt-hsz">
-                                <rect key="frame" x="208" y="714" width="64" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İLAÇLARIM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAX-JQ-t2I">
+                                <rect key="frame" x="127.5" y="114" width="159" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.36470588235294116" green="0.69019607843137254" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Jt-hsz">
+                                <rect key="frame" x="175" y="811" width="64" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="EKLE"/>
                                 <connections>
                                     <action selector="addMedicineClicked:" destination="Y9H-el-31d" eventType="touchUpInside" id="sVT-iS-Zv4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HATIRLATICILAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAX-JQ-t2I">
-                                <rect key="frame" x="134" y="114" width="159" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aav-T0-am2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.97254901960784312" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aav-T0-am2" firstAttribute="trailing" secondItem="ZiC-Gn-wi1" secondAttribute="trailing" constant="16" id="1sK-Gi-dWm"/>
-                            <constraint firstItem="aav-T0-am2" firstAttribute="bottom" secondItem="ZiC-Gn-wi1" secondAttribute="bottom" constant="200" id="5ak-af-Th4"/>
-                            <constraint firstItem="ZiC-Gn-wi1" firstAttribute="top" secondItem="aav-T0-am2" secondAttribute="top" constant="120" id="UMz-Xn-u31"/>
-                            <constraint firstItem="ZiC-Gn-wi1" firstAttribute="leading" secondItem="aav-T0-am2" secondAttribute="leading" constant="16" id="dKV-HX-imK"/>
+                            <constraint firstItem="tAX-JQ-t2I" firstAttribute="top" secondItem="aav-T0-am2" secondAttribute="top" constant="22" id="8e9-KZ-5Nb"/>
+                            <constraint firstItem="WOY-Jt-hsz" firstAttribute="top" secondItem="ZiC-Gn-wi1" secondAttribute="bottom" constant="64" id="Gxy-Pi-o0O"/>
+                            <constraint firstItem="ZiC-Gn-wi1" firstAttribute="leading" secondItem="aav-T0-am2" secondAttribute="leading" constant="4" id="Rkd-Me-FAR"/>
+                            <constraint firstItem="aav-T0-am2" firstAttribute="bottom" secondItem="WOY-Jt-hsz" secondAttribute="bottom" constant="16" id="b9S-fq-6iP"/>
+                            <constraint firstItem="ZiC-Gn-wi1" firstAttribute="top" secondItem="tAX-JQ-t2I" secondAttribute="bottom" constant="16" id="fZh-jS-gck"/>
+                            <constraint firstItem="WOY-Jt-hsz" firstAttribute="centerX" secondItem="wAe-Sy-DTr" secondAttribute="centerX" id="oRt-Dv-170"/>
+                            <constraint firstItem="aav-T0-am2" firstAttribute="trailing" secondItem="ZiC-Gn-wi1" secondAttribute="trailing" constant="4" id="rwa-n3-5aN"/>
+                            <constraint firstItem="tAX-JQ-t2I" firstAttribute="centerX" secondItem="wAe-Sy-DTr" secondAttribute="centerX" id="tSj-gw-eKx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="afi-s7-bdu"/>

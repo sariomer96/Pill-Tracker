@@ -127,7 +127,7 @@ class HomeViewModel {
                     let minuteInt = Int(minute)
                     
                     
-                    let title = "tTEST TITLE"
+                    let title = "Ilac Saati"
                     let body = reminder.name
                     
                     let isDaily = true

@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="1" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="W3Z-AS-Gsv" firstAttribute="centerY" secondItem="wvJ-y4-cVv" secondAttribute="centerY" constant="-8" id="4OY-Zp-bHM"/>
                             <constraint firstItem="r5R-dm-GP3" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" constant="16" id="9cZ-15-Bby"/>
@@ -60,6 +59,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.97647058819999999" green="1" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wvJ-y4-cVv" secondAttribute="bottom" id="6Xs-Jd-4W5"/>
                     <constraint firstAttribute="trailing" secondItem="wvJ-y4-cVv" secondAttribute="trailing" id="CRo-34-a6p"/>
@@ -79,8 +79,5 @@
     </objects>
     <resources>
         <image name="pill" catalog="system" width="128" height="123"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
