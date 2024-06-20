@@ -16,6 +16,7 @@
 		1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A2792BE67DFB0027261E /* DataLoader.swift */; };
 		1715A27E2BE688A10027261E /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A27D2BE688A10027261E /* DataTableViewCell.swift */; };
 		1715A2802BE6AAD60027261E /* medicDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 1715A27F2BE6AAD60027261E /* medicDB.json */; };
+		1784D5092C24563700219817 /* UiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784D5082C24563700219817 /* UiTabBarController.swift */; };
 		179203382C07CE7F0020A5F0 /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */; };
 		1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203392C07CF170020A5F0 /* EditReminderViewModel.swift */; };
 		17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */; };
@@ -53,6 +54,7 @@
 		1715A2792BE67DFB0027261E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		1715A27D2BE688A10027261E /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		1715A27F2BE6AAD60027261E /* medicDB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medicDB.json; sourceTree = "<group>"; };
+		1784D5082C24563700219817 /* UiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTabBarController.swift; sourceTree = "<group>"; };
 		179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
 		179203392C07CF170020A5F0 /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
 		17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				17B672542BF0108D000AE494 /* CoreDataManager.swift */,
 				17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */,
 				17B672602BF9E81B000AE494 /* CountDown.swift */,
+				1784D5082C24563700219817 /* UiTabBarController.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */,
+				1784D5092C24563700219817 /* UiTabBarController.swift in Sources */,
 				17CD06632BE966540000796D /* Enums.swift in Sources */,
 				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				17B784E72BECFE3100231FC4 /* MedicineViewModel.swift in Sources */,

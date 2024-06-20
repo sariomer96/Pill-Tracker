@@ -10,6 +10,7 @@ import UIKit
 class TimeTableViewCell: UITableViewCell {
 
    
+    @IBOutlet weak var addLabel: UILabel!
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -17,6 +18,7 @@ class TimeTableViewCell: UITableViewCell {
     var date = Date()
     override func awakeFromNib() {
         super.awakeFromNib()
+ 
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

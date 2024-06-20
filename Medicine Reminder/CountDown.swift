@@ -102,12 +102,12 @@ class CountDown {
     func startCountdown( update: @escaping () -> Void ) {
            
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "HH:mm"
        
         guard let date = date else { return }
         if let correctedDate = Calendar.current.date(byAdding: .hour, value: -3, to: date) {
             let dateStr = dateFormatter.string(from: correctedDate)
-                self.callBackDate?("\(days[day-1])  \(dateStr)")
+                self.callBackDate?("\(days[day-1])\n \(dateStr)")
         }
       
         

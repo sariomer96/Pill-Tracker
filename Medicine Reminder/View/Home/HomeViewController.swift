@@ -10,16 +10,23 @@ import CoreData
  
 
 class HomeViewController: BaseViewController {
+    @IBOutlet weak var addMedicineButton: UIButton!
     let homeViewModel = HomeViewModel()
     var delegateReminder: ReminderData?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        self.tableView.register(UINib(nibName: "RemindersTableViewCell", bundle: nil), forCellReuseIdentifier: "RemindersTableViewCell")
+        navigationItem.hidesBackButton = true
+        //navigationController?.navigationBar.isHidden = true
+        addMedicineButton.layer.cornerRadius = 25
+        addMedicineButton.layer.masksToBounds = true
+      
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        getReminders()
+   
+        
+        
     }
    
     
@@ -29,7 +36,9 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
- 
+        self.tableView.register(UINib(nibName: "RemindersTableViewCell", bundle: nil), forCellReuseIdentifier: "RemindersTableViewCell")
+        getReminders()
+        print("calistiffg")
         homeViewModel.checkForPermission()
         homeViewModel.configureCountDown { str in
       
@@ -39,7 +48,7 @@ class HomeViewController: BaseViewController {
         for (index, i) in homeViewModel.countDownList.enumerated() {
             i.callBack = { [weak self] str in
                 guard let self = self else { return }
-                print(str)
+              
                 let reminder = self.homeViewModel.reminders[index]
              
                 let indexPathToRefresh = IndexPath(row: index, section: 0)
@@ -65,7 +74,7 @@ class HomeViewController: BaseViewController {
     }
 
     func getReminders() {
-        
+        print("getreminder")
          let context = getViewContext()
           homeViewModel.fetchReminders(context: context)
          
@@ -89,9 +98,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if homeViewModel.countDownList.count == 0 || homeViewModel.reminders.count == 0 {
             return RemindersTableViewCell()
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as! RemindersTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as? RemindersTableViewCell
+        guard let cell = cell else { return RemindersTableViewCell()}
         cell.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
-      
+        print("indexpayh \(indexPath.row)   countdowndlisrt \(homeViewModel.countDownList.count)")
          let countDown = homeViewModel.countDownList[indexPath.row]
         
         
@@ -139,4 +149,32 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return [deleteAction]
     }
      
+}
+
+
+ 
+
+extension HomeViewController: UITabBarControllerDelegate {
+
+  
+    
+    // UITabBarControllerDelegate metodu
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print("clickk")
+    }
+    
+    // Tıklanan tab için bir fonksiyon
+    func tabSelected(at index: Int) {
+        switch index {
+        case 0:
+            print("First tab selected")
+            // İlk tab seçildiğinde yapılacak işlemler
+        case 1:
+            print("Second tab selected")
+            // İkinci tab seçildiğinde yapılacak işlemler
+        // Diğer tab'lar için ek case'ler ekleyebilirsiniz
+        default:
+            break
+        }
+    }
 }

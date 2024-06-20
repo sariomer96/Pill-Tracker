@@ -15,7 +15,7 @@ import UIKit
          }
    
          
-         self.navigationController?.pushViewController(vc, animated: true)
+         self.navigationController!.pushViewController(vc, animated: true)
      }
      
      func getViewController<T: UIViewController>(param: T.Type, vcIdentifier: String ) -> UIViewController {
@@ -27,7 +27,7 @@ import UIKit
      }
      
      func pushViewController(vc: UIViewController) {
-         self.navigationController?.pushViewController(vc, animated: true)
+         self.navigationController!.pushViewController(vc, animated: true)
      }
 
     func refresh() {}

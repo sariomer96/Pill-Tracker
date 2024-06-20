@@ -116,6 +116,7 @@ class SelectedDaysViewController: BaseViewController {
             let hours = getHoursOfReminder()
             setReminder(hours: hours)
             saveDB()
+            
             pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
         } else {
             alert(title: "Uyari", message: "Lutfen saat ve gun bilgisi ekleyin")
@@ -142,13 +143,16 @@ class SelectedDaysViewController: BaseViewController {
     
         button.isSelected = !button.isSelected
         if button.isSelected == true {
-            button.backgroundColor = .green
-           
+            let green = UIColor(hexaString: "#5DB075")
+             
+           // button.backgroundColor = green
+            button.backgroundColor = green
+             
             addSelectedDays(tag: button.tag)
         
         } else {
             print("else")
-            button.backgroundColor = nil
+            button.backgroundColor = .lightGray
             removeDay(tag: button.tag)
         }
     }
@@ -233,17 +237,14 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
                return nil
            }
            let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
-               // Veriyi diziden kaldır
+            
                
                
               
                self.count -= 1
-               // TableView'dan hücreyi kaldır
-               print("COUNTTTTT \(self.count)")
                self.tableViewCell.remove(at: indexPath.row)
                tableView.deleteRows(at: [indexPath], with: .automatic)
-              
-               print("DATE  \(self.tableViewCell.count)")
+               
                
            }
            return [deleteAction]
@@ -263,3 +264,13 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
     
     
 }
+
+extension UIColor {
+    convenience init(hexaString: String, alpha: CGFloat = 1) {
+        let chars = Array(hexaString.dropFirst())
+        self.init(red:   .init(strtoul(String(chars[0...1]),nil,16))/255,
+                  green: .init(strtoul(String(chars[2...3]),nil,16))/255,
+                  blue:  .init(strtoul(String(chars[4...5]),nil,16))/255,
+                  alpha: alpha)}
+}
+

@@ -8,10 +8,11 @@ class RemindersTableViewCell: UITableViewCell {
     var countdown: CountDown?
     var displayLink: CADisplayLink?
 
+    @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var medicineNameLabel: UILabel!
     @IBOutlet weak var reminderDateLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
-    
+    var thresholdTime = 60
     @IBOutlet weak var pillImageView: UIImageView!
     var totalTime = 0
     var isTotal = false
@@ -29,6 +30,12 @@ class RemindersTableViewCell: UITableViewCell {
         
         remainingTimeLabel.layer.cornerRadius = 10.0
         remainingTimeLabel.layer.masksToBounds = true
+        
+        dateView.layer.cornerRadius = 10.0
+        dateView.layer.masksToBounds = true
+        dateView.layer.borderColor = UIColor.black.cgColor
+        dateView.layer.borderWidth = 0.5
+        
  
     }
     
@@ -51,7 +58,7 @@ class RemindersTableViewCell: UITableViewCell {
                 }
                 self?.isTotal = true
                self?.updateLabel()
-                self?.updateBackgroundColor(currentTime: countdown.remainingSeconds)
+                self?.updateBackgroundColor(currentTime: countdown.remainingSeconds - self!.thresholdTime)
             }
         } 
      }

@@ -47,7 +47,8 @@ class MedicineViewController: BaseViewController{
         delegate?.configure(with: name)
      }
     @IBAction func addMedicineClicked(_ sender: Any) {
-       
+          
+        
         pushViewController(param: ReminderConfigViewController.self, vcIdentifier: "ReminderConfigViewController")
     }
 

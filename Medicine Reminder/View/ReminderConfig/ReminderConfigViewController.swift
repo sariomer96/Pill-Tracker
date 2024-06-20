@@ -18,11 +18,15 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
     @IBOutlet weak var medicNameTF: UITextField!
  
     
- 
+    @IBOutlet weak var addButton: UIButton!
+    
     let reminderConfigViewModel = ReminderConfig()
     var sendReminderDelegate:ReminderData?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addButton.layer.cornerRadius = 25.0
+        addButton.layer.masksToBounds = true
         showDropDown()
         let appdel = UIApplication.shared.delegate as! AppDelegate
         var context = appdel.persistentContainer.viewContext

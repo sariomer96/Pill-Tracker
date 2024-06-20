@@ -11,51 +11,69 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RemindersTableViewCell" rowHeight="188" id="KGk-i7-Jjw" customClass="RemindersTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="450" height="188"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RemindersTableViewCell" rowHeight="50" id="KGk-i7-Jjw" customClass="RemindersTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="241"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="450" height="188"/>
+                <rect key="frame" x="0.0" y="0.0" width="450" height="241"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvJ-y4-cVv">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="188"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="241"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-dm-GP3">
-                                <rect key="frame" x="16" y="18" width="16" height="16"/>
-                                <imageReference key="image" image="pill" catalog="system" symbolScale="small"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-dm-GP3">
+                                <rect key="frame" x="8" y="12.5" width="50" height="56.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JKN-80-8Ac"/>
+                                    <constraint firstAttribute="height" constant="50" id="aSc-Jc-vzK"/>
+                                </constraints>
+                                <imageReference key="image" image="pill" catalog="system" symbolScale="large"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyx-vh-oXQ">
-                                <rect key="frame" x="53" y="180" width="310" height="0.0"/>
+                                <rect key="frame" x="53" y="233" width="310" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="ILAC ADI'" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3Z-AS-Gsv">
+                                <rect key="frame" x="74" y="16" width="291" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="TARIH  SAAT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-Xa-rOo">
-                                <rect key="frame" x="238" y="-1" width="202" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ILAC ADI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3Z-AS-Gsv">
-                                <rect key="frame" x="0.0" y="75.5" width="450" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-bc-SnY">
+                                <rect key="frame" x="373" y="16" width="69" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="TARIH  SAAT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-Xa-rOo">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85490196078431369" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fYe-Xa-rOo" firstAttribute="leading" secondItem="r4l-bc-SnY" secondAttribute="leading" id="1BT-uI-oGz"/>
+                                    <constraint firstAttribute="height" constant="35" id="D3V-yB-m1f"/>
+                                    <constraint firstItem="fYe-Xa-rOo" firstAttribute="top" secondItem="r4l-bc-SnY" secondAttribute="top" id="ZEZ-pC-5gd"/>
+                                    <constraint firstAttribute="trailing" secondItem="fYe-Xa-rOo" secondAttribute="trailing" id="fXy-V8-w8A"/>
+                                    <constraint firstAttribute="bottom" secondItem="fYe-Xa-rOo" secondAttribute="bottom" id="pYs-zw-9Iy"/>
+                                    <constraint firstAttribute="width" constant="69" id="wpF-6F-VEc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="1" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="centerY" secondItem="wvJ-y4-cVv" secondAttribute="centerY" constant="-8" id="4OY-Zp-bHM"/>
-                            <constraint firstItem="r5R-dm-GP3" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" constant="16" id="9cZ-15-Bby"/>
-                            <constraint firstAttribute="trailing" secondItem="fYe-Xa-rOo" secondAttribute="trailing" id="BHg-km-N0f"/>
-                            <constraint firstAttribute="trailing" secondItem="W3Z-AS-Gsv" secondAttribute="trailing" id="DS9-x5-MeN"/>
-                            <constraint firstItem="fYe-Xa-rOo" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" constant="8" id="XGC-ef-QpF"/>
-                            <constraint firstItem="r5R-dm-GP3" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" constant="16" id="ekM-2I-c1E"/>
+                            <constraint firstItem="r5R-dm-GP3" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" constant="8" id="4v7-aQ-Hou"/>
+                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="top" secondItem="r5R-dm-GP3" secondAttribute="top" id="7Xl-Iy-ncO"/>
+                            <constraint firstItem="r4l-bc-SnY" firstAttribute="leading" secondItem="W3Z-AS-Gsv" secondAttribute="trailing" constant="8" id="BWb-Uz-P9B"/>
+                            <constraint firstAttribute="trailing" secondItem="r4l-bc-SnY" secondAttribute="trailing" constant="8" id="D9l-5M-sgR"/>
+                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="leading" secondItem="r5R-dm-GP3" secondAttribute="trailing" constant="16" id="dgE-HF-4Gw"/>
                             <constraint firstItem="iyx-vh-oXQ" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" constant="53" id="f2Q-x1-C9O"/>
                             <constraint firstAttribute="trailing" secondItem="iyx-vh-oXQ" secondAttribute="trailing" constant="87" id="jnd-Eq-GNQ"/>
                             <constraint firstAttribute="bottom" secondItem="iyx-vh-oXQ" secondAttribute="bottom" constant="8" id="kQq-az-jxf"/>
-                            <constraint firstItem="W3Z-AS-Gsv" firstAttribute="leading" secondItem="wvJ-y4-cVv" secondAttribute="leading" id="skS-j6-x5k"/>
+                            <constraint firstItem="r5R-dm-GP3" firstAttribute="top" secondItem="wvJ-y4-cVv" secondAttribute="top" constant="16" id="v2g-RT-K1X"/>
+                            <constraint firstItem="r4l-bc-SnY" firstAttribute="top" secondItem="W3Z-AS-Gsv" secondAttribute="top" id="xVl-8b-l7p"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,12 +87,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateView" destination="r4l-bc-SnY" id="gzD-DS-YTf"/>
                 <outlet property="medicineNameLabel" destination="W3Z-AS-Gsv" id="2pw-ZM-u4a"/>
                 <outlet property="pillImageView" destination="r5R-dm-GP3" id="ilN-Ns-0hY"/>
                 <outlet property="remainingTimeLabel" destination="iyx-vh-oXQ" id="Rrb-Xb-97X"/>
                 <outlet property="reminderDateLabel" destination="fYe-Xa-rOo" id="p06-H7-8qL"/>
             </connections>
-            <point key="canvasLocation" x="174.04580152671755" y="17.605633802816904"/>
+            <point key="canvasLocation" x="173.91304347826087" y="35.15625"/>
         </tableViewCell>
     </objects>
     <resources>

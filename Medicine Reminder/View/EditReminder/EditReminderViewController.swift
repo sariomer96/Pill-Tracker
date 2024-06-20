@@ -10,11 +10,14 @@ import UIKit
 class EditReminderViewController: SelectedDaysViewController {
  
     
+    @IBOutlet weak var saveButton: UIButton!
     let editReminderViewModel = EditReminderViewModel()
     var isSaved = false
     override func viewDidLoad() {
         super.viewDidLoad()
           
+        saveButton.layer.masksToBounds = true
+        saveButton.layer.cornerRadius = 25
         self.navigationController?.delegate = self
 
         let backButton = UIButton(type: .system)
