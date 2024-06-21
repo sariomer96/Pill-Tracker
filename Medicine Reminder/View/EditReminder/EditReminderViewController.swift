@@ -11,7 +11,7 @@ protocol ReminderGetData {
 }
 
 class EditReminderViewController: SelectedDaysViewController {
- 
+    
     @IBOutlet weak var medicineNameLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
@@ -26,22 +26,22 @@ class EditReminderViewController: SelectedDaysViewController {
         saveButton.layer.masksToBounds = true
         saveButton.layer.cornerRadius = 25
         self.navigationController?.delegate = self
-
+        
         let backButton = UIButton(type: .system)
-               backButton.setTitle("< Back", for: .normal)
-               backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-               backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-                
-               let backBarButtonItem = UIBarButtonItem(customView: backButton)
-               self.navigationItem.leftBarButtonItem = backBarButtonItem
-
+        backButton.setTitle("< Back", for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        let backBarButtonItem = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBarButtonItem
+        
         addTagToDayButtons()
         addTargetToDayButtons()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.reloadData()
-          
+        
         editReminderViewModel.callBackMaxLimit = { [weak self] indexpath in
             guard let self = self else { return }
             let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
@@ -55,7 +55,7 @@ class EditReminderViewController: SelectedDaysViewController {
             guard let self = self else { return }
             addNewTime(tableView: tableView, indexPath: indexpath)
         }
-         
+        
         // Do any additional setup after loading the view.
     }
     
@@ -75,12 +75,12 @@ class EditReminderViewController: SelectedDaysViewController {
             // Uyarıyı göster
             present(alertController, animated: true, completion: nil)
         }
-       
-     }
-     
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         isSaved = false
-
+        
         if let reminderDay = editReminderViewModel.reminderModel?.days, let reminderHour =
             editReminderViewModel.reminderModel?.hours{
             print("enable")
@@ -88,8 +88,8 @@ class EditReminderViewController: SelectedDaysViewController {
             setHourCount(hours: reminderHour)
             medicineNameLabel.text = editReminderViewModel.reminder?.name
         }
-     
-      
+        
+        
     }
     func setEnableDays(days: [Int]) {
         for day in days {
@@ -102,28 +102,26 @@ class EditReminderViewController: SelectedDaysViewController {
     }
     func setHourCount(hours: [Date]) {
         print("hours \(hours.count) currentcount \(count)")
-       self.count += hours.count
-
+        self.count += hours.count
+        
         for i in hours {
             tableViewCell.append(TimeTableViewCell())
-             
+            
         }
         
     }
-     
+    
     
     override func setReminder(hours: [Date]) {
- 
+        
         editReminderViewModel.setReminder(days: days, hours: hours)
     }
     override func saveDB() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-         let context = appDelegate.persistentContainer.viewContext
+        let context = appDelegate.persistentContainer.viewContext
         CoreDataManager.shared.saveData(context: context)
         isSaved = true
     }
-    
-
 }
 
 extension EditReminderViewController {
