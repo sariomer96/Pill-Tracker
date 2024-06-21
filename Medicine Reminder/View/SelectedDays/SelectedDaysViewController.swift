@@ -230,6 +230,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          
+        
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
           
          

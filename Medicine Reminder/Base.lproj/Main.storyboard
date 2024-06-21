@@ -83,14 +83,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yC4-Ed-DEA" customClass="DataTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yC4-Ed-DEA" id="A5Y-Ql-J87">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYt-eI-Tf2">
-                                                    <rect key="frame" x="20" y="11" width="334" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -391,7 +391,7 @@
                                 <rect key="frame" x="16" y="280.5" width="382" height="402.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="hak-Gm-hUm" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" focusStyle="custom" id="hak-Gm-hUm" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hak-Gm-hUm" id="l5h-Et-EQn">
@@ -414,12 +414,12 @@
                                                 <constraint firstItem="cWh-iW-3VC" firstAttribute="centerX" secondItem="l5h-Et-EQn" secondAttribute="centerX" id="iev-Q5-Ehv"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.97254901959999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="datePicker" destination="cWh-iW-3VC" id="gCK-U8-LlG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="foN-Pv-V63" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="foN-Pv-V63" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="foN-Pv-V63" id="5xv-uM-1ZG">
@@ -439,7 +439,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="AOp-73-NDF" secondAttribute="trailing" id="Ujy-se-uj4"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.97254901959999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -704,11 +704,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-jm-m2Z">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-jm-m2Z">
                                 <rect key="frame" x="16" y="271" width="382" height="412"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="Uu9-gX-lpG" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="Uu9-gX-lpG" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uu9-gX-lpG" id="USj-0i-baw">
@@ -716,7 +716,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qr1-3G-tM0">
-                                                    <rect key="frame" x="145" y="0.0" width="77" height="50"/>
+                                                    <rect key="frame" x="155" y="7" width="72" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="72" id="Fe0-Ad-5eV"/>
+                                                    </constraints>
                                                     <locale key="locale" localeIdentifier="tr_TR"/>
                                                     <connections>
                                                         <action selector="datePickerChanged:" destination="Uu9-gX-lpG" eventType="valueChanged" id="OmX-Hq-2mh"/>
@@ -724,10 +727,8 @@
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="centerX" secondItem="USj-0i-baw" secondAttribute="centerX" constant="-7.5" id="0gt-um-Zuq"/>
-                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="leading" secondItem="USj-0i-baw" secondAttribute="leading" constant="145" id="9tc-th-uvr"/>
-                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="top" secondItem="USj-0i-baw" secondAttribute="top" id="IIF-ZZ-8oP"/>
-                                                <constraint firstAttribute="bottom" secondItem="Qr1-3G-tM0" secondAttribute="bottom" id="qSP-W4-AsK"/>
+                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="centerX" secondItem="USj-0i-baw" secondAttribute="centerX" id="0gt-um-Zuq"/>
+                                                <constraint firstItem="Qr1-3G-tM0" firstAttribute="centerY" secondItem="USj-0i-baw" secondAttribute="centerY" id="rOH-Mg-TrT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -735,7 +736,7 @@
                                             <outlet property="datePicker" destination="Qr1-3G-tM0" id="5OH-3T-cgy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="bLG-a9-mHq" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="bLG-a9-mHq" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bLG-a9-mHq" id="Cib-MI-Bg6">
