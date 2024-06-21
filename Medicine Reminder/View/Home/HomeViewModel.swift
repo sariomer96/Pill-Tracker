@@ -21,12 +21,10 @@ class HomeViewModel {
         do {
             try fetchedResultsController.performFetch()
                 if let fetchedObjects = fetchedResultsController.fetchedObjects {
-                    // fetchedObjects sadece kaydedilen veriyi içerecektir
+            
                      reminders = fetchedObjects
                     
                 }
-             
-             
              
         } catch {
             print("Error fetching reminders: \(error.localizedDescription)")
@@ -41,10 +39,10 @@ class HomeViewModel {
         if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
             let index =  weekDay(from: closestDate)
            
-        
-            let countDown = CountDown(date: closestDate, dayIndex: index)
+            let days = reminder.days as! [Int]
+            let countDown = CountDown(date: closestDate, dayIndex: index, dayCount: days.count)
           
-            countDownList[countDownIndex].setInit(date: closestDate, dayIndex: index)
+            countDownList[countDownIndex].setInit(date: closestDate, dayIndex: index, dayCount: days.count)
          
             }
          else {
@@ -57,11 +55,9 @@ class HomeViewModel {
          
         countDownList.removeAll()
         for reminder in reminders {
- 
-            print("ReminderDay \(reminder.days)")
-            print("ReminderHour \(reminder.hours)")
+  
             guard let days = reminder.days as? [Int] , let hours = reminder.hours as? [Date] else { return }
-            var closestDay = findClosestDay(days: days  , currentDay: currentDay, hours: hours )
+            let closestDay = findClosestDay(days: days  , currentDay: currentDay, hours: hours )
              
               
             let localDate = getLocalDate(date: Date())
@@ -74,8 +70,8 @@ class HomeViewModel {
                
                 //MARK: FIND DIFFERENCE
                 
-                
-                var countDown = CountDown(date: closestDate, dayIndex: closestDay ?? 1)
+                var days = reminder.days as! [Int]
+                var countDown = CountDown(date: closestDate, dayIndex: closestDay ?? 1, dayCount: days.count)
                 print("append \(reminder)")
                 countDownList.append(countDown)
 //
@@ -87,9 +83,7 @@ class HomeViewModel {
         }
         
     }
- 
-    
-    func getLocalDate(date: Date) -> Date {
+  func getLocalDate(date: Date) -> Date {
         let localTimeZone = TimeZone.current
         let secondsFromGMT = localTimeZone.secondsFromGMT(for: date)
         let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: date)
@@ -102,6 +96,7 @@ class HomeViewModel {
             case .notDetermined:
                 notificationCenter.requestAuthorization(options: [.alert, .sound]) { didAllow, error in
                     if didAllow {
+                        print("work")
                         self.dispatchNotification()
                         
                     }
@@ -123,7 +118,7 @@ class HomeViewModel {
         for reminder in reminders {
             let days = reminder.days as? [Int]
             guard let days = days else {continue}
-            //print("REM \(i)")
+            
             for day in days{
                 for hour in reminder.hours as! [Date] {
                     

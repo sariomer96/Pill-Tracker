@@ -17,6 +17,7 @@ class CountDown {
     var remainingSeconds: Int
     var date:Date?
     var day: Int
+    
     let currentDay = Calendar.current.component(.weekday, from: Date())
    // var remainingDay: Int
     var hoursLeft: Int {
@@ -39,58 +40,56 @@ class CountDown {
      }
     
     var dayss: Int
-    init(date: Date, dayIndex: Int) {
+    init(date: Date, dayIndex: Int, dayCount: Int) {
+ 
         let now = Date()
         let  n =    LocalTimeController.shared.getLocalTime(date: now)
         let calendar = Calendar.current
-
-        // Calculate the next occurrence of the given date's day and time
-        var components = calendar.dateComponents([.weekday, .hour, .minute, .second], from: date)
-    
-
-        var nextDate = calendar.nextDate(after: n, matching: components, matchingPolicy: .nextTime)!
-
-        // If the next occurrence is in the past for today, adjust to the next week
-        if nextDate < n {
-            nextDate = calendar.date(byAdding: .weekOfYear, value: 1, to: nextDate)!
-            
-        }
-     
-        let interval = nextDate.timeIntervalSince(n)
-        
+       let totalSeconds = LocalTimeController.shared.getTotalSeconds(currentDate: n, targetDate: date)
+       
          
-        print("current \(currentDay)  \(dayIndex)")
-        self.remainingSeconds = Int(interval)
-         self.dayss = abs(currentDay-dayIndex)
-        print(self.dayss)
-         self.hours = (remainingSeconds % 86400) / 3600
-         self.minutes = (remainingSeconds % 3600) / 60
-         self.seconds = remainingSeconds % 60
-         self.date = date
-         self.day = dayIndex
+        let currentDay = Calendar.current.component(.weekday, from: Date())
+       
+        var remainingDay = abs(dayIndex - currentDay )
+      //  self.remainingSeconds = Int(interval)
+        if dayCount == 1 && n > date {
+            remainingDay = 6
+        }
         
+  
+        print("dayind \(dayIndex)  curr \(currentDay)")
+        
+        self.dayss = remainingDay
+        
+       
+         self.remainingSeconds = totalSeconds
+        self.hours = (remainingSeconds % 86400) / 3600
+        self.minutes = (remainingSeconds % 3600) / 60
+        self.seconds = remainingSeconds % 60
+        self.date = date
+        self.day = dayIndex
+     
      }
     
-    func setInit(date: Date, dayIndex: Int) {
+    func setInit(date: Date, dayIndex: Int, dayCount: Int) {
         let now = Date()
         let  n =    LocalTimeController.shared.getLocalTime(date: now)
         let calendar = Calendar.current
 
-        // Calculate the next occurrence of the given date's day and time
-        var components = calendar.dateComponents([.weekday, .hour, .minute, .second], from: date)
-        components.second = 0
-
-        var nextDate = calendar.nextDate(after: n, matching: components, matchingPolicy: .nextTime)!
-
-        // If the next occurrence is in the past for today, adjust to the next week
-        if nextDate < n {
-            nextDate = calendar.date(byAdding: .weekOfYear, value: 1, to: nextDate)!
-            
+        
+       let totalSeconds = LocalTimeController.shared.getTotalSeconds(currentDate: n, targetDate: date)
+       
+        
+        let currentDay = Calendar.current.component(.weekday, from: Date())
+       
+        var remainingDay = abs(dayIndex - currentDay )
+      //  self.remainingSeconds = Int(interval)
+        if dayCount == 1 && n > date {
+            remainingDay = 6
         }
-
-        let interval = nextDate.timeIntervalSince(n)
-        self.remainingSeconds = Int(interval)
-        self.dayss = abs(currentDay-dayIndex)
+         self.remainingSeconds = totalSeconds
+    
+        self.dayss = remainingDay
          self.hours = (remainingSeconds % 86400) / 3600
          self.minutes = (remainingSeconds % 3600) / 60
          self.seconds = remainingSeconds % 60
@@ -98,7 +97,7 @@ class CountDown {
          self.day = dayIndex
     }
  
-    
+  
     func startCountdown( update: @escaping () -> Void ) {
            
         let dateFormatter = DateFormatter()
@@ -109,9 +108,6 @@ class CountDown {
             let dateStr = dateFormatter.string(from: correctedDate)
                 self.callBackDate?("\(days[day-1])\n \(dateStr)")
         }
-      
-        
-           
            stopTimer()  // Önceki timer'ı durdur
                  
                 timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in

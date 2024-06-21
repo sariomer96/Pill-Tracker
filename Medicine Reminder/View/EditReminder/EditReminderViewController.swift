@@ -12,13 +12,17 @@ protocol ReminderGetData {
 
 class EditReminderViewController: SelectedDaysViewController {
  
+    @IBOutlet weak var medicineNameLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
     let editReminderViewModel = EditReminderViewModel()
     var isSaved = false
     override func viewDidLoad() {
         super.viewDidLoad()
-          
+        medicineNameLabel.layer.masksToBounds = true
+        medicineNameLabel.layer.cornerRadius = 15
+        medicineNameLabel.layer.borderColor = UIColor.green.cgColor
+        medicineNameLabel.layer.borderWidth = 1.0
         saveButton.layer.masksToBounds = true
         saveButton.layer.cornerRadius = 25
         self.navigationController?.delegate = self
@@ -82,6 +86,7 @@ class EditReminderViewController: SelectedDaysViewController {
             print("enable")
             setEnableDays(days: reminderDay )
             setHourCount(hours: reminderHour)
+            medicineNameLabel.text = editReminderViewModel.reminder?.name
         }
      
       

@@ -103,7 +103,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="iYt-eI-Tf2" secondAttribute="bottom" id="peJ-lV-AbU"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.97647058819999999" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.36470588240000001" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="medicineLabel" destination="iYt-eI-Tf2" id="VDO-AI-5U6"/>
                                         </connections>
@@ -230,6 +230,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="rF6-Lv-eL7"/>
                                 </constraints>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -580,14 +581,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İLAÇ DÜZENLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XS-hy-4q2">
-                                <rect key="frame" x="28.5" y="114" width="357" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İLAÇ DÜZENLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XS-hy-4q2">
+                                <rect key="frame" x="28.5" y="114" width="357" height="26.5"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.97254901959999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" red="0.36470588240000001" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PlK-YO-J3M">
-                                <rect key="frame" x="34" y="183" width="346" height="33.5"/>
+                                <rect key="frame" x="34" y="173.5" width="346" height="33.5"/>
                                 <subviews>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-x9-0aL">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="33.5"/>
@@ -697,7 +705,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-jm-m2Z">
-                                <rect key="frame" x="16" y="280.5" width="382" height="402.5"/>
+                                <rect key="frame" x="16" y="271" width="382" height="412"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="Uu9-gX-lpG" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
@@ -752,7 +760,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KULLANIM SAATLERI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIh-jV-XRK">
-                                <rect key="frame" x="120.5" y="240" width="173" height="20.5"/>
+                                <rect key="frame" x="120.5" y="230.5" width="173" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.36470588240000001" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -780,7 +788,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hWk-45-zTZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8XS-hy-4q2" firstAttribute="centerX" secondItem="0gS-gF-BcD" secondAttribute="centerX" id="7nl-Wi-1Ys"/>
                             <constraint firstItem="KYz-jm-m2Z" firstAttribute="top" secondItem="PlK-YO-J3M" secondAttribute="bottom" constant="64" id="Fds-kw-UwF"/>
@@ -800,6 +808,7 @@
                     </view>
                     <connections>
                         <outlet property="fridayButton" destination="Pic-ni-mpu" id="FMH-NS-tfh"/>
+                        <outlet property="medicineNameLabel" destination="8XS-hy-4q2" id="kh5-cH-a3p"/>
                         <outlet property="mondayButton" destination="o5c-x9-0aL" id="VP8-is-DMm"/>
                         <outlet property="saturdayButton" destination="YzD-RV-fDt" id="m5d-35-X5C"/>
                         <outlet property="saveButton" destination="34A-XT-brY" id="CkW-Rd-hmv"/>
@@ -859,6 +868,9 @@
     <resources>
         <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="hourglass.badge.plus" catalog="system" width="104" height="128"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

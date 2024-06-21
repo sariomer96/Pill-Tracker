@@ -76,7 +76,7 @@ class HomeViewController: BaseViewController {
     }
 
     func getReminders() {
-        print("getreminder")
+       
          let context = getViewContext()
           homeViewModel.fetchReminders(context: context)
          
@@ -93,8 +93,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as? RemindersTableViewCell
- 
-        print("indxpa \(indexPath.row)   array \(homeViewModel.countDownList.count)  reminder \(homeViewModel.reminders.count)")
+  
         cell?.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
      
           let countDown = homeViewModel.countDownList[indexPath.row]
