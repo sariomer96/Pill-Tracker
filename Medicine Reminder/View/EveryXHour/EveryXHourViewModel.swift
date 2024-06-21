@@ -7,13 +7,15 @@
 
 import Foundation
 
-class EveryXHourViewModel: ReminderData{
+class EveryXHourViewModel{
     var reminder: Reminder?
      static let shared = EveryXHourViewModel()
-    func getReminder(reminder: Reminder) {
-        self.reminder = reminder
-        print("worokrokwok \(self.reminder?.type) \(reminder.endDate)")
-    }
+//    func getReminder(reminder: ReminderModel) {
+//        
+//        reminder.id =
+//        self.reminder = reminder
+//        print("worokrokwok \(self.reminder?.type) \(reminder.endDate)")
+//    }
      
     func setReminder(timeFreq: Int, startTime: Date) {
         let freq = Int16(timeFreq)

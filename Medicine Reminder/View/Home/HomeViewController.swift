@@ -12,7 +12,8 @@ import CoreData
 class HomeViewController: BaseViewController {
     @IBOutlet weak var addMedicineButton: UIButton!
     let homeViewModel = HomeViewModel()
-    var delegateReminder: ReminderData?
+    var delegateReminder: ReminderGetData?
+    var delegateReminderModel: ReminderData?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,6 @@ class HomeViewController: BaseViewController {
         self.tableView.dataSource = self
    
         
-        
     }
    
     
@@ -36,8 +36,10 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("appearrr")
+        getReminders() 
         self.tableView.register(UINib(nibName: "RemindersTableViewCell", bundle: nil), forCellReuseIdentifier: "RemindersTableViewCell")
-        getReminders()
+       
         print("calistiffg")
         homeViewModel.checkForPermission()
         homeViewModel.configureCountDown { str in
@@ -48,7 +50,7 @@ class HomeViewController: BaseViewController {
         for (index, i) in homeViewModel.countDownList.enumerated() {
             i.callBack = { [weak self] str in
                 guard let self = self else { return }
-              
+                print("rem \(homeViewModel.reminders.count)  \(index)")
                 let reminder = self.homeViewModel.reminders[index]
              
                 let indexPathToRefresh = IndexPath(row: index, section: 0)
@@ -81,11 +83,6 @@ class HomeViewController: BaseViewController {
     }
         
 }
-     
- 
- 
-
-
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
@@ -95,28 +92,34 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if homeViewModel.countDownList.count == 0 || homeViewModel.reminders.count == 0 {
-            return RemindersTableViewCell()
-        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as? RemindersTableViewCell
-        guard let cell = cell else { return RemindersTableViewCell()}
-        cell.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
-        print("indexpayh \(indexPath.row)   countdowndlisrt \(homeViewModel.countDownList.count)")
-         let countDown = homeViewModel.countDownList[indexPath.row]
+         let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as? RemindersTableViewCell
+ 
+        print("indxpa \(indexPath.row)   array \(homeViewModel.countDownList.count)  reminder \(homeViewModel.reminders.count)")
+        cell?.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
+     
+          let countDown = homeViewModel.countDownList[indexPath.row]
         
         
-        cell.configure(with: countDown, reminder: homeViewModel.reminders[indexPath.row])
+        cell?.configure(with: countDown, reminder: homeViewModel.reminders[indexPath.row])
          
-        return cell
+        return cell ?? RemindersTableViewCell()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let vc = getViewController(param: EditReminderViewController.self, vcIdentifier: "EditReminderViewController")
         let edit = vc as! EditReminderViewController
         delegateReminder = edit.editReminderViewModel.self
-        
+        delegateReminderModel = edit.editReminderViewModel.self
         let reminder = homeViewModel.reminders[indexPath.row]
+         
+        let rModel = ReminderModel()
+        rModel.id = reminder.id
+        rModel.name = reminder.name
+        rModel.type = reminder.type
+        rModel.days = reminder.days as? [Int]
+        rModel.hours = reminder.hours as? [Date]
+        
         delegateReminder?.getReminder(reminder: reminder)
-     
+        delegateReminderModel?.getReminder(reminder: rModel)
         pushViewController(vc: edit)
     }
     

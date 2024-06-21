@@ -24,16 +24,18 @@ class SelectedDaysViewController: BaseViewController {
     var days = [Int]()
     var hours = [Date]()
     let selectedDaysViewModel = SelectedDaysViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTagToDayButtons()
-        addTargetToDayButtons()
-        addButtonList()
+        
+         navigationItem.hidesBackButton = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        addTagToDayButtons()
+        addTargetToDayButtons()
+        addButtonList()
          
-         createTableCell()
         
         selectedDaysViewModel.callBackMaxLimit = { [weak self] indexpath in
             guard let self = self else { return }
@@ -53,32 +55,36 @@ class SelectedDaysViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+   
         tableView.reloadData()
     }
     func saveDB () {
+       
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
          let context = appDelegate.persistentContainer.viewContext
+   
+          let newReminder = Reminder(context: context)
+        newReminder.startDate = Date()
+        newReminder.id = selectedDaysViewModel.reminderModel?.id
+        newReminder.name = selectedDaysViewModel.reminderModel?.name
+        newReminder.type = selectedDaysViewModel.reminderModel?.type
+        newReminder.days = selectedDaysViewModel.reminderModel?.days as? NSObject
+        newReminder.hours = selectedDaysViewModel.reminderModel?.hours  as? NSObject
+        
         CoreDataManager.shared.saveData(context: context)
     }
-    func createTableCell() {
-      
-        //    tableViewCell.append(TimeTableViewCell())
-         
-    }
+    
     
     func getHoursOfReminder() -> [Date]{
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
       hours.removeAll()
         for i in 0...lastRowIndex-2 {
             if tableViewCell.count > i && tableViewCell[i].isHidden == false {
-                
-               
+                 
                 if  let editDate =    Calendar.current.date(byAdding: .hour, value: 3, to: tableViewCell[i].date) {
                     print("celll \(editDate)")
                     hours.append(editDate)
                 }
-            
-                 
              }
              
            
@@ -209,7 +215,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
        
         if indexPath.row == lastRowIndex-1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as! TimeTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as? TimeTableViewCell else { return TimeTableViewCell()}
             cell.tag = 1
             return cell
         } else {
@@ -237,10 +243,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
                return nil
            }
            let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
-            
-               
-               
-              
+             
                self.count -= 1
                self.tableViewCell.remove(at: indexPath.row)
                tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -260,9 +263,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
             tableView.reloadData()
         }
     }
-    
-    
-    
+     
 }
 
 extension UIColor {

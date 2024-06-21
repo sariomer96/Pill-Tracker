@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol ReminderGetData {
+    func getReminder(reminder: Reminder)
+}
 
 class EditReminderViewController: SelectedDaysViewController {
  
@@ -70,17 +73,15 @@ class EditReminderViewController: SelectedDaysViewController {
         }
        
      }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-         
-    }
-    
+     
     override func viewWillAppear(_ animated: Bool) {
         isSaved = false
 
-        if let reminder = editReminderViewModel.reminder {
-            setEnableDays(days: editReminderViewModel.reminder?.days as! [Int])
-            setHourCount(hours: editReminderViewModel.reminder?.hours as! [Date])
+        if let reminderDay = editReminderViewModel.reminderModel?.days, let reminderHour =
+            editReminderViewModel.reminderModel?.hours{
+            print("enable")
+            setEnableDays(days: reminderDay )
+            setHourCount(hours: reminderHour)
         }
      
       
@@ -95,19 +96,16 @@ class EditReminderViewController: SelectedDaysViewController {
         }
     }
     func setHourCount(hours: [Date]) {
-        count += hours.count
-     
-        print("count \(count)")
+        print("hours \(hours.count) currentcount \(count)")
+       self.count += hours.count
+
         for i in hours {
             tableViewCell.append(TimeTableViewCell())
+             
         }
         
     }
-    
-    func setHourDatePicker() {
-        
-    }
- 
+     
     
     override func setReminder(hours: [Date]) {
  
@@ -128,7 +126,7 @@ extension EditReminderViewController {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
        
         if indexPath.row == lastRowIndex-1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as! TimeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as? TimeTableViewCell ?? TimeTableViewCell()
            
             return cell
         } else {
@@ -138,15 +136,18 @@ extension EditReminderViewController {
             }
             
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as? TimeTableViewCell
     
-            let hoursArray = editReminderViewModel.reminder?.hours as! [Date]
-            if indexPath.row < hoursArray.count {
+            guard let hoursArray = editReminderViewModel.reminderModel?.hours
+            else { return TimeTableViewCell() }
+            print("indpath \(indexPath.row)  count \(hoursArray.count)")
+            
+            if indexPath.row < hoursArray.count  {
                
-                cell.setDatePicker(date: hoursArray[indexPath.row])
+                cell?.setDatePicker(date: hoursArray[indexPath.row])
             }
     
-            tableViewCell[indexPath.row] = cell
+            tableViewCell[indexPath.row] = cell ?? TimeTableViewCell()
  
              return tableViewCell[indexPath.row]
         }
@@ -190,3 +191,5 @@ extension EditReminderViewController: UINavigationControllerDelegate {
 
 
 }
+
+

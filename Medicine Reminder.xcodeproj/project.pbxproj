@@ -17,6 +17,7 @@
 		1715A27E2BE688A10027261E /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A27D2BE688A10027261E /* DataTableViewCell.swift */; };
 		1715A2802BE6AAD60027261E /* medicDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 1715A27F2BE6AAD60027261E /* medicDB.json */; };
 		1784D5092C24563700219817 /* UiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784D5082C24563700219817 /* UiTabBarController.swift */; };
+		1784D50B2C24CE1C00219817 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784D50A2C24CE1C00219817 /* ReminderModel.swift */; };
 		179203382C07CE7F0020A5F0 /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */; };
 		1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203392C07CF170020A5F0 /* EditReminderViewModel.swift */; };
 		17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */; };
@@ -55,6 +56,7 @@
 		1715A27D2BE688A10027261E /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		1715A27F2BE6AAD60027261E /* medicDB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medicDB.json; sourceTree = "<group>"; };
 		1784D5082C24563700219817 /* UiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTabBarController.swift; sourceTree = "<group>"; };
+		1784D50A2C24CE1C00219817 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
 		179203392C07CF170020A5F0 /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
 		17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */,
 				17B672602BF9E81B000AE494 /* CountDown.swift */,
 				1784D5082C24563700219817 /* UiTabBarController.swift */,
+				1784D50A2C24CE1C00219817 /* ReminderModel.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */,
+				1784D50B2C24CE1C00219817 /* ReminderModel.swift in Sources */,
 				17B672612BF9E81B000AE494 /* CountDown.swift in Sources */,
 				17B784EC2BEE0A4E00231FC4 /* ReminderConfigViewController.swift in Sources */,
 				1715A25D2BE679720027261E /* AppDelegate.swift in Sources */,

@@ -15,9 +15,18 @@ class HomeViewModel {
     func fetchReminders(context: NSManagedObjectContext) {
         
         let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
-            reminders = try context.fetch(fetchRequest)
+            try fetchedResultsController.performFetch()
+                if let fetchedObjects = fetchedResultsController.fetchedObjects {
+                    // fetchedObjects sadece kaydedilen veriyi içerecektir
+                     reminders = fetchedObjects
+                    
+                }
+             
+             
              
         } catch {
             print("Error fetching reminders: \(error.localizedDescription)")
@@ -36,7 +45,7 @@ class HomeViewModel {
             let countDown = CountDown(date: closestDate, dayIndex: index)
           
             countDownList[countDownIndex].setInit(date: closestDate, dayIndex: index)
-             print("Geçersiz saat formatı")
+         
             }
          else {
             print("Gelecek saat bulunamadı.")
@@ -67,6 +76,7 @@ class HomeViewModel {
                 
                 
                 var countDown = CountDown(date: closestDate, dayIndex: closestDay ?? 1)
+                print("append \(reminder)")
                 countDownList.append(countDown)
 //
             } else {

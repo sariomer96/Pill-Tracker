@@ -27,19 +27,22 @@ class MedicineViewController: BaseViewController{
         
         tableView.delegate = self
         tableView.dataSource = self
+          
          
-            let appdel = UIApplication.shared.delegate as! AppDelegate
-            context = appdel.persistentContainer.viewContext
-            
-            medicineViewModel.getData(context: context ?? NSManagedObjectContext()) {
-                isEmpty in
-                if isEmpty {
-                    self.medicineViewModel.fetchData(context: self.context ?? NSManagedObjectContext())
-               
-                }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        let appdel = UIApplication.shared.delegate as! AppDelegate
+        context = appdel.persistentContainer.viewContext
+        
+        medicineViewModel.getData(context: context ?? NSManagedObjectContext()) {
+            isEmpty in
+            if isEmpty {
+                self.medicineViewModel.fetchData(context: self.context ?? NSManagedObjectContext())
+           
             }
-        tableView.reloadData()
-         
+        }
+    
+    tableView.reloadData()
     }
     
     func sendDataToReminderConfig(name: String) {

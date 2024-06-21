@@ -8,15 +8,21 @@
 import Foundation
 
 class SelectedDaysViewModel: ReminderData {
+  
+    
    // static let shared = SelectedDaysViewModel()
     var reminder: Reminder?
+    var reminderModel: ReminderModel?
     let maxTimeCountLimit = 10 //
     var callBackMaxLimit:CallBack<IndexPath>?
     var callBackAddTime:CallBack<IndexPath>?
-    func getReminder(reminder: Reminder) {
-        self.reminder = reminder
-      //  print("reminder geldi  \(reminder.id) \(reminder.hours as! [Date]) \(reminder.days))")
-       // print("set rem \(self.reminder?.name) \(self.reminder?.type) \(self.reminder?.endDate)")
+    func getReminder(reminder: ReminderModel) {
+       // self.reminder = reminder
+    
+        self.reminderModel = reminder
+         
+        print("getreminderrrrr")
+        
     }
    
     
@@ -30,10 +36,15 @@ class SelectedDaysViewModel: ReminderData {
     }
     
     func setReminder(days: [Int], hours: [Date]) {
-        self.reminder?.days = days as NSObject
-        self.reminder?.hours = hours as NSObject
+//        self.reminder?.days = days as NSObject
+//        self.reminder?.hours = hours as NSObject
+      
+        self.reminderModel?.days = days
+        self.reminderModel?.hours = hours
        
     }
 
+   
+     
     
 }
