@@ -1,9 +1,3 @@
-//
-//  UtilityUi.swift
-//  Medicine Reminder
-//
-//  Created by Omer on 23.06.2024.
-//
 
 import Foundation
 import UIKit

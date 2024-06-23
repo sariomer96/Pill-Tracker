@@ -9,13 +9,8 @@ final class EditReminderViewModel: SelectedDaysViewModel, ReminderGetData  {
     
  
     override func setReminder(days: [Int], hours: [Date]) {
-// 
-        self.reminderModel?.days = days
-        self.reminderModel?.hours = hours
        self.reminder?.days = days as NSObject
-      self.reminder?.hours = hours as NSObject
-       
- 
+       self.reminder?.hours = hours as NSObject
     }
     
     
