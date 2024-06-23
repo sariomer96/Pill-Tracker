@@ -8,13 +8,12 @@
 import Foundation
 import UIKit
  class BaseViewController: UIViewController {
+     
      func pushViewController<T: UIViewController>(param: T.Type, vcIdentifier: String ) {
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
          guard let vc = storyboard.instantiateViewController(withIdentifier: vcIdentifier) as? T else {
              fatalError("View controller with identifier  is not of type \(T.self)")
          }
-   
-         
          self.navigationController!.pushViewController(vc, animated: true)
      }
      
@@ -58,8 +57,7 @@ import UIKit
 }
 
 extension UIViewController {
-
-    // MARK: - Methods
+ 
     class func instantiateFromStoryboard(_ name: String = "Main") -> Self {
         return self.instantiateFromStoryboardHelper(name)
     }

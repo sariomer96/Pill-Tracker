@@ -21,32 +21,29 @@ class HomeViewModel {
         do {
             try fetchedResultsController.performFetch()
                 if let fetchedObjects = fetchedResultsController.fetchedObjects {
-            
                      reminders = fetchedObjects
-                    
                 }
-             
         } catch {
             print("Error fetching reminders: \(error.localizedDescription)")
         }
     }
+    
     func configureCountDownCell(reminder: Reminder, countDownIndex: Int, completion: @escaping (String) -> Void) {
         let hours = reminder.hours as? [Date]
-        guard let hours = hours else { return print("else") }
+        guard let hours = hours else { return}
+        
         let localDate = getLocalDate(date: Date())
         //MARK: FIND CLOSEST HOUR
-       
+        
         if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
-            let index =  weekDay(from: closestDate)
-           
+ 
+            let closestDay = findClosestDay(days: reminder.days as! [Int]  , currentDay: currentDay, hours: hours )
             let days = reminder.days as! [Int]
-            let countDown = CountDown(date: closestDate, dayIndex: index, dayCount: days.count)
-          
-            countDownList[countDownIndex].setInit(date: closestDate, dayIndex: index, dayCount: days.count)
-         
+            
+            countDownList[countDownIndex].setInit(date: closestDate, dayIndex: closestDay!, dayCount: days.count)
             }
          else {
-            print("Gelecek saat bulunamadı.")
+            fatalError("Hour Not Found")
         }
         completion("COMPLETION")
     }
@@ -58,23 +55,20 @@ class HomeViewModel {
   
             guard let days = reminder.days as? [Int] , let hours = reminder.hours as? [Date] else { return }
             let closestDay = findClosestDay(days: days  , currentDay: currentDay, hours: hours )
-             
               
             let localDate = getLocalDate(date: Date())
             
             //MARK: FIND CLOSEST HOUR
            
             if let closestDate = findClosestFutureHour(dates: hours, from: localDate) {
-       
-                let index =  weekDay(from: closestDate)
-               
+        
                 //MARK: FIND DIFFERENCE
                 
-                var days = reminder.days as! [Int]
-                var countDown = CountDown(date: closestDate, dayIndex: closestDay ?? 1, dayCount: days.count)
-                print("append \(reminder)")
+                let days = reminder.days as! [Int]
+                let countDown = CountDown(date: closestDate, dayIndex: closestDay ?? 1, dayCount: days.count)
+            
                 countDownList.append(countDown)
-//
+
             } else {
                 print("Gelecek saat bulunamadı.")
             }
@@ -83,12 +77,14 @@ class HomeViewModel {
         }
         
     }
+    
   func getLocalDate(date: Date) -> Date {
         let localTimeZone = TimeZone.current
         let secondsFromGMT = localTimeZone.secondsFromGMT(for: date)
         let localDate = Date(timeInterval: TimeInterval(secondsFromGMT), since: date)
         return localDate
     }
+    
     func checkForPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings { settings in
@@ -96,17 +92,13 @@ class HomeViewModel {
             case .notDetermined:
                 notificationCenter.requestAuthorization(options: [.alert, .sound]) { didAllow, error in
                     if didAllow {
-                        print("work")
                         self.dispatchNotification()
-                        
                     }
-                    
                 }
             case .denied:
                 return
             case .authorized:
                 self.dispatchNotification()
-                
             default:
                 return
             }
@@ -132,7 +124,7 @@ class HomeViewModel {
                     let minuteInt = Int(minute)
                     
                     
-                    let title = "Ilac Saati"
+                    let title = "İlaç Saati"
                     let body = reminder.name
                     
                     let isDaily = true
@@ -141,7 +133,6 @@ class HomeViewModel {
                     
                     let content = UNMutableNotificationContent()
                     content.title = title
-                    content.body = body ?? "AAAA"
                     content.sound = .default
                     
                     
@@ -159,6 +150,7 @@ class HomeViewModel {
             }
         }
     }
+    
     func findClosestFutureHour(dates: [Date], from current: Date) -> Date? {
         
          let futureTimes = dates.filter { $0 > current }
@@ -170,7 +162,6 @@ class HomeViewModel {
     }
     func findClosestDay(days: [Int], currentDay: Int, hours: [Date]) -> Int? {
    
-        
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
@@ -180,7 +171,7 @@ class HomeViewModel {
         var isPassed = true
         for i in hours {
             guard let time1 = formatter.date(from: currentTime) else {
-                fatalError("Geçersiz zaman formatı: \(currentTime)")
+                fatalError("Invalid time format: \(currentTime)")
             }
             
             let hour = Calendar.current.date(byAdding: .hour, value: -3, to: i)
@@ -188,16 +179,13 @@ class HomeViewModel {
      
             let timeString2 = rmHour
             guard let time2 = formatter.date(from: timeString2) else {
-                fatalError("Geçersiz zaman formatı: \(timeString2)")
+                fatalError("Invalid time format: \(timeString2)")
             }
             if time1 > time2 {
                
             } else if time1 < time2 {
                   isPassed = false
                 break
-                
-            } else {
-                print("İki zaman eşit")
             }
         }
          
@@ -207,7 +195,6 @@ class HomeViewModel {
             if let nextDay = largerDays.min() {
                return nextDay
            } else {
-               
                return days.min()
            }
         } else {
@@ -217,15 +204,6 @@ class HomeViewModel {
             } else {
                 return days[0]
             }
-            
         }
     }
-
-    func weekDay(from date: Date) -> Int {
-        let calendar = Calendar.current
-        let weekday = calendar.component(.weekday, from: date)
-         
-        return weekday
-    }
- 
 }

@@ -503,76 +503,6 @@
             </objects>
             <point key="canvasLocation" x="8014.4927536231889" y="-297.32142857142856"/>
         </scene>
-        <!--EveryX Hour View Controller-->
-        <scene sceneID="cLx-3H-OMD">
-            <objects>
-                <viewController storyboardIdentifier="EveryXHourViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XvS-2N-8ai" customClass="EveryXHourViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e90-vy-rhG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HER X SAATTE 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txd-OU-QEg">
-                                <rect key="frame" x="123.5" y="64" width="167" height="27"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAAT ARALIGI: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1i-jp-1en">
-                                <rect key="frame" x="71" y="205" width="118" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASLANGIC SAATI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ib-gK-G1b">
-                                <rect key="frame" x="71" y="258" width="147.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScP-ff-ESu">
-                                <rect key="frame" x="214" y="198" width="37" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="G4m-EJ-Bj8">
-                                <rect key="frame" x="243.5" y="253" width="100.5" height="36"/>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evm-K4-cnd">
-                                <rect key="frame" x="174" y="748" width="66" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="SAVE"/>
-                                <connections>
-                                    <action selector="saveClicked:" destination="XvS-2N-8ai" eventType="touchUpInside" id="9yn-2X-CcK"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="v5n-5z-IxI"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ScP-ff-ESu" firstAttribute="top" secondItem="Txd-OU-QEg" secondAttribute="bottom" constant="107" id="5EC-6W-PZs"/>
-                            <constraint firstItem="v5n-5z-IxI" firstAttribute="trailing" secondItem="G4m-EJ-Bj8" secondAttribute="trailing" constant="70" id="8Dc-kW-roD"/>
-                            <constraint firstItem="i1i-jp-1en" firstAttribute="top" secondItem="Txd-OU-QEg" secondAttribute="bottom" constant="114" id="KkW-CN-Dor"/>
-                            <constraint firstItem="Txd-OU-QEg" firstAttribute="top" secondItem="v5n-5z-IxI" secondAttribute="top" constant="16" id="Lvj-dU-Mln"/>
-                            <constraint firstItem="6ib-gK-G1b" firstAttribute="top" secondItem="i1i-jp-1en" secondAttribute="bottom" constant="32" id="RbR-UB-LwM"/>
-                            <constraint firstItem="G4m-EJ-Bj8" firstAttribute="leading" secondItem="6ib-gK-G1b" secondAttribute="trailing" constant="25" id="SBt-P9-ZRx"/>
-                            <constraint firstItem="v5n-5z-IxI" firstAttribute="bottom" secondItem="evm-K4-cnd" secondAttribute="bottom" constant="79" id="ZBy-fk-AuD"/>
-                            <constraint firstItem="ScP-ff-ESu" firstAttribute="leading" secondItem="i1i-jp-1en" secondAttribute="trailing" constant="25" id="ZEV-v7-wKc"/>
-                            <constraint firstItem="i1i-jp-1en" firstAttribute="leading" secondItem="v5n-5z-IxI" secondAttribute="leading" constant="71" id="eb7-I4-b8L"/>
-                            <constraint firstItem="Txd-OU-QEg" firstAttribute="centerX" secondItem="e90-vy-rhG" secondAttribute="centerX" id="gPM-my-Vjo"/>
-                            <constraint firstItem="6ib-gK-G1b" firstAttribute="leading" secondItem="v5n-5z-IxI" secondAttribute="leading" constant="71" id="kaj-qO-1bG"/>
-                            <constraint firstItem="G4m-EJ-Bj8" firstAttribute="top" secondItem="ScP-ff-ESu" secondAttribute="bottom" constant="21" id="rtu-bb-0Nj"/>
-                            <constraint firstItem="evm-K4-cnd" firstAttribute="centerX" secondItem="e90-vy-rhG" secondAttribute="centerX" id="tPa-uo-rSL"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="startTimePicker" destination="G4m-EJ-Bj8" id="Y1v-9e-M44"/>
-                        <outlet property="timeFrequencyTextField" destination="ScP-ff-ESu" id="ndo-2a-czL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ha0-m2-9MF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9524.6376811594218" y="-313.39285714285711"/>
-        </scene>
         <!--Edit Reminder View Controller-->
         <scene sceneID="Xf0-Em-Bot">
             <objects>
@@ -853,6 +783,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xne-Al-ONe" customClass="UiTabBarController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JbT-ol-tWL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.97254901959999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="0.36470588240000001" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -871,9 +802,6 @@
         <image name="hourglass.badge.plus" catalog="system" width="104" height="128"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="underPageBackgroundColor">
             <color red="0.70980392156862748" green="0.71764705882352942" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

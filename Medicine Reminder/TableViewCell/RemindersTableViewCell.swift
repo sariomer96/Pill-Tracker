@@ -12,35 +12,24 @@ class RemindersTableViewCell: UITableViewCell {
     @IBOutlet weak var medicineNameLabel: UILabel!
     @IBOutlet weak var reminderDateLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
-    var thresholdTime = 60
     @IBOutlet weak var pillImageView: UIImageView!
+    
+  
     var totalTime = 0
     var isTotal = false
+    var thresholdTime = 60
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-         
+        
         pillImageView.image = UIImage(named: "pill")
-      
-        pillImageView.layer.borderColor = UIColor.black.cgColor
-        pillImageView.layer.borderWidth = 0.55
-                
-                // Kenarlıkları yuvarlama (isteğe bağlı)
-        pillImageView.layer.cornerRadius = 10.0
-        pillImageView.layer.masksToBounds = true
+        pillImageView.addBorder(borderWidth: 0.55, borderColor: UIColor.black.cgColor)
+        pillImageView.addCorner(radiusRate: 10.0)
         
-        remainingTimeLabel.layer.cornerRadius = 10.0
-        remainingTimeLabel.layer.masksToBounds = true
+        remainingTimeLabel.addCorner(radiusRate: 10.0)
         
-        dateView.layer.cornerRadius = 10.0
-        dateView.layer.masksToBounds = true
-        dateView.layer.borderColor = UIColor.black.cgColor
-        dateView.layer.borderWidth = 0.5
-        
- 
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        dateView.addCorner(radiusRate: 10.0)
     }
     
     func configure(with countdown: CountDown, reminder: Reminder) {
@@ -57,7 +46,7 @@ class RemindersTableViewCell: UITableViewCell {
                     self?.totalTime = countdown.remainingSeconds
                 }
                 self?.isTotal = true
-               self?.updateLabel()
+                self?.updateLabel()
                 self?.updateBackgroundColor(currentTime: countdown.remainingSeconds - self!.thresholdTime)
             }
         } 
@@ -65,7 +54,7 @@ class RemindersTableViewCell: UITableViewCell {
 
      func updateLabel() {
          if let countdown = countdown {
-             let daysString = countdown.dayss > 0 ? String(format: "%d Gun ", countdown.dayss) : ""
+             let daysString = countdown.remainingDay > 0 ? String(format: "%d Gun ", countdown.remainingDay) : ""
              let hoursString = countdown.hoursLeft > 0 ? String(format: "%02d Saat ", countdown.hoursLeft) : ""
              remainingTimeLabel.text = String(format: "%@%@%02d Dk. %02d Saniye Kaldi", daysString, hoursString, countdown.minutesLeft, countdown.secondsLeft)
             
@@ -80,16 +69,9 @@ class RemindersTableViewCell: UITableViewCell {
         remainingTimeLabel.backgroundColor = color
     }
     func updateDate(date: String?) {
-        guard let countdown = countdown else {
+        guard let countdown = countdown , let unwrappedDate = date else {
              return
          }
-         
-         guard let unwrappedDate = date else {
-             print("Date is nil")
-             return
-         }
-         
-         // Opsiyonel ibaresi olmadan doğrudan `unwrappedDate` kullanılır
          reminderDateLabel.text = unwrappedDate
  
     }
@@ -109,10 +91,7 @@ class RemindersTableViewCell: UITableViewCell {
          remainingTimeLabel.text = nil
         
      }
-    
-
 }
-
 
 extension UIColor {
     static func interpolate(from: UIColor, to: UIColor, with percentage: CGFloat) -> UIColor {

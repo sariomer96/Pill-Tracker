@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 class MedicineJSON: Decodable {
-     
     var id: Int16?
     var medicineName: String?
 }

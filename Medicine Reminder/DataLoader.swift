@@ -16,7 +16,7 @@ public class DataLoader {
    
     func load() {
         if let location = Bundle.main.url(forResource: "medicDB", withExtension: "json") {
-            // do catch in case of an error
+           
             do {
                 let data = try Data(contentsOf: location)
                 let decoder = JSONDecoder()
@@ -24,7 +24,7 @@ public class DataLoader {
                 self.medicData = dataFromJson
             
             } catch {
-                print("error \(error)")
+                fatalError(error.localizedDescription)
             }
         }
     }

@@ -19,15 +19,15 @@ class UiTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
     }
     
-    // UITabBarControllerDelegate metodu
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let navController = viewController as? UINavigationController,
-           let topViewController = navController.topViewController {
-            if let refreshableVC = topViewController as? Refreshable {
-                refreshableVC.refresh()
-            }
-        } else if let refreshableVC = viewController as? Refreshable {
-            refreshableVC.refresh()
-        }
-    }
+//    // UITabBarControllerDelegate metodu
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        if let navController = viewController as? UINavigationController,
+//           let topViewController = navController.topViewController {
+//            if let refreshableVC = topViewController as? Refreshable {
+//                refreshableVC.refresh()
+//            }
+//        } else if let refreshableVC = viewController as? Refreshable {
+//            refreshableVC.refresh()
+//        }
+//    }
 }

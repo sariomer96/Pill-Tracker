@@ -1,9 +1,3 @@
-//
-//  SelectedDaysViewController.swift
-//  Medicine Reminder
-//
-//  Created by Omer on 10.05.2024.
-//
 
 import UIKit
 
@@ -17,13 +11,16 @@ class SelectedDaysViewController: BaseViewController {
     @IBOutlet weak var wednesdayButton: UIButton!
     @IBOutlet weak var tuesdayButton: UIButton!
     @IBOutlet weak var mondayButton: UIButton!
+    
     var dayButtonList = [UIButton]()
-    var count = 1
+    var datePickerCount = 1
     var tableCell = [TimeTableViewCell]()
     var tableViewCell = [TimeTableViewCell]()
+    
+    let selectedDaysViewModel = SelectedDaysViewModel()
+    
     var days = [Int]()
     var hours = [Date]()
-    let selectedDaysViewModel = SelectedDaysViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,43 +52,39 @@ class SelectedDaysViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-   
         tableView.reloadData()
     }
+    
     func saveDB () {
        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
          let context = appDelegate.persistentContainer.viewContext
    
-          let newReminder = Reminder(context: context)
-        newReminder.startDate = Date()
-        newReminder.id = selectedDaysViewModel.reminderModel?.id
-        newReminder.name = selectedDaysViewModel.reminderModel?.name
-        newReminder.type = selectedDaysViewModel.reminderModel?.type
-        newReminder.days = selectedDaysViewModel.reminderModel?.days as? NSObject
-        newReminder.hours = selectedDaysViewModel.reminderModel?.hours  as? NSObject
+      let newReminder = Reminder(context: context)
+          newReminder.startDate = Date()
+          newReminder.id = selectedDaysViewModel.reminderModel?.id
+          newReminder.name = selectedDaysViewModel.reminderModel?.name
+          newReminder.type = selectedDaysViewModel.reminderModel?.type
+          newReminder.days = selectedDaysViewModel.reminderModel?.days as? NSObject
+          newReminder.hours = selectedDaysViewModel.reminderModel?.hours  as? NSObject
         
-        CoreDataManager.shared.saveData(context: context)
+         CoreDataManager.shared.saveData(context: context)
     }
-    
     
     func getHoursOfReminder() -> [Date]{
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-      hours.removeAll()
+        hours.removeAll()
         for i in 0...lastRowIndex-2 {
             if tableViewCell.count > i && tableViewCell[i].isHidden == false {
                  
                 if  let editDate =    Calendar.current.date(byAdding: .hour, value: 3, to: tableViewCell[i].date) {
-                    print("celll \(editDate)")
                     hours.append(editDate)
                 }
              }
-             
-           
         }
         return hours
-   
     }
+    
     func addTagToDayButtons() {
         sundayButton.tag = 1
         mondayButton.tag = 2
@@ -116,9 +109,8 @@ class SelectedDaysViewController: BaseViewController {
     @IBAction func saveButtonClicked(_ sender: Any) {
         days.sort()
         let lastRow = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-      
         
-        if lastRow > 1 && days.count > 0 {
+        if lastRow > 1 &&  days.count > 0 {
             let hours = getHoursOfReminder()
             setReminder(hours: hours)
             saveDB()
@@ -128,75 +120,61 @@ class SelectedDaysViewController: BaseViewController {
             alert(title: "Uyari", message: "Lutfen saat ve gun bilgisi ekleyin")
         }
     }
+    
     func setReminder(hours: [Date]) {
-       
         selectedDaysViewModel.setReminder(days: days, hours: hours)
-         
     }
     func addTargetToDayButtons() {
         mondayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
         tuesdayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
         wednesdayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
         thursdayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
-
         fridayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
         saturdayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
         sundayButton.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
-
     }
-    
+
     func changeSelectedDayStatus(button: UIButton) {
     
         button.isSelected = !button.isSelected
         if button.isSelected == true {
             let green = UIColor(hexaString: "#5DB075")
-             
-           // button.backgroundColor = green
+              
             button.backgroundColor = green
              
             addSelectedDays(tag: button.tag)
         
         } else {
-            print("else")
             button.backgroundColor = .lightGray
             removeDay(tag: button.tag)
         }
     }
     
     func addSelectedDays(tag: Int) {
-        days.append(tag)
+      days.append(tag)
     }
     
     func removeDay(tag: Int) {
-        days.removeAll { $0 == tag }
+      days.removeAll { $0 == tag }
     }
     
     @objc func dayButtonTapped(_ sender: UIButton) {
         switch sender.tag {
         case 1:
-            print("pz butonuna tıklandı")
-         
             changeSelectedDayStatus(button: sender)
-            // Pazartesi butonuna özel işlemler burada yapılabilir
+
         case 2:
-            print("Pazartesi butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 3:
-            print("sali butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 4:
-            print("car butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 5:
-            print("per butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 6:
-            print("cum butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
         case 7:
-            print("CT butonuna tıklandı")
             changeSelectedDayStatus(button: sender)
-            // Salı butonuna özel işlemler burada yapılabilir
         default:
             break
         }
@@ -204,10 +182,9 @@ class SelectedDaysViewController: BaseViewController {
 
 }
 extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource {
-    
- 
+     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count
+        return datePickerCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -223,21 +200,17 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
             if lastRowIndex == 1 {
                 return UITableViewCell()
             }
-             
              return tableViewCell[indexPath.row]
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          
-        
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
-          
-         
-        selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, indexPath: indexPath)
         
-       
+        selectedDaysViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, indexPath: indexPath)
     } 
+    
        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
            let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
            if lastRowIndex - 1 == indexPath.row {
@@ -245,14 +218,13 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
            }
            let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
              
-               self.count -= 1
+               self.datePickerCount -= 1
                self.tableViewCell.remove(at: indexPath.row)
                tableView.deleteRows(at: [indexPath], with: .automatic)
-               
-               
            }
            return [deleteAction]
        }
+    
     func addNewTime(tableView: UITableView, indexPath: IndexPath) {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 
@@ -260,7 +232,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
              
             tableViewCell.append(cell)
-            count += 1
+            datePickerCount += 1
             tableView.reloadData()
         }
     }
