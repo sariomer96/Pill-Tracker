@@ -777,10 +777,10 @@
             </objects>
             <point key="canvasLocation" x="3391" y="251"/>
         </scene>
-        <!--Ui Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="YG0-52-H9k">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xne-Al-ONe" customClass="UiTabBarController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xne-Al-ONe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JbT-ol-tWL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
