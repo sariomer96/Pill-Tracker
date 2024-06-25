@@ -115,7 +115,6 @@
 				1715A26A2BE6797B0027261E /* LaunchScreen.storyboard */,
 				1715A26D2BE6797B0027261E /* Info.plist */,
 				1715A2792BE67DFB0027261E /* DataLoader.swift */,
-				1715A27D2BE688A10027261E /* DataTableViewCell.swift */,
 				1715A27F2BE6AAD60027261E /* medicDB.json */,
 				17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */,
 				17B672542BF0108D000AE494 /* CoreDataManager.swift */,
@@ -178,6 +177,7 @@
 		17B784E32BECFDCA00231FC4 /* Medicine */ = {
 			isa = PBXGroup;
 			children = (
+				1715A27D2BE688A10027261E /* DataTableViewCell.swift */,
 				17B784E42BECFDDC00231FC4 /* MedicineViewController.swift */,
 			);
 			path = Medicine;
