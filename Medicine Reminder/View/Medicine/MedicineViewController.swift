@@ -11,7 +11,7 @@ class MedicineViewController: BaseViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     var context: NSManagedObjectContext?
     
-    
+    let cellId = "cell"
     let jSONModel = JSONMedicineModel()
     let data = DataLoader().medicData
     
@@ -43,7 +43,7 @@ class MedicineViewController: BaseViewController{
      }
     
     @IBAction func addMedicineClicked(_ sender: Any) {
-        pushViewController(param: ReminderConfigViewController.self, vcIdentifier: "ReminderConfigViewController")
+        pushViewController(param: ReminderConfigViewController.self, vcIdentifier: reminderConfigViewController)
     }
 }
 
@@ -53,7 +53,7 @@ extension MedicineViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         as! DataTableViewCell
         cell.medicineLabel?.text = jSONModel.searchList[indexPath.row].medicineName
 
@@ -64,7 +64,7 @@ extension MedicineViewController: UITableViewDelegate, UITableViewDataSource {
       
         let selectedMedicine = jSONModel.searchList[indexPath.row]
    
-       let vc =  getViewController(param: ReminderConfigViewController.self, vcIdentifier: "ReminderConfigViewController")
+       let vc =  getViewController(param: ReminderConfigViewController.self, vcIdentifier: reminderConfigViewController)
         
         delegate = vc as? any ReminderConfigurable
         

@@ -1,9 +1,3 @@
-//
-//  JSONViewModel.swift
-//  Medicine Reminder
-//
-//  Created by Omer on 5.05.2024.
-//
 
 import Foundation
 import CoreData
@@ -12,11 +6,15 @@ typealias VoidCallBack = (() -> Void)
 typealias CallBack<T> = ((T) -> Void)
 
 class JSONMedicineModel: ObservableObject {
+    
+    
       var callBackSearch: CallBack<[MedicineTables]>?
     var searchList = [MedicineTables]()
     @Published var medicine : [MedicineJSON] = []
     @Published var medicineCore: [MedicineTables] = []
  
+    let medicDb = "medicDB"
+    let medicineTables = "MedicineTables"
     let fetchRequest: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
     func saveData(context: NSManagedObjectContext) {
         for i in medicine {
@@ -47,7 +45,7 @@ class JSONMedicineModel: ObservableObject {
         }
     }
     func getData(context: NSManagedObjectContext, completion: @escaping (Bool) -> Void)  {
-        let fetchReques: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: "MedicineTables")
+        let fetchReques: NSFetchRequest<MedicineTables> = NSFetchRequest<MedicineTables>(entityName: medicineTables)
 
               do {
                   let results = try context.fetch(fetchReques)
@@ -61,7 +59,7 @@ class JSONMedicineModel: ObservableObject {
               }
     }
     func fetchData(context: NSManagedObjectContext) {
-        if let location = Bundle.main.url(forResource: "medicDB", withExtension: "json") {
+        if let location = Bundle.main.url(forResource: medicDb, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: location)
                 let decoder = JSONDecoder()

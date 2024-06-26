@@ -152,7 +152,7 @@ class CountDown {
                     if self.remainingSeconds > 0 {
                         self.remainingSeconds -= 1
                     } else {
-                        self.callBack?("CALLBACK")
+                        self.callBack?("callback")
                         timer.invalidate()
                         self.timer = nil
                     }

@@ -16,9 +16,11 @@ class SelectedDaysViewController: BaseViewController {
     var datePickerCount = 1
     var tableCell = [TimeTableViewCell]()
     var tableViewCell = [TimeTableViewCell]()
-    
+    let addTimeTableViewCell = "addTimeTableViewCell"
+    let timeTableViewCell = "timeTableViewCell"
     let selectedDaysViewModel = SelectedDaysViewModel()
-    
+    let homeViewController = "HomeViewController"
+    let green = "#5DB075"
     var days = [Int]()
     var hours = [Date]()
     
@@ -38,7 +40,7 @@ class SelectedDaysViewController: BaseViewController {
             guard let self = self else { return }
             let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
             if indexpath.row == lastRowIndex-1{
-                alert(title: "Max LIMIT", message: "MAX SAYIYA ULASTIN")
+                alert(title: AlertText.shared.alertTitle, message: AlertText.shared.alertMaxMessage)
                 
             }
         }
@@ -115,9 +117,9 @@ class SelectedDaysViewController: BaseViewController {
             setReminder(hours: hours)
             saveDB()
             
-            pushViewController(param: HomeViewController.self, vcIdentifier: "HomeViewController")
+            pushViewController(param: HomeViewController.self, vcIdentifier: homeViewController)
         } else {
-            alert(title: "Uyari", message: "Lutfen saat ve gun bilgisi ekleyin")
+            alert(title: AlertText.shared.alertTitle, message: TimerTextUtility.shared.timerAlert)
         }
     }
     
@@ -138,9 +140,8 @@ class SelectedDaysViewController: BaseViewController {
     
         button.isSelected = !button.isSelected
         if button.isSelected == true {
-            let green = UIColor(hexaString: "#5DB075")
-              
-            button.backgroundColor = green
+             
+            button.backgroundColor = UIColor(hexaString: self.green)
              
             addSelectedDays(tag: button.tag)
         
@@ -192,7 +193,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
        
         if indexPath.row == lastRowIndex-1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as? TimeTableViewCell else { return TimeTableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: addTimeTableViewCell, for: indexPath) as? TimeTableViewCell else { return TimeTableViewCell()}
             cell.tag = 1
             return cell
         } else {
@@ -216,7 +217,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
            if lastRowIndex - 1 == indexPath.row {
                return nil
            }
-           let deleteAction = UITableViewRowAction(style: .destructive, title: "Sil") { (action, indexPath) in
+           let deleteAction = UITableViewRowAction(style: .destructive, title: ActionText.shared.delete) { (action, indexPath) in
              
                self.datePickerCount -= 1
                self.tableViewCell.remove(at: indexPath.row)
@@ -229,7 +230,7 @@ extension SelectedDaysViewController: UITableViewDelegate, UITableViewDataSource
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
 
         if (indexPath.row == lastRowIndex - 1) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as! TimeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: timeTableViewCell, for: indexPath) as! TimeTableViewCell
              
             tableViewCell.append(cell)
             datePickerCount += 1

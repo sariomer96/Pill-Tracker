@@ -9,13 +9,13 @@ import Foundation
 
 public class DataLoader {
     var medicData = [MedicineData]()
-    
+    let medicDB = "medicDB"
     init() {
         load() 
     }
    
     func load() {
-        if let location = Bundle.main.url(forResource: "medicDB", withExtension: "json") {
+        if let location = Bundle.main.url(forResource: medicDB, withExtension: "json") {
            
             do {
                 let data = try Data(contentsOf: location)

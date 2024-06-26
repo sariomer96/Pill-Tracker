@@ -14,7 +14,7 @@ class CoreDataManager {
         do {
             try context.save()
         } catch {
-            fatalError("Save failed")
+            fatalError(CoreDataError.saveFailed.rawValue)
         }
     }
     
@@ -24,7 +24,12 @@ class CoreDataManager {
              try context.save()
      
         } catch {
-            fatalError("delete failed")
+            fatalError(CoreDataError.deleteFailed.rawValue)
         }
     }
+}
+
+enum CoreDataError: String {
+    case saveFailed = "Save failed"
+    case deleteFailed = "Delete failed"
 }

@@ -7,20 +7,27 @@
 
 import Foundation
 import UIKit
+
+private let storyboardName = "Main"
  class BaseViewController: UIViewController {
      
+   let selectedDaysViewController = "SelectedDaysViewController"
+   let reminderConfigViewController = "ReminderConfigViewController"
+     let medicineViewController = "MedicineViewController"
+     let editReminderViewController = "EditReminderViewController"
+     
      func pushViewController<T: UIViewController>(param: T.Type, vcIdentifier: String ) {
-         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
          guard let vc = storyboard.instantiateViewController(withIdentifier: vcIdentifier) as? T else {
-             fatalError("View controller with identifier  is not of type \(T.self)")
+             fatalError("\(FatalError.failedIdentifier.rawValue) \(T.self)")
          }
          self.navigationController!.pushViewController(vc, animated: true)
      }
      
      func getViewController<T: UIViewController>(param: T.Type, vcIdentifier: String ) -> UIViewController {
-         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
          guard let vc = storyboard.instantiateViewController(withIdentifier: vcIdentifier) as? T else {
-             fatalError("View controller with identifier  is not of type \(T.self)")
+             fatalError("\(FatalError.failedIdentifier.rawValue) \(T.self)")
          }
          return vc
      }
@@ -58,7 +65,7 @@ import UIKit
 
 extension UIViewController {
  
-    class func instantiateFromStoryboard(_ name: String = "Main") -> Self {
+    class func instantiateFromStoryboard(_ name: String = storyboardName) -> Self {
         return self.instantiateFromStoryboardHelper(name)
     }
 
@@ -66,8 +73,13 @@ extension UIViewController {
         let storyboard = UIStoryboard(name: name, bundle: nil)
             guard let controller = storyboard.instantiateViewController(withIdentifier: String(describing: self))
                     as? T else {
-                fatalError("Failed to instantiate view controller from storyboard")
+                fatalError(FatalError.failedInstantiate.rawValue)
             }
             return controller
     }
+}
+
+enum FatalError: String {
+    case failedIdentifier = "View controller with identifier  is not of type"
+    case failedInstantiate = "Failed to instantiate view controller from storyboard"
 }

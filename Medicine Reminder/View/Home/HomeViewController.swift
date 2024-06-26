@@ -11,6 +11,7 @@ class HomeViewController: BaseViewController {
     var delegateReminder: ReminderGetData?
     var delegateReminderModel: ReminderData?
     
+    let reminderTableViewCell = "RemindersTableViewCell"
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -23,13 +24,13 @@ class HomeViewController: BaseViewController {
     }
     
     @IBAction func addMedicineClicked(_ sender: Any) {
-        let storyBoardID = "MedicineViewController"
+        let storyBoardID = medicineViewController
         pushViewController(param: MedicineViewController.self, vcIdentifier: storyBoardID)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getReminders()
-        self.tableView.register(UINib(nibName: "RemindersTableViewCell", bundle: nil), forCellReuseIdentifier: "RemindersTableViewCell")
+        self.tableView.register(UINib(nibName: reminderTableViewCell, bundle: nil), forCellReuseIdentifier: reminderTableViewCell)
         
         homeViewModel.checkForPermission()
         homeViewModel.configureCountDown { str in
@@ -77,7 +78,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "RemindersTableViewCell", for: indexPath) as? RemindersTableViewCell
+         let cell = tableView.dequeueReusableCell(withIdentifier: reminderTableViewCell, for: indexPath) as? RemindersTableViewCell
   
           cell?.medicineNameLabel.text = homeViewModel.reminders[indexPath.row].name
      
@@ -90,7 +91,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let vc = getViewController(param: EditReminderViewController.self, vcIdentifier: "EditReminderViewController")
+       let vc = getViewController(param: EditReminderViewController.self, vcIdentifier: editReminderViewController)
         
         let edit = vc as! EditReminderViewController
         delegateReminder = edit.editReminderViewModel.self
@@ -112,10 +113,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "KALDIR") { (action, indexPath) in
-                let alertController = UIAlertController(title: "UYARI", message: "Hatirlaticiyi kaldirmak istediginizden emin misiniz?", preferredStyle: .alert)
+        let deleteAction = UITableViewRowAction(style: .destructive, title: ActionText.shared.delete) { (action, indexPath) in
+            let alertController = UIAlertController(title: AlertText.shared.alertTitle, message: ActionText.shared.deleteAlert, preferredStyle: .alert)
                 
-                let confirmAction = UIAlertAction(title: "Sil", style: .destructive) { _ in
+            let confirmAction = UIAlertAction(title: ActionText.shared.delete, style: .destructive) { _ in
                
                     do {
                         try CoreDataManager.shared.removeData(context: self.getViewContext(), reminder: self.homeViewModel.reminders[indexPath.row])
@@ -123,11 +124,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                         tableView.deleteRows(at: [indexPath], with: .automatic)
                         
                     } catch {
-                        fatalError("Error")
+                        fatalError(error.localizedDescription)
                     }
                 }
                 
-                let cancelAction = UIAlertAction(title: "Iptal", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: ActionText.shared.cancel, style: .cancel, handler: nil)
                 
                 alertController.addAction(confirmAction)
                 alertController.addAction(cancelAction)

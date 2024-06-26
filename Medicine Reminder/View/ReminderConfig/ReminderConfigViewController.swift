@@ -51,7 +51,7 @@ class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
         reminderModel?.type = medicTypesDropDownButton.currentTitle
         
         
-        let vc =  getViewController(param: SelectedDaysViewController.self, vcIdentifier: "SelectedDaysViewController") as! SelectedDaysViewController
+        let vc =  getViewController(param: SelectedDaysViewController.self, vcIdentifier: selectedDaysViewController) as! SelectedDaysViewController
           sendReminderDelegate = vc.selectedDaysViewModel.self
       
         sendReminderDelegate?.getReminder(reminder: reminderModel!)

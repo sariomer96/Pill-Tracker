@@ -12,10 +12,11 @@ class HomeViewModel {
    
     let currentDay = Calendar.current.component(.weekday, from: Date())
     
+    let startDate = "startDate"
     func fetchReminders(context: NSManagedObjectContext) {
         
         let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: startDate, ascending: false)]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
@@ -24,7 +25,7 @@ class HomeViewModel {
                      reminders = fetchedObjects
                 }
         } catch {
-            print("Error fetching reminders: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
     }
     
@@ -43,7 +44,7 @@ class HomeViewModel {
             countDownList[countDownIndex].setInit(date: closestDate, dayIndex: closestDay!, dayCount: days.count)
             }
          else {
-            fatalError("Hour Not Found")
+             fatalError(TimerTextUtility.shared.notFoundHour)
         }
         completion("COMPLETION")
     }
@@ -70,7 +71,7 @@ class HomeViewModel {
                 countDownList.append(countDown)
 
             } else {
-                print("Gelecek saat bulunamadı.")
+                fatalError(TimerTextUtility.shared.notFoundFutureHour)
             }
             //  print(countDownList)
             completion("COMPLETION")
@@ -124,7 +125,7 @@ class HomeViewModel {
                     let minuteInt = Int(minute)
                     
                     
-                    let title = "İlaç Saati"
+                    let title = TimerTextUtility.shared.pillTime
                     let body = reminder.name
                     
                     let isDaily = true
@@ -171,7 +172,7 @@ class HomeViewModel {
         var isPassed = true
         for i in hours {
             guard let time1 = formatter.date(from: currentTime) else {
-                fatalError("Invalid time format: \(currentTime)")
+                fatalError("\(TimerTextUtility.shared.invalidTimeFormat) \(currentTime)")
             }
             
             let hour = Calendar.current.date(byAdding: .hour, value: -3, to: i)
@@ -179,7 +180,7 @@ class HomeViewModel {
      
             let timeString2 = rmHour
             guard let time2 = formatter.date(from: timeString2) else {
-                fatalError("Invalid time format: \(timeString2)")
+                fatalError("\(TimerTextUtility.shared.invalidTimeFormat) \(timeString2)")
             }
             if time1 > time2 {
                

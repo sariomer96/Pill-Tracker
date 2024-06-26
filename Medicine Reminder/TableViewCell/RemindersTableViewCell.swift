@@ -13,7 +13,7 @@ class RemindersTableViewCell: UITableViewCell {
     @IBOutlet weak var reminderDateLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var pillImageView: UIImageView!
-    
+    let pillImageName = "pill"
   
     var totalTime = 0
     var isTotal = false
@@ -23,7 +23,7 @@ class RemindersTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        pillImageView.image = UIImage(named: "pill")
+        pillImageView.image = UIImage(named: pillImageName)
         pillImageView.addBorder(borderWidth: 0.55, borderColor: UIColor.black.cgColor)
         pillImageView.addCorner(radiusRate: 10.0)
         
@@ -54,9 +54,9 @@ class RemindersTableViewCell: UITableViewCell {
 
      func updateLabel() {
          if let countdown = countdown {
-             let daysString = countdown.remainingDay > 0 ? String(format: "%d Gun ", countdown.remainingDay) : ""
-             let hoursString = countdown.hoursLeft > 0 ? String(format: "%02d Saat ", countdown.hoursLeft) : ""
-             remainingTimeLabel.text = String(format: "%@%@%02d Dk. %02d Saniye Kaldi", daysString, hoursString, countdown.minutesLeft, countdown.secondsLeft)
+             let daysString = countdown.remainingDay > 0 ? String(format: "%d \(TimerTextUtility.shared.day) ", countdown.remainingDay) : ""
+             let hoursString = countdown.hoursLeft > 0 ? String(format: "%02d \(TimerTextUtility.shared.hour) ", countdown.hoursLeft) : ""
+             remainingTimeLabel.text = String(format: "%@%@%02d \(TimerTextUtility.shared.minute) %02d \(TimerTextUtility.shared.remainingSeconds)", daysString, hoursString, countdown.minutesLeft, countdown.secondsLeft)
             
          }
      }

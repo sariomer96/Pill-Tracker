@@ -2,10 +2,7 @@
 import Foundation
 
 class SelectedDaysViewModel: ReminderData {
-  
-    
    
-    
     var reminder: Reminder?
     var reminderModel: ReminderModel?
     let maxTimeCountLimit = 10 //

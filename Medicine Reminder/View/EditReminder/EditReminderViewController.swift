@@ -10,7 +10,7 @@ class EditReminderViewController: SelectedDaysViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     let editReminderViewModel = EditReminderViewModel()
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         medicineNameLabel.addCorner(radiusRate: 15)
@@ -25,7 +25,7 @@ class EditReminderViewController: SelectedDaysViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.navigationController?.delegate = self
+       // self.navigationController?.delegate = self
         tableView.reloadData()
         
         editReminderViewModel.callBackMaxLimit = { [weak self] indexpath in
@@ -33,7 +33,7 @@ class EditReminderViewController: SelectedDaysViewController {
             let lastRowIndex = tableView.numberOfRows(inSection: 
                                                         tableView.numberOfSections-1)
             if indexpath.row == lastRowIndex-1{
-                alert(title: "UYARI", message: "MAX SAYIYA ULAŞTIN")
+                alert(title: AlertText.shared.alertTitle, message: AlertText.shared.alertMaxMessage)
             }
         }
         
@@ -58,11 +58,11 @@ class EditReminderViewController: SelectedDaysViewController {
         
         if editReminderViewModel.isSaved == false {
          
-            let alertController = UIAlertController(title: "Uyarı",
-                                                    message: "Kaydedilmeyen veriler kaybolacak. Çıkmak istediğinizden emin misiniz ?", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Hayır", 
+            let alertController = UIAlertController(title: AlertText.shared.alertTitle,
+                                                    message:AlertText.shared.unsavedMessage, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: AlertText.shared.no,
                                              style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: "Evet", 
+            let confirmAction = UIAlertAction(title: AlertText.shared.yes, 
                                               style: .default) { _ in
                 self.navigationController?.popViewController(animated: true)
             }
@@ -122,7 +122,7 @@ extension EditReminderViewController {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
        
         if indexPath.row == lastRowIndex-1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addTimeTableViewCell", for: indexPath) as? TimeTableViewCell ?? TimeTableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: addTimeTableViewCell, for: indexPath) as? TimeTableViewCell ?? TimeTableViewCell()
            
             return cell
         } else {
@@ -130,7 +130,7 @@ extension EditReminderViewController {
             if lastRowIndex == 1 {
                 return UITableViewCell()
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "timeTableViewCell", for: indexPath) as? TimeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: timeTableViewCell, for: indexPath) as? TimeTableViewCell
     
             guard let hoursArray = editReminderViewModel.reminderModel?.hours
             else { return TimeTableViewCell() }
@@ -148,26 +148,5 @@ extension EditReminderViewController {
         let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
          
         editReminderViewModel.CheckMaxTimeCount(rowCount: lastRowIndex, indexPath: indexPath)
-    }
-}
-
-extension EditReminderViewController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if navigationController.viewControllers.count < (self.navigationController?.viewControllers.count ?? 0) {
-  
-            let alertController = UIAlertController(title: "Uyarı",
-                                                    message: "Bu ekrandan çıkmak istediğinizden emin misiniz?", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Hayır", style: .cancel) { _ in
-            }
-            let confirmAction = UIAlertAction(title: "Evet", style: .default) { _ in
-                self.navigationController?.popViewController(animated: true)
-            }
-            alertController.addAction(cancelAction)
-            alertController.addAction(confirmAction)
-             
-            present(alertController, animated: true, completion: nil)
-            navigationController.viewControllers.insert(self, at: navigationController.viewControllers.count)
-        }
     }
 }

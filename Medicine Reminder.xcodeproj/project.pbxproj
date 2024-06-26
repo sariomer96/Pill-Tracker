@@ -37,6 +37,7 @@
 		17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784F02BEE537700231FC4 /* SelectedDaysViewController.swift */; };
 		17B784F42BEE5C4500231FC4 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B784F32BEE5C4500231FC4 /* TimeTableViewCell.swift */; };
 		17BB2B6A2C28660B00BAD48B /* UtilityUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BB2B692C28660B00BAD48B /* UtilityUi.swift */; };
+		17BB2B982C2C1CA100BAD48B /* TimerTextUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BB2B972C2C1CA100BAD48B /* TimerTextUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		17B784F02BEE537700231FC4 /* SelectedDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDaysViewController.swift; sourceTree = "<group>"; };
 		17B784F32BEE5C4500231FC4 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		17BB2B692C28660B00BAD48B /* UtilityUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityUi.swift; sourceTree = "<group>"; };
+		17BB2B972C2C1CA100BAD48B /* TimerTextUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTextUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				17B672602BF9E81B000AE494 /* CountDown.swift */,
 				1784D50A2C24CE1C00219817 /* ReminderModel.swift */,
 				17BB2B692C28660B00BAD48B /* UtilityUi.swift */,
+				17BB2B972C2C1CA100BAD48B /* TimerTextUtility.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */,
 				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				17B784E92BECFFBD00231FC4 /* BaseViewController.swift in Sources */,
+				17BB2B982C2C1CA100BAD48B /* TimerTextUtility.swift in Sources */,
 				1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */,
 				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */,
