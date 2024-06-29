@@ -14,7 +14,7 @@
         <!--Home View Controller-->
         <scene sceneID="p1x-YN-0LP">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y9H-el-31d" customClass="HomeViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y9H-el-31d" customClass="HomeViewController" customModule="Pill_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAe-Sy-DTr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
         <!--Medicine View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MedicineViewController" id="BYZ-38-t0r" customClass="MedicineViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MedicineViewController" id="BYZ-38-t0r" customClass="MedicineViewController" customModule="Pill_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,15 +82,15 @@
                                 <rect key="frame" x="20" y="333" width="374" height="521"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yC4-Ed-DEA" customClass="DataTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yC4-Ed-DEA" customClass="DataTableViewCell" customModule="Pill_Tracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yC4-Ed-DEA" id="A5Y-Ql-J87">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYt-eI-Tf2">
-                                                    <rect key="frame" x="20" y="11" width="334" height="21.5"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -172,7 +172,7 @@
         <!--Reminder Config View Controller-->
         <scene sceneID="jC4-bT-jrY">
             <objects>
-                <viewController storyboardIdentifier="ReminderConfigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WjR-6Y-cTS" customClass="ReminderConfigViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReminderConfigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WjR-6Y-cTS" customClass="ReminderConfigViewController" customModule="Pill_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wij-vJ-USs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YENİ İLAÇ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiw-RY-8U5">
                                 <rect key="frame" x="0.0" y="114" width="414" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <color key="textColor" red="0.36470588240000001" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.36470588235294116" green="0.69019607843137254" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İLAÇ TÜRÜ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVl-fG-wDh">
@@ -266,7 +266,7 @@
         <!--Selected Days View Controller-->
         <scene sceneID="GGS-lv-y3j">
             <objects>
-                <viewController storyboardIdentifier="SelectedDaysViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TBi-QF-Kuu" customClass="SelectedDaysViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectedDaysViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TBi-QF-Kuu" customClass="SelectedDaysViewController" customModule="Pill_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sFC-hE-FMr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,7 +391,7 @@
                                 <rect key="frame" x="16" y="280.5" width="382" height="402.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" focusStyle="custom" id="hak-Gm-hUm" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" focusStyle="custom" id="hak-Gm-hUm" customClass="TimeTableViewCell" customModule="Pill_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hak-Gm-hUm" id="l5h-Et-EQn">
@@ -419,7 +419,7 @@
                                             <outlet property="datePicker" destination="cWh-iW-3VC" id="gCK-U8-LlG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="foN-Pv-V63" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="foN-Pv-V63" customClass="TimeTableViewCell" customModule="Pill_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="foN-Pv-V63" id="5xv-uM-1ZG">
@@ -506,7 +506,7 @@
         <!--Edit Reminder View Controller-->
         <scene sceneID="Xf0-Em-Bot">
             <objects>
-                <viewController storyboardIdentifier="EditReminderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mI2-rf-8VB" customClass="EditReminderViewController" customModule="Medicine_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditReminderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mI2-rf-8VB" customClass="EditReminderViewController" customModule="Pill_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0gS-gF-BcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -638,7 +638,7 @@
                                 <rect key="frame" x="16" y="271" width="382" height="412"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="Uu9-gX-lpG" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeTableViewCell" id="Uu9-gX-lpG" customClass="TimeTableViewCell" customModule="Pill_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uu9-gX-lpG" id="USj-0i-baw">
@@ -666,7 +666,7 @@
                                             <outlet property="datePicker" destination="Qr1-3G-tM0" id="5OH-3T-cgy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="bLG-a9-mHq" customClass="TimeTableViewCell" customModule="Medicine_Reminder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTimeTableViewCell" id="bLG-a9-mHq" customClass="TimeTableViewCell" customModule="Pill_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="382" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bLG-a9-mHq" id="Cib-MI-Bg6">

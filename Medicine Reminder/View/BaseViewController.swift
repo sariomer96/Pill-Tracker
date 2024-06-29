@@ -1,9 +1,3 @@
-//
-//  BaseViewController.swift
-//  quiz
-//
-//  Created by Omer on 5.01.2024.
-//
 
 import Foundation
 import UIKit
@@ -13,8 +7,8 @@ private let storyboardName = "Main"
      
    let selectedDaysViewController = "SelectedDaysViewController"
    let reminderConfigViewController = "ReminderConfigViewController"
-     let medicineViewController = "MedicineViewController"
-     let editReminderViewController = "EditReminderViewController"
+   let medicineViewController = "MedicineViewController"
+   let editReminderViewController = "EditReminderViewController"
      
      func pushViewController<T: UIViewController>(param: T.Type, vcIdentifier: String ) {
          let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
@@ -63,21 +57,6 @@ private let storyboardName = "Main"
     }
 }
 
-extension UIViewController {
- 
-    class func instantiateFromStoryboard(_ name: String = storyboardName) -> Self {
-        return self.instantiateFromStoryboardHelper(name)
-    }
-
-    private class func instantiateFromStoryboardHelper<T>(_ name: String) -> T {
-        let storyboard = UIStoryboard(name: name, bundle: nil)
-            guard let controller = storyboard.instantiateViewController(withIdentifier: String(describing: self))
-                    as? T else {
-                fatalError(FatalError.failedInstantiate.rawValue)
-            }
-            return controller
-    }
-}
 
 enum FatalError: String {
     case failedIdentifier = "View controller with identifier  is not of type"

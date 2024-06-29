@@ -12,8 +12,7 @@ class MedicineViewController: BaseViewController{
     var context: NSManagedObjectContext?
     
     let cellId = "cell"
-    let jSONModel = JSONMedicineModel()
-    let data = DataLoader().medicData
+    let jSONModel = MedicineListManager()
     
     var delegate:ReminderConfigurable?
  

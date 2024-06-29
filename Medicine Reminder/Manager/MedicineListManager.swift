@@ -5,12 +5,12 @@ import CoreData
 typealias VoidCallBack = (() -> Void)
 typealias CallBack<T> = ((T) -> Void)
 
-class JSONMedicineModel: ObservableObject {
+class MedicineListManager: ObservableObject {
     
     
       var callBackSearch: CallBack<[MedicineTables]>?
     var searchList = [MedicineTables]()
-    @Published var medicine : [MedicineJSON] = []
+    @Published var medicine : [MedicineDataModel] = []
     @Published var medicineCore: [MedicineTables] = []
  
     let medicDb = "medicDB"
@@ -19,9 +19,9 @@ class JSONMedicineModel: ObservableObject {
     func saveData(context: NSManagedObjectContext) {
         for i in medicine {
             let entity = MedicineTables(context: context)
-            entity.id = i.id ?? 0
+            entity.id = Int16(i.id ?? 0)
             entity.medicineName = i.medicineName
-            let uuid = UUID()
+            _ = UUID()
         }
         do {
             try context.save()
@@ -63,7 +63,7 @@ class JSONMedicineModel: ObservableObject {
             do {
                 let data = try Data(contentsOf: location)
                 let decoder = JSONDecoder()
-                let dataFromJson = try decoder.decode([MedicineJSON].self, from: data)
+                let dataFromJson = try decoder.decode([MedicineDataModel].self, from: data)
                 self.medicine = dataFromJson
                 self.saveData(context: context)
             } catch {

@@ -1,9 +1,4 @@
 //
-//  CoreDataManager.swift
-//  Medicine Reminder
-//
-//  Created by Omer on 11.05.2024.
-//
 
 import Foundation
 import CoreData

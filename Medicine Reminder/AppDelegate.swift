@@ -1,9 +1,4 @@
 //
-//  AppDelegate.swift
-//  Medicine Reminder
-//
-//  Created by Omer on 4.05.2024.
-//
 
 import UIKit
 import CoreData

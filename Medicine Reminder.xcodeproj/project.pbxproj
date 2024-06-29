@@ -12,15 +12,13 @@
 		1715A2642BE679720027261E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1715A2622BE679720027261E /* Main.storyboard */; };
 		1715A2692BE6797B0027261E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1715A2682BE6797B0027261E /* Assets.xcassets */; };
 		1715A26C2BE6797B0027261E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1715A26A2BE6797B0027261E /* LaunchScreen.storyboard */; };
-		1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A2752BE67ABD0027261E /* MedicineData.swift */; };
-		1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A2792BE67DFB0027261E /* DataLoader.swift */; };
+		1715A2762BE67ABD0027261E /* MedicineDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A2752BE67ABD0027261E /* MedicineDataModel.swift */; };
 		1715A27E2BE688A10027261E /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715A27D2BE688A10027261E /* DataTableViewCell.swift */; };
 		1715A2802BE6AAD60027261E /* medicDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 1715A27F2BE6AAD60027261E /* medicDB.json */; };
 		1784D50B2C24CE1C00219817 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784D50A2C24CE1C00219817 /* ReminderModel.swift */; };
 		179203382C07CE7F0020A5F0 /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */; };
 		1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179203392C07CF170020A5F0 /* EditReminderViewModel.swift */; };
-		17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */; };
-		17AE32332BE7C582008CF1F5 /* JSONMedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32322BE7C582008CF1F5 /* JSONMedicineModel.swift */; };
+		17AE32332BE7C582008CF1F5 /* MedicineListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32322BE7C582008CF1F5 /* MedicineListManager.swift */; };
 		17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */; };
 		17B672532BEFBCD0000AE494 /* SelectedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B672522BEFBCD0000AE494 /* SelectedDaysViewModel.swift */; };
 		17B672552BF0108D000AE494 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B672542BF0108D000AE494 /* CoreDataManager.swift */; };
@@ -48,15 +46,13 @@
 		1715A2682BE6797B0027261E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1715A26B2BE6797B0027261E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1715A26D2BE6797B0027261E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1715A2752BE67ABD0027261E /* MedicineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineData.swift; sourceTree = "<group>"; };
-		1715A2792BE67DFB0027261E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		1715A2752BE67ABD0027261E /* MedicineDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDataModel.swift; sourceTree = "<group>"; };
 		1715A27D2BE688A10027261E /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		1715A27F2BE6AAD60027261E /* medicDB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medicDB.json; sourceTree = "<group>"; };
 		1784D50A2C24CE1C00219817 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		179203372C07CE7F0020A5F0 /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
 		179203392C07CF170020A5F0 /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
-		17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
-		17AE32322BE7C582008CF1F5 /* JSONMedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMedicineModel.swift; sourceTree = "<group>"; };
+		17AE32322BE7C582008CF1F5 /* MedicineListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineListManager.swift; sourceTree = "<group>"; };
 		17AE32382BE81594008CF1F5 /* Medicine_Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Medicine_Reminder.xcdatamodel; sourceTree = "<group>"; };
 		17B672522BEFBCD0000AE494 /* SelectedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDaysViewModel.swift; sourceTree = "<group>"; };
 		17B672542BF0108D000AE494 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -87,6 +83,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		171440A42C2F67BD00CF35BC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				17BB2B972C2C1CA100BAD48B /* TimerTextUtility.swift */,
+				17BB2B692C28660B00BAD48B /* UtilityUi.swift */,
+				17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		171440A52C2F680300CF35BC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				17AE32322BE7C582008CF1F5 /* MedicineListManager.swift */,
+				17B672542BF0108D000AE494 /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		1715A2502BE679720027261E = {
 			isa = PBXGroup;
 			children = (
@@ -106,9 +121,10 @@
 		1715A25B2BE679720027261E /* Medicine Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				171440A52C2F680300CF35BC /* Manager */,
+				171440A42C2F67BD00CF35BC /* Utility */,
 				17B784F22BEE5C2500231FC4 /* TableViewCell */,
 				17AE322F2BE7C455008CF1F5 /* View */,
-				17AE322E2BE7C44D008CF1F5 /* ViewModel */,
 				17AE322D2BE7C445008CF1F5 /* Model */,
 				1715A25C2BE679720027261E /* AppDelegate.swift */,
 				1715A25E2BE679720027261E /* SceneDelegate.swift */,
@@ -116,15 +132,9 @@
 				1715A2682BE6797B0027261E /* Assets.xcassets */,
 				1715A26A2BE6797B0027261E /* LaunchScreen.storyboard */,
 				1715A26D2BE6797B0027261E /* Info.plist */,
-				1715A2792BE67DFB0027261E /* DataLoader.swift */,
 				1715A27F2BE6AAD60027261E /* medicDB.json */,
 				17AE32372BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld */,
-				17B672542BF0108D000AE494 /* CoreDataManager.swift */,
-				17B6725E2BF27AEA000AE494 /* LocalTimeController.swift */,
 				17B672602BF9E81B000AE494 /* CountDown.swift */,
-				1784D50A2C24CE1C00219817 /* ReminderModel.swift */,
-				17BB2B692C28660B00BAD48B /* UtilityUi.swift */,
-				17BB2B972C2C1CA100BAD48B /* TimerTextUtility.swift */,
 			);
 			path = "Medicine Reminder";
 			sourceTree = "<group>";
@@ -141,18 +151,10 @@
 		17AE322D2BE7C445008CF1F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1715A2752BE67ABD0027261E /* MedicineData.swift */,
-				17AE32302BE7C48B008CF1F5 /* MedicineModel.swift */,
+				1784D50A2C24CE1C00219817 /* ReminderModel.swift */,
+				1715A2752BE67ABD0027261E /* MedicineDataModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		17AE322E2BE7C44D008CF1F5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				17AE32322BE7C582008CF1F5 /* JSONMedicineModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		17AE322F2BE7C455008CF1F5 /* View */ = {
@@ -287,18 +289,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1715A2762BE67ABD0027261E /* MedicineData.swift in Sources */,
+				1715A2762BE67ABD0027261E /* MedicineDataModel.swift in Sources */,
 				17AE32392BE81594008CF1F5 /* Medicine_Reminder.xcdatamodeld in Sources */,
 				17B784E92BECFFBD00231FC4 /* BaseViewController.swift in Sources */,
 				17BB2B982C2C1CA100BAD48B /* TimerTextUtility.swift in Sources */,
 				1792033A2C07CF170020A5F0 /* EditReminderViewModel.swift in Sources */,
-				1715A27A2BE67DFB0027261E /* DataLoader.swift in Sources */,
 				17B784F12BEE537700231FC4 /* SelectedDaysViewController.swift in Sources */,
 				1784D50B2C24CE1C00219817 /* ReminderModel.swift in Sources */,
 				17B672612BF9E81B000AE494 /* CountDown.swift in Sources */,
 				17B784EC2BEE0A4E00231FC4 /* ReminderConfigViewController.swift in Sources */,
 				1715A25D2BE679720027261E /* AppDelegate.swift in Sources */,
-				17AE32312BE7C48B008CF1F5 /* MedicineModel.swift in Sources */,
 				17B672552BF0108D000AE494 /* CoreDataManager.swift in Sources */,
 				17B784E12BECFA2000231FC4 /* HomeViewModel.swift in Sources */,
 				17B784DF2BECFA0F00231FC4 /* HomeViewController.swift in Sources */,
@@ -312,7 +312,7 @@
 				1715A25F2BE679720027261E /* SceneDelegate.swift in Sources */,
 				17BB2B6A2C28660B00BAD48B /* UtilityUi.swift in Sources */,
 				17B784E52BECFDDC00231FC4 /* MedicineViewController.swift in Sources */,
-				17AE32332BE7C582008CF1F5 /* JSONMedicineModel.swift in Sources */,
+				17AE32332BE7C582008CF1F5 /* MedicineListManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "sariomer.Medicine-Reminder";
 				PRODUCT_NAME = "Pill Tracker";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -509,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "sariomer.Medicine-Reminder";
 				PRODUCT_NAME = "Pill Tracker";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
