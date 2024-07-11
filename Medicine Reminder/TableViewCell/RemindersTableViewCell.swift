@@ -2,7 +2,7 @@
 
 import UIKit
 
-class RemindersTableViewCell: UITableViewCell {
+final class RemindersTableViewCell: UITableViewCell {
 
     var timer: Timer? 
     var countdown: CountDown?

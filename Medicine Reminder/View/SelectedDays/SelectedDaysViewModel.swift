@@ -1,7 +1,7 @@
 
 import Foundation
 
-class SelectedDaysViewModel: ReminderData {
+  class SelectedDaysViewModel: ReminderData {
    
     var reminder: Reminder?
     var reminderModel: ReminderModel?

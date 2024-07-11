@@ -5,7 +5,7 @@ import CoreData
 typealias VoidCallBack = (() -> Void)
 typealias CallBack<T> = ((T) -> Void)
 
-class MedicineListManager: ObservableObject {
+final class MedicineListManager: ObservableObject {
     
     
       var callBackSearch: CallBack<[MedicineTables]>?

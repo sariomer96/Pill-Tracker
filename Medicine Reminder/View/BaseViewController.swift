@@ -3,6 +3,7 @@ import Foundation
 import UIKit
 
 private let storyboardName = "Main"
+
  class BaseViewController: UIViewController {
      
    let selectedDaysViewController = "SelectedDaysViewController"

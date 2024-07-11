@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SelectedDaysViewController: BaseViewController {
+ class SelectedDaysViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sundayButton: UIButton!

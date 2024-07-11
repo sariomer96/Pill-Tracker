@@ -4,7 +4,7 @@ protocol ReminderGetData {
     func getReminder(reminder: Reminder)
 }
 
-class EditReminderViewController: SelectedDaysViewController {
+final class EditReminderViewController: SelectedDaysViewController {
     
     @IBOutlet weak var medicineNameLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!

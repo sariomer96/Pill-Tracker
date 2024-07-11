@@ -4,7 +4,7 @@ import Foundation
 import CoreData
 import UserNotifications
 
-class HomeViewModel {
+final class HomeViewModel {
     
     var callbackCountDown: CallBack<String>?
     var reminders = [Reminder]()

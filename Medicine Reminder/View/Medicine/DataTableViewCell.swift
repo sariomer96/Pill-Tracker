@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataTableViewCell: UITableViewCell {
+final class DataTableViewCell: UITableViewCell {
 
     @IBOutlet weak var medicineLabel: UILabel!
 }

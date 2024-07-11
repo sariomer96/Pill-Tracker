@@ -2,7 +2,7 @@
 import UIKit
 import CoreData
  
-class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
     
     @IBOutlet weak var addMedicineButton: UIButton!
     @IBOutlet weak var tableView: UITableView!

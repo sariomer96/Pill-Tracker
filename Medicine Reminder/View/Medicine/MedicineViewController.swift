@@ -6,7 +6,7 @@ protocol ReminderConfigurable: AnyObject {
     func configure(with reminderText: String)
 }
 
-class MedicineViewController: BaseViewController{
+final class MedicineViewController: BaseViewController{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var context: NSManagedObjectContext?

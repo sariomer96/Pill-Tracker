@@ -1,7 +1,8 @@
 
 import Foundation
 import UIKit
-class ExtensionLearn: UIViewController {
+
+final class ExtensionLearn: UIViewController {
     
     
     @IBOutlet weak var label: UILabel!

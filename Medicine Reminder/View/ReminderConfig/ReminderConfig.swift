@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ReminderConfig {
+final class ReminderConfig {
     
     static let shared = ReminderConfig()
     

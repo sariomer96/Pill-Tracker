@@ -8,7 +8,7 @@ protocol ReminderData {
    
 }
 
-class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
+final class ReminderConfigViewController: BaseViewController, ReminderConfigurable {
   
     var reminder: Reminder?
     var reminderModel: ReminderModel?

@@ -1,7 +1,7 @@
  
 import Foundation
 
-class TimerTextUtility {
+final class TimerTextUtility {
     static let shared = TimerTextUtility()
     
   let day = "Gün"

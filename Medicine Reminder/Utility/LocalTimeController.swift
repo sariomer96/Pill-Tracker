@@ -1,7 +1,7 @@
 
 import Foundation
 
-class LocalTimeController {
+final class LocalTimeController {
     static let shared = LocalTimeController()
  
     func getLocalTime(date: Date) -> Date{

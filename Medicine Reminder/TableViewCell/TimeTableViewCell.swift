@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TimeTableViewCell: UITableViewCell {
+final class TimeTableViewCell: UITableViewCell {
  
     @IBOutlet weak var datePicker: UIDatePicker!
   

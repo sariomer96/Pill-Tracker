@@ -2,7 +2,7 @@
 
 import Foundation
 
-class CountDown {
+final class CountDown {
     
     let days = [
         "Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"
